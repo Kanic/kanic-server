@@ -11,7 +11,7 @@ REST APIs Guidance
 ==================
 http://104.236.60.23 is our server ip address, will be replaced by domain name soon.
 ##Authentication Token
-Fetch token url: http://104.236.60.23/api/auth/token/, copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`. Command: curl -X POST -d "username=admin&password=123" http://104.236.60.23/api/auth/token/`
+Fetch token url: http://104.236.60.23/api/auth/token/, copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`. Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api/auth/token/`
 
 Response example:
 ```javascript
