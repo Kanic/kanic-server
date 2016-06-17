@@ -35,7 +35,7 @@ This api is to get authentication for a user
 This api is to list out all registered users
 - Method: GET
 - Url: `http://104.236.60.23/api-beta/users`
-- Parameters: `username`, `password`
+- Parameters: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to get all users.
 - Command: `curl -H "Authorization: JWT <your_token>" http://104.236.60.23/api-beta/users`
