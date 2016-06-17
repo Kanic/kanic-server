@@ -9,11 +9,19 @@
 
 REST APIs Guidance
 ==================
-http://104.236.60.23 is our server ip address, will be replaced by domain name soon.
-##Authentication Token
-Fetch token url: http://104.236.60.23/api/auth/token/, copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`. Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api/auth/token/`
+- http://104.236.60.23 is our server ip address, will be replaced by domain name soon. 
+- Default admin user: `username=admin`, `password=123`, note: will be changed in the future.
 
-Response example:
+##Authentication Token
+###Fetch authentication token
+This api is to get authentication for a user
+- Method: POST
+- Url: `http://104.236.60.23/api/auth/token/`
+- Parameters: `username`, `password`
+- Permissions: No extra permissions needed
+- Instructions: Copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`
+- Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api/auth/token/`
+- Response example:
 ```javascript
 {
   "active":true,
@@ -23,7 +31,63 @@ Response example:
 ```
 
 ##User
-
+###List users
+This api is to list out all registered users
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/users`
+- Parameters: `username`, `password`
+- Permissions: Must be a admin user
+- Instructions: Copy paste following commnad in your terminal to get all users.
+- Command: `curl -H "Authorization: JWT <your_token>" http://104.236.60.23/api-beta/users`
+- Response example:
+```javascript
+[
+    {
+        "url": "http://127.0.0.1:8000/api-beta/users/admin",
+        "id": 3,
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "first_name": null,
+        "last_name": null,
+        "is_mechanic": false,
+        "mechanic": null,
+        "request_set": [
+            {
+                "id": 8,
+                "car_owner": "http://127.0.0.1:8000/api/users/3/",
+                "mechanic": "http://127.0.0.1:8000/api/mechanics/5/",
+                "location": "asdasd",
+                "scheduled_time": "2018-11-02T03:01:00Z",
+                "service": "http://127.0.0.1:8000/api/services/2/",
+                "status": 0,
+                "extra_info": "aasd"
+            }
+        ]
+    },
+    {
+        "url": "http://127.0.0.1:8000/api-beta/users/asda",
+        "id": 4,
+        "username": "asda",
+        "email": "aasdad@gmail.com",
+        "first_name": null,
+        "last_name": null,
+        "is_mechanic": false,
+        "mechanic": null,
+        "request_set": [
+            {
+                "id": 1,
+                "car_owner": "http://127.0.0.1:8000/api/users/4/",
+                "mechanic": null,
+                "location": "city college",
+                "scheduled_time": "2016-06-14T20:52:52Z",
+                "service": "http://127.0.0.1:8000/api/services/1/",
+                "status": 0,
+                "extra_info": ""
+            }
+        ]
+    }
+]
+```
 ##Mechanic(**Note that a mechanic is a User as well but with extra attributes**)
 
 ##Request
