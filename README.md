@@ -20,7 +20,7 @@ This api is to get authentication for a user
 - Parameters: `username`, `password`
 - Permissions: No extra permissions needed
 - Instructions: Copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`
-- Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api/auth/token/`
+- Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api-beta/auth/token/`
 - Response example:
 ```javascript
 {
@@ -38,7 +38,7 @@ This api is to list out all registered users
 - Parameters: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to get all users.
-- Command: `curl -H "Authorization: JWT <your_token>" http://104.236.60.23/api-beta/users`
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users`
 - Response example:
 ```javascript
 [
@@ -88,10 +88,86 @@ This api is to list out all registered users
     }
 ]
 ```
-##Mechanic(**Note that a mechanic is a User as well but with extra attributes**)
+###Create a user
+This api is to create a user
+- Method: POST
+- Url: `http://104.236.60.23/api-beta/users/create/`
+- Parameters: `username`, `email`, `password`, `is_mechanic`
+- Permissions: Must be a admin user
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -X POST -d "username=david&email=david@gmail.com&password=aaaaa&is_mechanic=False" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/create/`
+- Response example:
+```javascript
+{
+  "email":"david@gmail.com",
+  "username":"david",
+  "is_mechanic":false
+}
+```
+##Mechanic
+Note that a mechanic is a User as well but with extra attributes.
+
+
+
 
 ##Request
-
+###List all requests
+This api is to list all requests
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/requests/`
+- Parameters: None
+- Permissions: Must be a admin user
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/`
+- Response example:
+```javascript
+[
+    {
+        "url": "http://127.0.0.1:8000/api-beta/users/admin",
+        "id": 3,
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "first_name": null,
+        "last_name": null,
+        "is_mechanic": false,
+        "mechanic": null,
+        "request_set": [
+            {
+                "id": 8,
+                "car_owner": "http://127.0.0.1:8000/api/users/3/",
+                "mechanic": "http://127.0.0.1:8000/api/mechanics/5/",
+                "location": "asdasd",
+                "scheduled_time": "2018-11-02T03:01:00Z",
+                "service": "http://127.0.0.1:8000/api/services/2/",
+                "status": 0,
+                "extra_info": "aasd"
+            }
+        ]
+    },
+    {
+        "url": "http://127.0.0.1:8000/api-beta/users/asda",
+        "id": 4,
+        "username": "asda",
+        "email": "aasdad@gmail.com",
+        "first_name": null,
+        "last_name": null,
+        "is_mechanic": false,
+        "mechanic": null,
+        "request_set": [
+            {
+                "id": 1,
+                "car_owner": "http://127.0.0.1:8000/api/users/4/",
+                "mechanic": null,
+                "location": "city college",
+                "scheduled_time": "2016-06-14T20:52:52Z",
+                "service": "http://127.0.0.1:8000/api/services/1/",
+                "status": 0,
+                "extra_info": ""
+            }
+        ]
+    }
+  ]
+```
 
 
 [python]: https://www.python.org/
