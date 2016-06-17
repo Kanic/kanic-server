@@ -7,25 +7,7 @@ from requests.serializers import RequestSerializer
 from .models import User, Mechanic
 
 
-class UserCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            'username',
-            'password',
-            'email',
-            'is_mechanic',
-        ]
-
-
-class UserUrlHyperlinkedIdentityField(serializers.HyperlinkedIdentityField):
-
-    def get_url(self, obj, view_name, request, format):
-        kwargs = {
-            'username': obj.username
-        }
-        return reverse(view_name, kwargs=kwargs, request=request, format=format)
-
+# Mechanic serializers
 class MechanicSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Mechanic
@@ -36,11 +18,13 @@ class MechanicSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class MechanicViewSet(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated, ]
-    queryset = Mechanic.objects.all()
-    serializer_class = MechanicSerializer
+# User serializers
+class UserUrlHyperlinkedIdentityField(serializers.HyperlinkedIdentityField):
+    def get_url(self, obj, view_name, request, format):
+        kwargs = {
+            'username': obj.username
+        }
+        return reverse(view_name, kwargs=kwargs, request=request, format=format)
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -62,8 +46,31 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
+class UserCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'password', 'is_mechanic')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User(
+            email=validated_data['email'],
+            username=validated_data['username']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, ]
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class MechanicViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated, ]
+    queryset = Mechanic.objects.all()
+    serializer_class = MechanicSerializer

@@ -1,6 +1,7 @@
 def jwt_response_payload_handler(token, user=None, request=None):
     return {
         "token": token,
-        "user": str(user.username),
+        "username": str(user.username),
         "active" : user.is_active,
+        "is_mechanic": user.is_mechanic
     }

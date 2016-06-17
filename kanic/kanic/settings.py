@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'registration',
     'rest_framework',
     'users',
     'requests',
@@ -109,6 +111,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+# rest_framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -120,10 +123,15 @@ REST_FRAMEWORK = {
     ),
 }
 
-
+# JSON Web Token settings
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'kanic.utils.jwt_response_payload_handler',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=600),
 }
 
 # AUTHENTICATION_BACKENDS = ['django-dual-authentication.backends.DualAuthentication']
+
+# django-registratuib-redux settings
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1

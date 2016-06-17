@@ -1,6 +1,7 @@
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -32,11 +33,12 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
-    first_name = models.CharField(max_length=120, null=True, blank=True)
-    last_name = models.CharField(max_length=120, null=True, blank=True)
-    is_mechanic = models.BooleanField(default=False, verbose_name="Is Mechanic")
-    is_active = models.BooleanField(default=True)
+    first_name = models.CharField(max_length=30, null=True, blank=True)
+    last_name = models.CharField(max_length=30, null=True, blank=True)
+    is_mechanic = models.BooleanField(verbose_name="Is Mechanic", default=False)
+    is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(verbose_name='date joined', default=timezone.now)
 
     objects = UserManager()
 

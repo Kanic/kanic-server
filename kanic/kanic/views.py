@@ -1,13 +1,28 @@
+import datetime
+
+from django import forms
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from users.forms import RegisterForm
 from users.models import User
 
 
+class MameForm(forms.Form):
+    your_name = forms.DateTimeField(initial=datetime.datetime.today)
+
+def testform(request):
+    SAFE_METHODS = ('GET', 'HEAD', 'OPTIONS')
+    print request.method in SAFE_METHODS
+    form = MameForm()
+    context = {
+        "form": form
+    }
+    print request.GET
+    return render(request, "testform.html", context)
 
 
-
-
+@csrf_exempt
 def home(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
@@ -16,8 +31,6 @@ def home(request):
         password = form.cleaned_data['password2']
         is_mechanic = form.cleaned_data['is_mechanic']
         User.objects.create_user(username=username, email=email, password=password, is_mechanic=is_mechanic)
-        print username, email, password, is_mechanic
-
 
     context = {
         "form": form,
