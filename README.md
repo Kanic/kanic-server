@@ -104,6 +104,28 @@ This api is to create a user
   "is_mechanic":false
 }
 ```
+###Show a user's detail
+This api is to show a user's detail
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/api-beta/users/<username>`
+- Parameters: None
+- Permissions: Must be the owner of the profile
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/<username>`
+- Response example:
+```javascript
+{
+  "url":"http://127.0.0.1:8000/api-beta/users/dongdong",
+  "id":19,
+  "username":"dongdong",
+  "email":"dongdong@gmail.com",
+  "first_name":null,
+  "last_name":null,
+  "is_mechanic":false,
+  "mechanic":null,
+  "request_set":[]
+}
+```
 ##Mechanic
 Note that a mechanic is a User as well but with extra attributes.
 
@@ -168,7 +190,22 @@ This api is to list all requests
     }
   ]
 ```
-
+###Create a request
+This api is to create a request
+- Method: POST
+- Url: `http://104.236.60.23/api-beta/requests/create/`
+- Parameters: `car_owner`, `location`, `scheduled_time`, `status`
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -X POST -d "car_own=admin&location=city college&scheduled_time=2018-11-02T03:01:00Z&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
+- Response example:
+```javascript
+{
+  "email":"david@gmail.com",
+  "username":"david",
+  "is_mechanic":false
+}
+```
 
 [python]: https://www.python.org/
 [django]: https://www.djangoproject.com/
