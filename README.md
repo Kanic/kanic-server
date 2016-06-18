@@ -132,7 +132,8 @@ Note that a mechanic is a User as well but with extra attributes.
 
 
 
-##Request
+##Service Request
+A request has 4 status, 0(request was created by a car owner), 1(request was assigned to a mechanic by admin), 2(request was accepted by a mechanic), 3(request was completed).
 ###List all requests
 This api is to list all requests
 - Method: GET
