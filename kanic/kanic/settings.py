@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'registration',
+    'django_extensions',
+    # 'registration',
     'rest_framework',
     'users',
     'requests',
@@ -85,8 +86,12 @@ WSGI_APPLICATION = 'kanic.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'ktqEYvixJB',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -126,7 +131,7 @@ REST_FRAMEWORK = {
 # JSON Web Token settings
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'kanic.utils.jwt_response_payload_handler',
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=600),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=600000),
 }
 
 # AUTHENTICATION_BACKENDS = ['django-dual-authentication.backends.DualAuthentication']

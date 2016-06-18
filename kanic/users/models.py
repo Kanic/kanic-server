@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, password=None, is_mechanic=None):
+    def create_user(self, username, email, password=None, is_mechanic=False):
         """
         Creates and saves a User with the given email, username and password.
         """
@@ -36,7 +36,7 @@ class User(AbstractBaseUser):
     first_name = models.CharField(max_length=30, null=True, blank=True)
     last_name = models.CharField(max_length=30, null=True, blank=True)
     is_mechanic = models.BooleanField(verbose_name="Is Mechanic", default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     date_joined = models.DateTimeField(verbose_name='date joined', default=timezone.now)
 

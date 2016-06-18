@@ -1,11 +1,15 @@
 import datetime
 
 from django import forms
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from users.forms import RegisterForm
 from users.models import User
+
+
+def index(request):
+    return HttpResponse("I dream of being a web site")
 
 
 class MameForm(forms.Form):

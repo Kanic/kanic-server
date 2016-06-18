@@ -18,28 +18,28 @@ from django.contrib import admin
 
 from rest_framework import routers
 
-from users.serializers import UserViewSet, MechanicViewSet
-from requests.serializers import RequestViewSet, ServiceViewSet
+# from users.serializers import UserViewSet, MechanicViewSet
+# from requests.serializers import RequestViewSet, ServiceViewSet
 from users.views import UserCreateAPIView, UserListAPIView, UserRetrieveAPIView
 from requests.views import (RequestRetrieveAPIView, RequestCreateAPIView,
-ServiceListAPIView)
+RequestListAPIView, ServiceListAPIView, ServiceRetrieveAPIView)
 
-router = routers.DefaultRouter()
-router.register(r'mechanics', MechanicViewSet)
-router.register(r'users', UserViewSet)
-router.register(r'services', ServiceViewSet)
-router.register(r'requests', RequestViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'mechanics', MechanicViewSet)
+# router.register(r'users', UserViewSet)
+# router.register(r'services', ServiceViewSet)
+# router.register(r'requests', RequestViewSet)
 
 from kanic import views
 
 urlpatterns = [
 
     # api URLs
-    url(r'^api-beta/auth/token/$', 'rest_framework_jwt.views.obtain_jwt_token'),
-    
+    url(r'^api-beta/auth/token/?$', 'rest_framework_jwt.views.obtain_jwt_token'),
+
     # include api/auth/login and api/auth/logout
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include(router.urls)),
+    # url(r'^api/', include(router.urls)),
 
     # users
     url(r'^api-beta/users/?$', UserListAPIView.as_view(), name='user_list_api'),
@@ -53,18 +53,19 @@ urlpatterns = [
     # services
     url(r'^api-beta/services/?$', ServiceListAPIView.as_view(), name='service_list_api'),
     # url(r'^api-beta/services/create/?$', ServiceCreateAPIView.as_view(), name='user_create_api'),
-    # url(r'^api-beta/services/(?P<username>[\w-]+)/?$', UserRetrieveAPIView.as_view(), name='user_retrieve_api'),
+    url(r'^api-beta/services/(?P<id>[\w-]+)/?$', ServiceRetrieveAPIView.as_view(), name='service_retrieve_api'),
 
     # requests
-    url(r'^api-beta/requests/?$', UserListAPIView.as_view(), name='request_list_api'),
+    url(r'^api-beta/requests/?$', RequestListAPIView.as_view(), name='request_list_api'),
     url(r'^api-beta/requests/create/?$', RequestCreateAPIView.as_view(), name='request_create_api'),
     url(r'^api-beta/requests/(?P<id>[\w-]+)/?$', RequestRetrieveAPIView.as_view(), name='request_retrieve_api'),
 
     # django-registration-redux URLs
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    # url(r'^accounts/', include('registration.backends.default.urls')),
 
     # web-based URLs
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', views.index, name='index'),
     url(r'^home', views.home, name='home'),
 
     # testing URLs

@@ -1,0 +1,114 @@
+[
+{
+  "fields": {
+    "username": "admin",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "last_login": "2016-06-18T20:41:19.948Z",
+    "is_admin": true,
+    "password": "pbkdf2_sha256$20000$2Fz7qogPlRh4$IzFSrZTOcNyHXFGcLgcuieNWBz43Ig76jGttCwZRvGA=",
+    "email": "admin@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T20:41:12.611Z"
+  },
+  "model": "users.user",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "dongliang",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$GemXFT0YYdS4$GrX5RsRj23xahCTyGzW63Pnu0tMXqx7p+YkuYGflodg=",
+    "email": "dong@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T20:43:56.743Z"
+  },
+  "model": "users.user",
+  "pk": 2
+},
+{
+  "fields": {
+    "username": "jackson",
+    "first_name": "jackson",
+    "last_name": "gable",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$zdIiJPcsmLPu$pI5iK7POjCl1TFdg5P0ngkfJzMkyVh3uCfPBYMgiDL4=",
+    "email": "jackson@gmailc.com",
+    "is_mechanic": true,
+    "date_joined": "2016-06-18T20:54:59.785Z"
+  },
+  "model": "users.user",
+  "pk": 3
+},
+{
+  "fields": {
+    "username": "david",
+    "first_name": "david",
+    "last_name": "ma",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$PWs6YGByoX1f$3vDuZgGg7C0mi/pHDGB6qiShf2ljhz77RFcPv+HL9v0=",
+    "email": "david@gmail.com",
+    "is_mechanic": true,
+    "date_joined": "2016-06-18T20:55:31.367Z"
+  },
+  "model": "users.user",
+  "pk": 4
+},
+{
+  "fields": {
+    "username": "tom",
+    "first_name": "tom",
+    "last_name": "jobs",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$KpUvSikmZs31$yksn5bKw9pDeWAPYA+hV/AvPAMzyeCZq6oyGcTn/UPw=",
+    "email": "tom@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T20:56:03.070Z"
+  },
+  "model": "users.user",
+  "pk": 5
+},
+{
+  "fields": {
+    "username": "ahmed",
+    "first_name": "ahmed",
+    "last_name": "ben",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$Or9cyaSeybPG$hVOazBTWn2ofGLDKEIH1DWHEKXUt5DnIH7h/gJj5Ydo=",
+    "email": "ahmed@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T20:56:44.055Z"
+  },
+  "model": "users.user",
+  "pk": 6
+},
+{
+  "fields": {
+    "username": "amira",
+    "first_name": "amira",
+    "last_name": "aly",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$NViexgTlW1RU$84v6smi1G3AzeouesJCNneuqmS89/2HJuCVnftvVjBs=",
+    "email": "amira@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T20:57:12.520Z"
+  },
+  "model": "users.user",
+  "pk": 7
+}
+]

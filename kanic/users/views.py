@@ -4,19 +4,27 @@ from rest_framework import generics, permissions, mixins
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from kanic.permissions import IsOwner
+from kanic.permissions import IsOwner, IsOwnerOrAdmin
 from .models import User, Mechanic
-from .serializers import UserSerializer, UserCreateSerializer
+from .serializers import UserSerializer, UserCreateSerializer, CarOwnerListSerializer
 
 
 class UserCreateAPIView(generics.CreateAPIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
+    authentication_classes = [
+        SessionAuthentication,
+        BasicAuthentication,
+        JSONWebTokenAuthentication
+    ]
     serializer_class = UserCreateSerializer
     permission_classes = (permissions.IsAdminUser,)
 
 
 class UserListAPIView(generics.ListAPIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
+    authentication_classes = [
+        SessionAuthentication,
+        BasicAuthentication,
+        JSONWebTokenAuthentication
+    ]
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAdminUser,)
 
@@ -32,8 +40,14 @@ class UserRetrieveAPIView(generics.RetrieveAPIView):
 
     def get_object(self):
         queryset = self.get_queryset()
-        # obj = get_object_or_404(queryset, self.lookup_field)
-        print self.lookup_field
         username = self.kwargs['username']
         obj = get_object_or_404(queryset, username=username)
         return obj
+
+
+class CarOwnerListAPIView(generics.ListAPIView):
+    serializer_class = CarOwnerListSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+    def get_queryset(self):
+        return User.objects.filter(is_mechanic=False)
