@@ -134,7 +134,40 @@ This api is to show a user's detail
 Note that a mechanic is a User as well but with extra attributes.
 
 
-
+##Service
+We have a specific range of services
+###List all Service
+This api is to list all services
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/services/`
+- Parameters required: None
+- Parameters optional: None
+- Permissions: Must be a admin user
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/services/`
+- Response example:
+```javascript
+[
+    {
+        "id": 1,
+        "type": "oil change",
+        "tools": "ipad",
+        "car": "toyota"
+    },
+    {
+        "id": 2,
+        "type": "tire change",
+        "tools": "Mac",
+        "car": "honda"
+    },
+    {
+        "id": 3,
+        "type": "brake change",
+        "tools": "screw driver",
+        "car": "benz"
+    }
+  ]
+```
 
 ##Service Request
 A request has 4 status, 0(request was created by a car owner), 1(request was assigned to a mechanic by admin), 2(request was accepted by a mechanic), 3(request was completed).
@@ -200,11 +233,11 @@ This api is to list all requests
 This api is to create a request
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/requests/create/`
-- Parameters required: `car_owner`, `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `status`
+- Parameters required: `car_owner`(need id, make sure it's current user), `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `service`(need id), `status`
 - Parameters optional: `extra_info`
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -X POST -d "car_own=admin&location=city college&scheduled_time=2018-11-02T03:01:00Z&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
+- Command: `curl -X POST -d "car_owner=1&location=city college&scheduled_time=2018-11-02T03:01:00Z&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
 - Response example:
 ```javascript
 {
@@ -213,7 +246,45 @@ This api is to create a request
   "is_mechanic":false
 }
 ```
+###List requests for currently authorized user
+This api is to list all requests for currently authorized user
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/requests/user/`
+- Parameters required: None
+- Parameters optional: None
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/user/`
+- Response example:
+```javascript
 
+[
+    {
+        "car_owner": 7,
+        "location": "asdasda",
+        "scheduled_time": "2016-06-15T01:01:00Z",
+        "service": 3,
+        "status": 2,
+        "extra_info": "1"
+    },
+    {
+        "car_owner": 7,
+        "location": "bronx",
+        "scheduled_time": "2016-06-18T21:31:07Z",
+        "service": 3,
+        "status": 3,
+        "extra_info": "hurry up"
+    },
+    {
+        "car_owner": 7,
+        "location": "queens",
+        "scheduled_time": "2016-06-18T21:24:48Z",
+        "service": 3,
+        "status": 2,
+        "extra_info": "take it easy"
+    }
+]
+```
 [python]: https://www.python.org/
 [django]: https://www.djangoproject.com/
 [post]: https://www.postgresql.org/
