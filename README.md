@@ -246,7 +246,45 @@ This api is to create a request
   "is_mechanic":false
 }
 ```
+###List requests for currently authorized user
+This api is to list all requests for currently authorized user
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/requests/user/`
+- Parameters required: None
+- Parameters optional: None
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/user/`
+- Response example:
+```javascript
 
+[
+    {
+        "car_owner": 7,
+        "location": "asdasda",
+        "scheduled_time": "2016-06-15T01:01:00Z",
+        "service": 3,
+        "status": 2,
+        "extra_info": "1"
+    },
+    {
+        "car_owner": 7,
+        "location": "bronx",
+        "scheduled_time": "2016-06-18T21:31:07Z",
+        "service": 3,
+        "status": 3,
+        "extra_info": "hurry up"
+    },
+    {
+        "car_owner": 7,
+        "location": "queens",
+        "scheduled_time": "2016-06-18T21:24:48Z",
+        "service": 3,
+        "status": 2,
+        "extra_info": "take it easy"
+    }
+]
+```
 [python]: https://www.python.org/
 [django]: https://www.djangoproject.com/
 [post]: https://www.postgresql.org/
