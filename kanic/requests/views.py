@@ -25,6 +25,9 @@ class ServiceListAPIView(generics.ListAPIView):
 class ServiceRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = ServiceUpdateSerializer
 
+    def get_queryset(self):
+        return Service.objects.all()
+
 
 class RequestListAPIView(generics.ListAPIView):
     serializer_class = RequestListSerializer

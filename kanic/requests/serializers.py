@@ -16,8 +16,7 @@ class ServiceListSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'type',
-            'tools',
-            'car',
+            'tools'
         ]
 
 
@@ -27,9 +26,9 @@ class ServiceSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'type',
-            'tools',
-            'car',
+            'tools'
         ]
+
 
 class ServiceUpdateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -37,8 +36,7 @@ class ServiceUpdateSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'type',
-            'tools',
-            'car',
+            'tools'
         ]
 
 
@@ -88,6 +86,7 @@ class RequestListSerializer(serializers.HyperlinkedModelSerializer):
             'mechanic',
             'location',
             'scheduled_time',
+            'car',
             'service',
             'status',
             'extra_info',
@@ -112,6 +111,7 @@ class RequestCreateSerializer(serializers.ModelSerializer):
             'car_owner',
             'location',
             'scheduled_time',
+            'car',
             'service',
             'status',
             'extra_info',
@@ -160,6 +160,7 @@ class RequestUpdateSerializer(serializers.ModelSerializer):
             'mechanic',
             'location',
             'scheduled_time',
+            'car',
             'service',
             'status',
             'extra_info',
