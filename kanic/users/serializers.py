@@ -84,10 +84,11 @@ class UserCreateSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.is_mechanic = validated_data['is_mechanic']
-        if validated_data['first_name']:
+        try:
             user.first_name = validated_data['first_name']
-        if validated_data['last_name']:
             user.last_name = validated_data['last_name']
+        except KeyError:
+            print("first_name and last_name were not provided.")
         user.save()
         return user
 

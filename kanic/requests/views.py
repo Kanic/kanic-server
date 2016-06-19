@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from rest_framework import generics, mixins
+from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
@@ -8,6 +9,11 @@ from kanic.permissions import IsOwnerOrReadOnly, IsOwnerOrAdminRequest
 from .serializers import (RequestListSerializer, RequestCreateSerializer, RequestUpdateSerializer,
 ServiceListSerializer, ServiceUpdateSerializer)
 from .models import Service, Request
+
+
+@api_view()
+def hello_world(request):
+    return Response({"message": "Hello, world!"})
 
 
 class ServiceListAPIView(generics.ListAPIView):
@@ -30,6 +36,9 @@ class RequestListAPIView(generics.ListAPIView):
 
 class RequestCreateAPIView(generics.CreateAPIView):
     serializer_class = RequestCreateSerializer
+    # permission_classes = (IsOwnerOrAdminRequest,)
+    # queryset = Request.objects.all()
+    # lookup_field = 'id'
 
 
 class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):

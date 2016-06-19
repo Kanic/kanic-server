@@ -24,7 +24,7 @@ from users.views import UserCreateAPIView, UserListAPIView, UserRetrieveAPIView
 from requests.views import (RequestRetrieveAPIView, RequestCreateAPIView,
                             RequestListAPIView, ServiceListAPIView,
                             ServiceRetrieveAPIView, RequestListForUserAPIView)
-
+from requests import views as a
 # router = routers.DefaultRouter()
 # router.register(r'mechanics', MechanicViewSet)
 # router.register(r'users', UserViewSet)
@@ -75,6 +75,7 @@ urlpatterns = [
 
     # testing URLs
     url(r'^testform', views.testform),
+    url(r'^testing', a.hello_world),
 
 
 
