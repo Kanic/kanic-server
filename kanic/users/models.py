@@ -78,6 +78,9 @@ class Mechanic(models.Model):
     year_of_experience = models.IntegerField(null=True, blank=True)
     address = models.CharField(max_length=100, null=True, blank=True)
 
+    def __unicode__(self):
+        return self.user.username
+
 def new_user_receiver(sender, instance, created, *args, **kwargs):
     if created and instance.is_mechanic:
         mechanic, is_created = Mechanic.objects.get_or_create(user=instance)

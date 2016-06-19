@@ -5,7 +5,7 @@ class Service(models.Model):
     type = models.CharField(max_length=40)
     tools = models.CharField(max_length=100)
 
-    def unicode(self):
+    def __unicode__(self):
         return self.type
 
 
