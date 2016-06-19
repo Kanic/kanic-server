@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 from rest_framework import generics, mixins
 from rest_framework.permissions import IsAdminUser
+from rest_framework.response import Response
 
 from kanic.permissions import IsOwnerOrReadOnly, IsOwnerOrAdmin
 from .serializers import (RequestListSerializer, RequestCreateSerializer, RequestUpdateSerializer,
@@ -43,3 +44,13 @@ class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
+
+
+class RequestListForUserAPIView(generics.ListAPIView):
+    serializer_class = RequestCreateSerializer
+    queryset = Request.objects.all()
+
+    def list(self, request):
+        queryset = Request.objects.filter(car_owner = request.user)
+        serializer = RequestCreateSerializer(queryset, many=True)
+        return Response(serializer.data)

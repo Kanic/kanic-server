@@ -3,7 +3,6 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.reverse import reverse
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-# from users.serializers import UserSerializer
 from users.models import User, Mechanic
 from .models import Service, Request
 
@@ -95,7 +94,16 @@ class RequestListSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class RequestCreateSerializer(serializers.HyperlinkedModelSerializer):
+class RequestCreateSerializer(serializers.ModelSerializer):
+    # car_owner = serializers.HyperlinkedRelatedField(
+    #     view_name='user_retrieve_api',
+    #     lookup_field='username',
+    #     many=False,
+    #     read_only=False
+    # )
+    # car_owner = serializers.CharField(source='car_owner.username')
+    # service = serializers.CharField(source='service.id')
+
     class Meta:
         model = Request
         fields = [
@@ -107,12 +115,29 @@ class RequestCreateSerializer(serializers.HyperlinkedModelSerializer):
             'extra_info',
         ]
 
+    # def create(self, validated_data):
+    #     car_owner_username = validated_data['car_owner']
+    #     car_owner = User.objects.filter(username=car_owner_username)
+    #     location = validated_data['location']
+    #     scheduled_time = validated_data['scheduled_time']
+    #     service_id = validated_data['service']
+    #     service = Service.objects.filter(id=service_id)
+    #     status = validated_data['status']
+    #     extra_info = validated_data['extra_info']
+    #     request = Request(car_owner=car_owner.id, location=location,
+    #                       scheduled_time=scheduled_time, service=service.id,
+    #                       status=status, extra_info=extra_info)
+    #     request.save()
+    #     return request
 
-class RequestUpdateSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='request_retrieve_api', lookup_field='id')
+
+
+class RequestUpdateSerializer(serializers.ModelSerializer):
+    # url = serializers.HyperlinkedIdentityField(view_name='request_retrieve_api', lookup_field='id')
     # url = RequestUrlHyperlinkedIdentityField(view_name='request_retrieve_api')
     # car_owner = serializers.CharField(source='car_owner.username', read_only=True)
     # mechanic = serializers.CharField(source='mechanic.user.username', read_only=True)
+    # service = serializers.CharField(source='service.type', read_only=True)
     # car_owner = serializers.HyperlinkedRelatedField(
     #     view_name='user_retrieve_api',
     #     lookup_field='username',
@@ -122,7 +147,7 @@ class RequestUpdateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Request
         fields = [
-            'url',
+            # 'url',
             'id',
             'car_owner',
             'mechanic',
@@ -132,6 +157,7 @@ class RequestUpdateSerializer(serializers.HyperlinkedModelSerializer):
             'status',
             'extra_info',
         ]
+        depth = 1
 
 
 # class RequestViewSet(viewsets.ModelViewSet):

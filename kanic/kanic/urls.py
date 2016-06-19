@@ -22,7 +22,8 @@ from rest_framework import routers
 # from requests.serializers import RequestViewSet, ServiceViewSet
 from users.views import UserCreateAPIView, UserListAPIView, UserRetrieveAPIView
 from requests.views import (RequestRetrieveAPIView, RequestCreateAPIView,
-RequestListAPIView, ServiceListAPIView, ServiceRetrieveAPIView)
+                            RequestListAPIView, ServiceListAPIView,
+                            ServiceRetrieveAPIView, RequestListForUserAPIView)
 
 # router = routers.DefaultRouter()
 # router.register(r'mechanics', MechanicViewSet)
@@ -50,6 +51,9 @@ urlpatterns = [
     # url(r'^api-beta/car-owners/?$', CarOwnerListAPIView.as_view(), name='car_onwer_list_api'),
     # url(r'^api-beta/car-owners/(?P<username>[\w-]+)/?$', CarOwnerRetrieveAPIView.as_view(), name='car_owner_retrieve_api'),
 
+    # mechanics
+    # url(r'^api-beta/mechanics/(?P<username>[\w-]+)/?$', MechanicRetrieveAPIView.as_view(), name='mechanic_retrieve_api'),
+
     # services
     url(r'^api-beta/services/?$', ServiceListAPIView.as_view(), name='service_list_api'),
     # url(r'^api-beta/services/create/?$', ServiceCreateAPIView.as_view(), name='user_create_api'),
@@ -58,6 +62,7 @@ urlpatterns = [
     # requests
     url(r'^api-beta/requests/?$', RequestListAPIView.as_view(), name='request_list_api'),
     url(r'^api-beta/requests/create/?$', RequestCreateAPIView.as_view(), name='request_create_api'),
+    url(r'^api-beta/requests/user/?$', RequestListForUserAPIView.as_view(), name='request_user_api'),
     url(r'^api-beta/requests/(?P<id>[\w-]+)/?$', RequestRetrieveAPIView.as_view(), name='request_retrieve_api'),
 
     # django-registration-redux URLs
