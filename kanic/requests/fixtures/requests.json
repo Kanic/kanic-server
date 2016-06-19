@@ -1,74 +1,65 @@
 [
 {
   "fields": {
-    "tools": "oil, screw driver",
-    "type": "oil change",
-    "car": "toyota"
+    "tools": "screw driver",
+    "type": "oid change"
   },
   "model": "requests.service",
   "pk": 1
-},
-{
-  "fields": {
-    "tools": "jack, ipad",
-    "type": "tire change",
-    "car": "honda"
-  },
-  "model": "requests.service",
-  "pk": 2
 },
 {
   "fields": {
     "tools": "screw driver",
-    "type": "wheel change",
-    "car": "audi"
+    "type": "brake change"
+  },
+  "model": "requests.service",
+  "pk": 2
+},
+{
+  "fields": {
+    "tools": "ipad",
+    "type": "glass change"
   },
   "model": "requests.service",
   "pk": 3
 },
 {
   "fields": {
-    "tools": "macbook",
-    "type": "brake change",
-    "car": "lexus"
-  },
-  "model": "requests.service",
-  "pk": 4
-},
-{
-  "fields": {
     "status": 2,
-    "scheduled_time": "2016-06-18T18:51:40Z",
-    "service": 1,
-    "location": "queens",
-    "mechanic": 1,
-    "car_owner": 8,
-    "extra_info": "hurry"
+    "scheduled_time": "2016-06-19T15:36:46Z",
+    "service": 2,
+    "car": "toyota bx2 2012",
+    "location": "manhattan",
+    "mechanic": 2,
+    "car_owner": 5,
+    "extra_info": ""
   },
   "model": "requests.request",
   "pk": 1
 },
 {
   "fields": {
-    "status": 0,
-    "scheduled_time": "2016-06-18T18:52:04Z",
-    "service": 3,
-    "location": "manhattan",
-    "mechanic": null,
-    "car_owner": 5,
-    "extra_info": "good"
+    "status": 1,
+    "scheduled_time": "2016-06-19T15:37:40Z",
+    "service": 2,
+    "car": "BMW tw22 2013",
+    "location": "brooklyn",
+    "mechanic": 2,
+    "car_owner": 6,
+    "extra_info": ""
   },
   "model": "requests.request",
   "pk": 2
 },
 {
   "fields": {
-    "status": 2,
-    "scheduled_time": "2016-06-18T18:52:33Z",
-    "service": 4,
-    "location": "manhattan",
+    "status": 3,
+    "scheduled_time": "2016-06-19T15:38:12Z",
+    "service": 3,
+    "car": "audi 2012",
+    "location": "bronx",
     "mechanic": 2,
-    "car_owner": 4,
+    "car_owner": 7,
     "extra_info": ""
   },
   "model": "requests.request",
@@ -76,12 +67,13 @@
 },
 {
   "fields": {
-    "status": 1,
-    "scheduled_time": "2016-06-18T18:53:22Z",
-    "service": 4,
-    "location": "queens",
-    "mechanic": 1,
-    "car_owner": 7,
+    "status": 0,
+    "scheduled_time": "2016-06-19T15:39:34Z",
+    "service": 3,
+    "car": "benz",
+    "location": "brooklyn",
+    "mechanic": null,
+    "car_owner": 9,
     "extra_info": ""
   },
   "model": "requests.request",
@@ -89,28 +81,16 @@
 },
 {
   "fields": {
-    "status": 2,
-    "scheduled_time": "2016-06-18T18:54:16Z",
-    "service": 3,
-    "location": "manhattan",
-    "mechanic": 2,
-    "car_owner": 4,
-    "extra_info": ""
-  },
-  "model": "requests.request",
-  "pk": 5
-},
-{
-  "fields": {
-    "status": 3,
-    "scheduled_time": "2016-06-18T18:54:41Z",
+    "status": 0,
+    "scheduled_time": "2016-06-19T15:39:58Z",
     "service": 2,
-    "location": "brooklyn",
-    "mechanic": 3,
+    "car": "lambo",
+    "location": "city college",
+    "mechanic": null,
     "car_owner": 5,
     "extra_info": ""
   },
   "model": "requests.request",
-  "pk": 6
+  "pk": 5
 }
 ]
