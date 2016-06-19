@@ -134,7 +134,40 @@ This api is to show a user's detail
 Note that a mechanic is a User as well but with extra attributes.
 
 
-
+##Service
+We have a specific range of services
+###List all Service
+This api is to list all services
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/services/`
+- Parameters required: None
+- Parameters optional: None
+- Permissions: Must be a admin user
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/services/`
+- Response example:
+```javascript
+[
+    {
+        "id": 1,
+        "type": "oil change",
+        "tools": "ipad",
+        "car": "toyota"
+    },
+    {
+        "id": 2,
+        "type": "tire change",
+        "tools": "Mac",
+        "car": "honda"
+    },
+    {
+        "id": 3,
+        "type": "brake change",
+        "tools": "screw driver",
+        "car": "benz"
+    }
+  ]
+```
 
 ##Service Request
 A request has 4 status, 0(request was created by a car owner), 1(request was assigned to a mechanic by admin), 2(request was accepted by a mechanic), 3(request was completed).
