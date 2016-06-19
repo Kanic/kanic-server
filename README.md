@@ -233,17 +233,22 @@ This api is to list all requests
 This api is to create a request
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/requests/create/`
-- Parameters required: `car_owner`(need id, make sure it's current user), `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `service`(need id), `status`
+- Parameters required: `car_owner`(need id, make sure it's current user), `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `car`(string), `service`(need id), `status`
 - Parameters optional: `extra_info`
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -X POST -d "car_owner=1&location=city college&scheduled_time=2018-11-02T03:01:00Z&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
+- Command: `curl -X POST -d "car_owner=1&location=city college&scheduled_time=2018-11-02T03:01:00Z&car=audi&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
 - Response example:
 ```javascript
 {
-  "email":"david@gmail.com",
-  "username":"david",
-  "is_mechanic":false
+    "id": 7,
+    "car_owner": 9,
+    "location": "brooklyn",
+    "scheduled_time": "2016-06-29T11:11:00Z",
+    "car": "BMW tw22 2013",
+    "service": 3,
+    "status": 0,
+    "extra_info": ""
 }
 ```
 ###List requests for currently authorized user
