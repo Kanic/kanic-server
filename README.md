@@ -16,7 +16,7 @@ REST APIs Guidance
 ###Fetch authentication token
 This api is to get authentication for a user
 - Method: POST
-- Url: `http://104.236.60.23/api/auth/token/`
+- Url: `http://104.236.60.23/api-beta/auth/token/`
 - Parameters required: `username`, `password`
 - Parameters optional: None
 - Permissions: No extra permissions needed
