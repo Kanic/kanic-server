@@ -1,0 +1,173 @@
+[
+{
+  "fields": {
+    "username": "admin",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "last_login": "2016-06-19T01:16:30.607Z",
+    "is_admin": true,
+    "password": "pbkdf2_sha256$20000$2VoUy3OwgMhW$byddX5Dxf735hYUUUJPl1jB62yKJWGa32hXE8FFjuJI=",
+    "email": "admin@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T22:46:51.281Z"
+  },
+  "model": "users.user",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "dong",
+    "first_name": "dong",
+    "last_name": "liang",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$hqlamQzw5TdS$J3zGROwJGOkm6aGxNrULynsMUu6zIjrItlLiBmadT9s=",
+    "email": "dong@gmail.com",
+    "is_mechanic": true,
+    "date_joined": "2016-06-18T22:47:16.818Z"
+  },
+  "model": "users.user",
+  "pk": 2
+},
+{
+  "fields": {
+    "username": "ahmed",
+    "first_name": "ahmed",
+    "last_name": "ben",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$VZXibcOXgGo0$2UtRSnVIAucA39SJPSdO410x+WhCXqjbH2zvoQtvEBo=",
+    "email": "ahmed@gmail.com",
+    "is_mechanic": true,
+    "date_joined": "2016-06-18T22:47:37.079Z"
+  },
+  "model": "users.user",
+  "pk": 3
+},
+{
+  "fields": {
+    "username": "jackson",
+    "first_name": "jackson",
+    "last_name": "gable",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$LGAR8J1Bpj1Z$8VNM1zcSNgvQuAuWCHXQgP5ohBF2SfBapHA5yrOChkM=",
+    "email": "jackson@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T22:47:53.555Z"
+  },
+  "model": "users.user",
+  "pk": 4
+},
+{
+  "fields": {
+    "username": "amira",
+    "first_name": "amira",
+    "last_name": "aly",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$LBz0hTqGixVT$nqF/YzMcOVBo/98FI49eQYz+ykovOnA9QoecINKGpak=",
+    "email": "amira@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T22:48:11.778Z"
+  },
+  "model": "users.user",
+  "pk": 5
+},
+{
+  "fields": {
+    "username": "john",
+    "first_name": "john",
+    "last_name": "smith",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$RaFFnzRbAuXA$PO5bJQRPPDXle6MxCzqtDeq/C/Mr/PUGC4WTTq/kHOw=",
+    "email": "john@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T22:48:32.652Z"
+  },
+  "model": "users.user",
+  "pk": 6
+},
+{
+  "fields": {
+    "username": "page",
+    "first_name": "page",
+    "last_name": "yel",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$MIPQPjqObbsW$u3GOzoY9ZQeTEHy5PhZS5hMKovXAvwojqpfQ93+YtBg=",
+    "email": "page@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T22:49:11.071Z"
+  },
+  "model": "users.user",
+  "pk": 7
+},
+{
+  "fields": {
+    "username": "diana",
+    "first_name": "diana",
+    "last_name": "yabi",
+    "is_active": true,
+    "last_login": "2016-06-19T01:21:37.099Z",
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$l5cVgLdtwsR3$FC95yjUZxyCueNZ2MXuaOqkk/8yfITaZ4LCSgpKimRo=",
+    "email": "diana@gmail.com",
+    "is_mechanic": false,
+    "date_joined": "2016-06-18T22:49:40.801Z"
+  },
+  "model": "users.user",
+  "pk": 8
+},
+{
+  "fields": {
+    "username": "bill",
+    "first_name": "bill",
+    "last_name": "gates",
+    "is_active": true,
+    "last_login": null,
+    "is_admin": false,
+    "password": "pbkdf2_sha256$20000$xQm48pjzw5YY$lrsFWgxr7iUqyDO8+Hh8YsCtA6Vxzv4vck+PN69FJMo=",
+    "email": "bill@gmail.com",
+    "is_mechanic": true,
+    "date_joined": "2016-06-18T22:50:05.828Z"
+  },
+  "model": "users.user",
+  "pk": 9
+},
+{
+  "fields": {
+    "year_of_experience": null,
+    "user": 2,
+    "address": null
+  },
+  "model": "users.mechanic",
+  "pk": 1
+},
+{
+  "fields": {
+    "year_of_experience": null,
+    "user": 3,
+    "address": null
+  },
+  "model": "users.mechanic",
+  "pk": 2
+},
+{
+  "fields": {
+    "year_of_experience": null,
+    "user": 9,
+    "address": null
+  },
+  "model": "users.mechanic",
+  "pk": 3
+}
+]
