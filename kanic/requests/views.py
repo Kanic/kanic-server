@@ -4,7 +4,7 @@ from rest_framework import generics, mixins
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
-from kanic.permissions import IsOwnerOrReadOnly, IsOwnerOrAdmin
+from kanic.permissions import IsOwnerOrReadOnly, IsOwnerOrAdminRequest
 from .serializers import (RequestListSerializer, RequestCreateSerializer, RequestUpdateSerializer,
 ServiceListSerializer, ServiceUpdateSerializer)
 from .models import Service, Request
@@ -22,6 +22,7 @@ class ServiceRetrieveAPIView(generics.RetrieveAPIView):
 
 class RequestListAPIView(generics.ListAPIView):
     serializer_class = RequestListSerializer
+    permission_classes = (IsAdminUser,)
     paginate_by = 10
     def get_queryset(self):
         return Request.objects.all()
@@ -34,7 +35,7 @@ class RequestCreateAPIView(generics.CreateAPIView):
 class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):
     queryset = Request.objects.all()
     serializer_class = RequestUpdateSerializer
-    permission_classes = (IsOwnerOrAdmin,)
+    permission_classes = (IsOwnerOrAdminRequest,)
 
     def get_object(self):
         queryset = self.get_queryset()

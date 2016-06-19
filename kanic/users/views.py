@@ -4,7 +4,7 @@ from rest_framework import generics, permissions, mixins
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from kanic.permissions import IsOwner, IsOwnerOrAdmin
+from kanic.permissions import IsOwner, IsOwnerOrAdminUser
 from .models import User, Mechanic
 from .serializers import UserSerializer, UserCreateSerializer, CarOwnerListSerializer
 
@@ -36,7 +36,7 @@ class UserRetrieveAPIView(generics.RetrieveAPIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsOwner,)
+    permission_classes = (IsOwnerOrAdminUser,)
 
     def get_object(self):
         queryset = self.get_queryset()

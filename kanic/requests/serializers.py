@@ -107,6 +107,7 @@ class RequestCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = [
+            'id',
             'car_owner',
             'location',
             'scheduled_time',

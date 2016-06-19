@@ -12,11 +12,19 @@ class IsOwner(permissions.BasePermission):
         # return obj.username == request.user.username
 
 
-class IsOwnerOrAdmin(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
+class IsOwnerOrAdminRequest(permissions.BasePermission):
+    def has_permission(self, request, view):
         try:
             is_admin = request.user.is_admin
         except AttributeError:
             return False
+        return view.get_object().car_owner == request.user or is_admin
 
-        return obj.car_owner == request.user or request.user.is_admin
+
+class IsOwnerOrAdminUser(permissions.BasePermission):
+    def has_permission(self, request, view):
+        try:
+            is_admin = request.user.is_admin
+        except AttributeError:
+            return False
+        return view.get_object() == request.user or is_admin
