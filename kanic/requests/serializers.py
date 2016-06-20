@@ -11,12 +11,21 @@ from .models import Service, Request
 
 
 class ServiceListSerializer(serializers.HyperlinkedModelSerializer):
+    request_set = serializers.HyperlinkedRelatedField(
+        view_name='request_retrieve_api',
+        lookup_field='id',
+        many=True,
+        read_only=True
+    )
+    url = serializers.HyperlinkedIdentityField(view_name='service_retrieve_api', lookup_field='id')
     class Meta:
         model = Service
         fields = [
+            'url',
             'id',
             'type',
-            'tools'
+            'tools',
+            'request_set'
         ]
 
 
@@ -30,14 +39,18 @@ class ServiceSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class ServiceUpdateSerializer(serializers.HyperlinkedModelSerializer):
+class ServiceUpdateSerializer(serializers.ModelSerializer):
+    # request_set = RequestListSerializer()
     class Meta:
         model = Service
         fields = [
-            'id',
+            # 'id',
             'type',
-            'tools'
+            # 'tools',
+            # 'request_set'
         ]
+        depth = 1
+
 
 
 # class ServiceViewSet(viewsets.ModelViewSet):
@@ -91,6 +104,7 @@ class RequestListSerializer(serializers.HyperlinkedModelSerializer):
             'status',
             'extra_info',
         ]
+        depth = 1
 
 
 class RequestCreateSerializer(serializers.ModelSerializer):
