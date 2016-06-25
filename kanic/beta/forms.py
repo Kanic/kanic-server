@@ -1,7 +1,7 @@
 import datetime
 
 from django import forms
-from django.forms import BooleanField, CharField
+from django.forms import BooleanField, CharField, EmailField
 from django.forms.extras.widgets import SelectDateWidget
 
 from crispy_forms.helper import FormHelper
@@ -12,7 +12,7 @@ class SignUpForm(forms.ModelForm):
     name = CharField(
         widget=forms.TextInput(attrs={'placeholder': 'David Ma'})
     )
-    email = CharField(
+    email = EmailField(
         widget=forms.TextInput(attrs={'placeholder': 'David@gmail.com'})
     )
     phone = CharField(
@@ -45,7 +45,7 @@ class SignUpForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if ('@' not in email) or ('.' not in email):
-            raise forms.ValidationError("Musr use a valid email")
+            raise forms.ValidationError("Must use a valid email")
         return email
 
     def clean_phone(self):
