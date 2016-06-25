@@ -74,7 +74,7 @@ urlpatterns = [
     # web-based URLs
     url(r'^(?i)admin/', include(admin.site.urls)),
     url(r'^$', beta_views.index, name='index'),
-    url(r'^listTester/?$', beta_views.listTester, name='list_testers'),
+    url(r'^listtesters/?$', beta_views.listTester, name='list_testers'),
     url(r'^home', views.home, name='home'),
 
     # testing URLs
