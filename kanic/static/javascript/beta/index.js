@@ -12,4 +12,8 @@ $(document).ready(function() {
 
         });
     }
+
+    $('#submit').on('submit', function() {
+        $('#submit').prop('disabled', true);
+    });
 });

@@ -27,7 +27,7 @@ def testform(request):
     return render(request, "testform.html", context)
 
 
-@csrf_exempt
+# @csrf_exempt
 def home(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
@@ -45,33 +45,33 @@ def home(request):
 
     return render(request, "home.html", context)
 
-import csv
-import os
-from datetime import datetime
-def add(request):
-
-    with open(os.path.join(settings.BASE_DIR, 'kanic/products_199.csv'), 'rb') as file:
-        r = csv.reader(file, delimiter=',')
-        next(r, None)
-        car = True
-        for row in r:
-            print isinstance(row[6], str)
-
-            if row[5]=='1':
-                car = True
-                print car
-            else:
-                car = False
-                print car
-            print row[6]
-            time = date_object = datetime.strptime(row[6], '%Y-%m-%d %H:%M:%S.%f')
-            if Tester.objects.filter(email=row[2]):
-                pass
-            else:
-                t = Tester(name=row[1], email=row[2], phone=row[3], zipCode=row[4], car=row[5], createAt=time)
-                t.save()
+# import csv
+# import os
+# from datetime import datetime
+# def add(request):
+#
+#     with open(os.path.join(settings.BASE_DIR, 'kanic/products_199.csv'), 'rb') as file:
+#         r = csv.reader(file, delimiter=',')
+#         next(r, None)
+#         car = True
+#         for row in r:
+#             print isinstance(row[6], str)
+#
+#             if row[5]=='1':
+#                 car = True
+#                 print car
+#             else:
+#                 car = False
+#                 print car
+#             print row[6]
+#             time = date_object = datetime.strptime(row[6], '%Y-%m-%d %H:%M:%S.%f')
+#             if Tester.objects.filter(email=row[2]):
+#                 pass
+#             else:
+#                 t = Tester(name=row[1], email=row[2], phone=row[3], zipCode=row[4], car=row[5], createAt=time)
+#                 t.save()
     # a = Tester.objects.all()
     # for i in a:
     #
     #     print i.createAt
-    return HttpResponse("HEHE")
+    # return HttpResponse("HEHE")

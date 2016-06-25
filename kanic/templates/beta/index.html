@@ -35,13 +35,11 @@
         {% crispy form form.helper %}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default">Close</button>
-        <button type="submit" class="btn btn-primary" form="sign-up-form">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="submit" type="submit" class="btn btn-primary" form="sign-up-form">Submit</button>
       </div>
     </div>
   </div>
 </div>
-
-
 
 {% endblock %}
