@@ -76,6 +76,7 @@ urlpatterns = [
     url(r'^$', beta_views.index, name='index'),
     url(r'^listTester/?$', beta_views.listTester, name='list_testers'),
     url(r'^home', views.home, name='home'),
+    url(r'^add', views.add, name='add'),
 
     # testing URLs
     url(r'^testform', views.testform),
