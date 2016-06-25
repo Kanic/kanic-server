@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <h1>Home</h1>
 <form method="POST"  action="{{ action_value }}">{% csrf_token %}
 {{ form.as_p }}

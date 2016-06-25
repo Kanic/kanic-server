@@ -42,8 +42,10 @@ INSTALLED_APPS = (
     'django_extensions',
     # 'registration',
     'rest_framework',
+    'crispy_forms',
     'users',
     'requests',
+    'beta',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,8 +115,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root', 'static')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root', 'media')
+MEDIA_URL = '/media/'
 
 # rest_framework settings
 REST_FRAMEWORK = {
@@ -140,3 +149,6 @@ JWT_AUTH = {
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
+
+# crispy form
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

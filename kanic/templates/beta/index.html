@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block css_js %}
+<link href="{% static "css/beta/index.css" %}" rel="stylesheet" type="text/css">
+<script type="text/javascript "src="{% static "javascript/beta/index.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages alert alert-success">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="background container-fluid">
+  <div class="jumbbotron">
+    <h1 class="main-title" align="center">Kanic</h1>
+    <p class="line col-md-offset-3 col-md-6">We are changing the way car repairs are done. We are bringing a mechanic to your driveway this summer!</p>
+    <button class="signup btn btn-primary" data-toggle="modal" data-target="#myModal">Sign up for our beta</button>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Beta Test</h4>
+      </div>
+      <div class="modal-body">
+        {% crispy form form.helper %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default">Close</button>
+        <button type="submit" class="btn btn-primary" form="sign-up-form">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
