@@ -66,7 +66,7 @@ def add(request):
             print row[6]
             time = date_object = datetime.strptime(row[6], '%Y-%m-%d %H:%M:%S.%f')
             if Tester.objects.filter(email=row[2]):
-                return HttpResponse("HEHE")
+                pass
             else:
                 t = Tester(name=row[1], email=row[2], phone=row[3], zipCode=row[4], car=row[5], createAt=time)
                 t.save()
