@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<h1>Show table</h1>
+<h2>Total: {{ total }}</h2>
+
+
+<table class="table table-striped">
+<thead>
+<tr>
+  <td>Name</td>
+  <td>email</td>
+  <td>phone</td>
+  <td>zipCode</td>
+  <td>have a car?</td>
+  <td>Time</td>
+</tr>
+</thead>
+{% for tester in testers %}
+<tr>
+  <td>{{ tester.name }}</td>
+  <td>{{ tester.email }}</td>
+  <td>{{ tester.phone }}</td>
+  <td>{{ tester.zipCode }}</td>
+  <td>{{ tester.car }}</td>
+  <td>{{ tester.createAt }}</td>
+</tr>
+{% endfor %}
+
+<tbody>
+
+</tbody>
+
+</table>
+{% endblock %}
