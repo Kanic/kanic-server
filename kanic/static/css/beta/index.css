@@ -1,0 +1,80 @@
+
+
+@media (max-width: 700px)
+{
+    body {
+        background: url("/static/images/landing_bg1.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    h1.main-title {
+        font-family: Impact, Charcoal, sans-serif;
+        color: #1CB796;
+        font-size: 500%;
+        position: relative;
+        top: 7vw;
+    }
+
+    p.line {
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        font-size: 1.5em;
+        position: relative;
+        top: 8vw;
+        text-align: center;
+    }
+
+    button.signup {
+        width: 55%;
+        position: relative;
+        left: 23%;
+        top: 20vw;
+        font-size: 1em;
+    }
+
+}
+@media (min-width: 701px) {
+    body {
+        background: url("/static/images/landing_bg1.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    h1.main-title {
+        font-family: Impact, Charcoal, sans-serif;
+        color: #1CB796;
+        font-size: 700%;
+        position: relative;
+        top: 7vw;
+    }
+
+    p.line {
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        font-size: 2em;
+        position: relative;
+        top: 8vw;
+        text-align: center;
+    }
+
+    button.signup {
+        width: 30%;
+        position: relative;
+        left: 34%;
+        top: 20vw;
+        font-size: 1.5em;
+    }
+}
+
+div.form-div {
+    position: relative;
+    top: 50vw;
+}
+
+ul.messages {
+    list-style-type: none;
+    text-align: center;
+    z-index: 100;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
