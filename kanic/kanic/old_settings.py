@@ -59,6 +59,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+# X_FRAME_OPTIONS = 'DENY'
+
 AUTH_USER_MODEL = 'users.User'
 
 
@@ -132,7 +136,6 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
 }

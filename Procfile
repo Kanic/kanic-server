@@ -1,1 +1,1 @@
-web: gunicorn diana_stocks.wsgi --log-file -
+web: gunicorn kanic.wsgi --log-file -

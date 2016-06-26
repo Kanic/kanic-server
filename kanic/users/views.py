@@ -33,7 +33,7 @@ class UserListAPIView(generics.ListAPIView):
 
 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
+    authentication_classes = [SessionAuthentication, JSONWebTokenAuthentication]
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsOwnerOrAdminUser,)
