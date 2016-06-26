@@ -20,7 +20,6 @@ def index(request):
             messages.success(request, 'Submitted successfully.')
             return HttpResponseRedirect(reverse('index'))
         else:
-            print "not valid"
             return render(request, 'beta/index.html', context)
 
 
