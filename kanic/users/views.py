@@ -10,21 +10,13 @@ from .serializers import UserSerializer, UserCreateSerializer, CarOwnerListSeria
 
 
 class UserCreateAPIView(generics.CreateAPIView):
-    authentication_classes = [
-        SessionAuthentication,
-        BasicAuthentication,
-        JSONWebTokenAuthentication
-    ]
+    authentication_classes = [SessionAuthentication, JSONWebTokenAuthentication]
     serializer_class = UserCreateSerializer
     permission_classes = (permissions.IsAdminUser,)
 
 
 class UserListAPIView(generics.ListAPIView):
-    authentication_classes = [
-        SessionAuthentication,
-        BasicAuthentication,
-        JSONWebTokenAuthentication
-    ]
+    authentication_classes = [SessionAuthentication, JSONWebTokenAuthentication]
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAdminUser,)
 
