@@ -75,7 +75,7 @@ urlpatterns = [
     url(r'^(?i)admin/', include(admin.site.urls)),
     url(r'^$', beta_views.index, name='index'),
     url(r'^listtesters/?$', beta_views.listTester, name='list_testers'),
-    url(r'^home', views.home, name='home'),
+    # url(r'^home', views.home, name='home'),
 
     # testing URLs
     url(r'^testform', views.testform),
