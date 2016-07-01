@@ -7,7 +7,9 @@ from django.conf import settings
 
 from users.forms import RegisterForm
 from users.models import User
+from cars.models import Make
 from beta.models import Tester
+
 
 def index(request):
     return HttpResponse("I dream of being a web site")
@@ -44,6 +46,7 @@ def home(request):
     }
 
     return render(request, "home.html", context)
+
 
 # import csv
 # import os

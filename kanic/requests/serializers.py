@@ -116,8 +116,8 @@ class RequestCreateSerializer(serializers.ModelSerializer):
     # )
     # car_owner = serializers.SerializerMethodField()
     # service = serializers.CharField(source='service.id')
-    # car_owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-
+    car_owner = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    # car_owner = serializers.StringRelatedField(many=False)
     class Meta:
         model = Request
         fields = [
@@ -130,6 +130,9 @@ class RequestCreateSerializer(serializers.ModelSerializer):
             'status',
             'extra_info',
         ]
+
+    def create(self, validated_data):
+        return Request(**validated_data)
 
     # def get_car_owner(self, obj):
     #     queryset = User.objects.filter(id=obj.id)

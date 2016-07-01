@@ -4,6 +4,7 @@ from rest_framework import generics, mixins
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from kanic.permissions import IsOwnerOrReadOnly, IsOwnerOrAdminRequest
 from .serializers import (RequestListSerializer, RequestCreateSerializer, RequestUpdateSerializer,
@@ -42,6 +43,9 @@ class RequestCreateAPIView(generics.CreateAPIView):
     # permission_classes = (IsOwnerOrAdminRequest,)
     # queryset = Request.objects.all()
     # lookup_field = 'id'
+
+    def perform_create(self, serializer):
+        serializer.save(car_owner=self.request.user)
 
 
 class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):

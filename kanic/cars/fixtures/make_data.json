@@ -1,0 +1,338 @@
+[
+{
+  "fields": {
+    "name": "Acura",
+    "niceName": "acura"
+  },
+  "model": "cars.make",
+  "pk": 1
+},
+{
+  "fields": {
+    "name": "Alfa Romeo",
+    "niceName": "alfa-romeo"
+  },
+  "model": "cars.make",
+  "pk": 2
+},
+{
+  "fields": {
+    "name": "Aston Martin",
+    "niceName": "aston-martin"
+  },
+  "model": "cars.make",
+  "pk": 3
+},
+{
+  "fields": {
+    "name": "Audi",
+    "niceName": "audi"
+  },
+  "model": "cars.make",
+  "pk": 4
+},
+{
+  "fields": {
+    "name": "BMW",
+    "niceName": "bmw"
+  },
+  "model": "cars.make",
+  "pk": 5
+},
+{
+  "fields": {
+    "name": "Bentley",
+    "niceName": "bentley"
+  },
+  "model": "cars.make",
+  "pk": 6
+},
+{
+  "fields": {
+    "name": "Buick",
+    "niceName": "buick"
+  },
+  "model": "cars.make",
+  "pk": 7
+},
+{
+  "fields": {
+    "name": "Cadillac",
+    "niceName": "cadillac"
+  },
+  "model": "cars.make",
+  "pk": 8
+},
+{
+  "fields": {
+    "name": "Chevrolet",
+    "niceName": "chevrolet"
+  },
+  "model": "cars.make",
+  "pk": 9
+},
+{
+  "fields": {
+    "name": "Chrysler",
+    "niceName": "chrysler"
+  },
+  "model": "cars.make",
+  "pk": 10
+},
+{
+  "fields": {
+    "name": "Dodge",
+    "niceName": "dodge"
+  },
+  "model": "cars.make",
+  "pk": 11
+},
+{
+  "fields": {
+    "name": "FIAT",
+    "niceName": "fiat"
+  },
+  "model": "cars.make",
+  "pk": 12
+},
+{
+  "fields": {
+    "name": "Ferrari",
+    "niceName": "ferrari"
+  },
+  "model": "cars.make",
+  "pk": 13
+},
+{
+  "fields": {
+    "name": "Ford",
+    "niceName": "ford"
+  },
+  "model": "cars.make",
+  "pk": 14
+},
+{
+  "fields": {
+    "name": "GMC",
+    "niceName": "gmc"
+  },
+  "model": "cars.make",
+  "pk": 15
+},
+{
+  "fields": {
+    "name": "Honda",
+    "niceName": "honda"
+  },
+  "model": "cars.make",
+  "pk": 16
+},
+{
+  "fields": {
+    "name": "Hyundai",
+    "niceName": "hyundai"
+  },
+  "model": "cars.make",
+  "pk": 17
+},
+{
+  "fields": {
+    "name": "Infiniti",
+    "niceName": "infiniti"
+  },
+  "model": "cars.make",
+  "pk": 18
+},
+{
+  "fields": {
+    "name": "Jaguar",
+    "niceName": "jaguar"
+  },
+  "model": "cars.make",
+  "pk": 19
+},
+{
+  "fields": {
+    "name": "Jeep",
+    "niceName": "jeep"
+  },
+  "model": "cars.make",
+  "pk": 20
+},
+{
+  "fields": {
+    "name": "Kia",
+    "niceName": "kia"
+  },
+  "model": "cars.make",
+  "pk": 21
+},
+{
+  "fields": {
+    "name": "Lamborghini",
+    "niceName": "lamborghini"
+  },
+  "model": "cars.make",
+  "pk": 22
+},
+{
+  "fields": {
+    "name": "Land Rover",
+    "niceName": "land-rover"
+  },
+  "model": "cars.make",
+  "pk": 23
+},
+{
+  "fields": {
+    "name": "Lexus",
+    "niceName": "lexus"
+  },
+  "model": "cars.make",
+  "pk": 24
+},
+{
+  "fields": {
+    "name": "Lincoln",
+    "niceName": "lincoln"
+  },
+  "model": "cars.make",
+  "pk": 25
+},
+{
+  "fields": {
+    "name": "MINI",
+    "niceName": "mini"
+  },
+  "model": "cars.make",
+  "pk": 26
+},
+{
+  "fields": {
+    "name": "Maserati",
+    "niceName": "maserati"
+  },
+  "model": "cars.make",
+  "pk": 27
+},
+{
+  "fields": {
+    "name": "Mazda",
+    "niceName": "mazda"
+  },
+  "model": "cars.make",
+  "pk": 28
+},
+{
+  "fields": {
+    "name": "McLaren",
+    "niceName": "mclaren"
+  },
+  "model": "cars.make",
+  "pk": 29
+},
+{
+  "fields": {
+    "name": "Mercedes-Benz",
+    "niceName": "mercedes-benz"
+  },
+  "model": "cars.make",
+  "pk": 30
+},
+{
+  "fields": {
+    "name": "Mitsubishi",
+    "niceName": "mitsubishi"
+  },
+  "model": "cars.make",
+  "pk": 31
+},
+{
+  "fields": {
+    "name": "Nissan",
+    "niceName": "nissan"
+  },
+  "model": "cars.make",
+  "pk": 32
+},
+{
+  "fields": {
+    "name": "Porsche",
+    "niceName": "porsche"
+  },
+  "model": "cars.make",
+  "pk": 33
+},
+{
+  "fields": {
+    "name": "Ram",
+    "niceName": "ram"
+  },
+  "model": "cars.make",
+  "pk": 34
+},
+{
+  "fields": {
+    "name": "Rolls-Royce",
+    "niceName": "rolls-royce"
+  },
+  "model": "cars.make",
+  "pk": 35
+},
+{
+  "fields": {
+    "name": "Scion",
+    "niceName": "scion"
+  },
+  "model": "cars.make",
+  "pk": 36
+},
+{
+  "fields": {
+    "name": "Subaru",
+    "niceName": "subaru"
+  },
+  "model": "cars.make",
+  "pk": 37
+},
+{
+  "fields": {
+    "name": "Tesla",
+    "niceName": "tesla"
+  },
+  "model": "cars.make",
+  "pk": 38
+},
+{
+  "fields": {
+    "name": "Toyota",
+    "niceName": "toyota"
+  },
+  "model": "cars.make",
+  "pk": 39
+},
+{
+  "fields": {
+    "name": "Volkswagen",
+    "niceName": "volkswagen"
+  },
+  "model": "cars.make",
+  "pk": 40
+},
+{
+  "fields": {
+    "name": "Volvo",
+    "niceName": "volvo"
+  },
+  "model": "cars.make",
+  "pk": 41
+},
+{
+  "fields": {
+    "name": "smart",
+    "niceName": "smart"
+  },
+  "model": "cars.make",
+  "pk": 42
+}
+]
