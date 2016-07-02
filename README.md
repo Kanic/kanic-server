@@ -11,7 +11,14 @@ REST APIs Guidance
 ==================
 - http://104.236.60.23 is our server ip address, will be replaced by domain name soon. 
 - Default admin user: `username=admin`, `password=123`, note: will be changed in the future.
-
+- **Method** is method for http method, for example, GET and POST
+- **Parameters required** is data that have to be send along with request
+- **parameter optional** is optional data that is to be sent along with request
+- **Permission** is the permission you need for you to access the api
+- **Query String** is parameters that pass along with URL, for example: `http://example.com?account=123&is_fake=true`, the string after question mark are query string. Note that multiple query strings can be used at the same time.
+- **Instruction** is to instruct you to make use of APIs using curl
+- **Command** is the command you need for terminal to test APIs
+- **Response example** is JSON response examples
 ##Authentication Token
 ###Fetch authentication token
 This api is to get authentication for a user
@@ -21,6 +28,7 @@ This api is to get authentication for a user
   * `username`(string)
   * `password`(string)
 - Parameters optional: None
+- Query String: None
 - Permissions: No extra permissions needed
 - Instructions: Copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`
 - Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api-beta/auth/token/`
@@ -41,6 +49,7 @@ This api is to list out all registered users
 - Parameters required: None
 - Parameters optional: None
 - Permissions: Must be a admin user
+- Query String: None
 - Instructions: Copy paste following commnad in your terminal to get all users.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users`
 - Response example:
@@ -104,6 +113,7 @@ This api is to create a user
 - Parameters optional:
   * `first_name`(string)
   * `last_name`(string)
+- Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -X POST -d "username=david&email=david@gmail.com&password=aaaaa&is_mechanic=False" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/create/`
@@ -121,6 +131,7 @@ This api is to show a user's detail
 - Url: `http://104.236.60.23/api-beta/api-beta/users/<username>`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be the owner of the profile
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/<username>`
@@ -150,6 +161,7 @@ This api is to list all services
 - Url: `http://104.236.60.23/api-beta/services/`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/services/`
@@ -185,6 +197,7 @@ This api is to list all requests
 - Url: `http://104.236.60.23/api-beta/requests/`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/`
@@ -248,6 +261,7 @@ This api is to create a request
   * `service`(integer, need service id)
   * `status`(integer, from 0-3)
 - Parameters optional: `extra_info`
+- Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -X POST -d "car_owner=1&location=city college&scheduled_time=2018-11-02T03:01:00Z&car=audi&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
@@ -270,6 +284,7 @@ This api is to list all requests for currently authorized user
 - Url: `http://104.236.60.23/api-beta/requests/user/`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/user/`
@@ -310,7 +325,7 @@ This api is to list all all makes in database
 - Url: `http://104.236.60.23/api-beta/makes`
 - Parameters required: None
 - Parameters optional: None
-- Query String(multiple query strings can be used at the same time): 
+- Query String: 
   * `niceName`(string), example: `http://104.236.60.23/api-beta/makes?niceName=toyota`
   * `has_model_set`(boolean), example: `http://104.236.60.23/api-beta/makes?has_model_set=true`
 - Permissions: Must be an authorized user(registered user)
