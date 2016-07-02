@@ -233,7 +233,7 @@ This api is to list all requests
 This api is to create a request
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/requests/create/`
-- Parameters required: `car_owner`(need id, make sure it's current user), `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `car`(string), `service`(need id), `status`
+- Parameters required: `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `car`(need car id), `service`(need service id), `status`
 - Parameters optional: `extra_info`
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
@@ -287,6 +287,29 @@ This api is to list all requests for currently authorized user
         "service": 3,
         "status": 2,
         "extra_info": "take it easy"
+    }
+]
+```
+##Cars
+###List all makes in database
+This api is to list all all makes in database
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/makes`
+- Parameters required: None
+- Parameters optional: None
+- Query String(multiple query strings can be used at the same time): 
+  * `niceName`(string), example: `http://104.236.60.23/api-beta/makes?niceName=toyota`
+  * `has_model_set`(boolean), example: `http://104.236.60.23/api-beta/makes?has_model_set=true`
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/makes?niceName=toyota`
+- Response example:
+```javascript
+[
+    {
+        "id": 1,
+        "name": "Acura",
+        "niceName": "acura"
     }
 ]
 ```
