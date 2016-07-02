@@ -17,7 +17,9 @@ REST APIs Guidance
 This api is to get authentication for a user
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/auth/token/`
-- Parameters required: `username`, `password`
+- Parameters required:
+  * `username`(string)
+  * `password`(string)
 - Parameters optional: None
 - Permissions: No extra permissions needed
 - Instructions: Copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`
@@ -94,8 +96,14 @@ This api is to list out all registered users
 This api is to create a user
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/users/create/`
-- Parameters required: `username`, `email`, `password`, `is_mechanic`
-- Parameters optional: `first_name`, `last_name`
+- Parameters required:
+  * `username`(string)
+  * `email`(string)
+  * `password`(string)
+  * `is_mechanic`(string)
+- Parameters optional:
+  * `first_name`(string)
+  * `last_name`(string)
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -X POST -d "username=david&email=david@gmail.com&password=aaaaa&is_mechanic=False" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/create/`
@@ -233,7 +241,12 @@ This api is to list all requests
 This api is to create a request
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/requests/create/`
-- Parameters required: `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `car`(need car id), `service`(need service id), `status`
+- Parameters required:
+  * `location`(string)
+  * `scheduled_time`(string, format is: 2018-11-02T03:01:00Z)
+  * `car`(integer, need car id)
+  * `service`(integer, need service id)
+  * `status`(integer, from 0-3)
 - Parameters optional: `extra_info`
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
