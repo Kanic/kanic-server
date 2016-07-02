@@ -79,7 +79,8 @@ urlpatterns = [
 
     # testing URLs
     url(r'^testform', views.testform),
-    url(r'^addcar', 'cars.views.addcar')
+    url(r'^addcar', 'cars.views.addcar'),
+    url(r'^addmodel', 'cars.views.addmodel')
 
 
 

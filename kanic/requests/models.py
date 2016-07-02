@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
+
 from users.models import User, Mechanic
+from cars.models import Model
 
 
 class Service(models.Model):
@@ -16,10 +18,10 @@ class Service(models.Model):
 class Request(models.Model):
     car_owner = models.ForeignKey(User)
     mechanic = models.ForeignKey(Mechanic, null=True, blank=True)
+    car = models.ForeignKey(Model, null=True, blank=True)
+    service = models.ForeignKey(Service, null=True, blank=True)
     location = models.CharField(max_length=80)
     scheduled_time = models.DateTimeField('scheduled_date_time')
-    car = models.CharField(max_length=50)
-    service = models.ForeignKey(Service, null=True, blank=True)
     status = models.IntegerField(default=0)
     extra_info = models.CharField(max_length=200, null=True, blank=True)
     createAt = models.DateTimeField(default=timezone.now)

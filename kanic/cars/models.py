@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Make(models.Model):
-    name = models.CharField(max_length=20)
-    niceName = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, unique=True)
+    niceName = models.CharField(max_length=20, unique=True)
 
     def __unicode__(self):
         return self.name
@@ -16,4 +16,4 @@ class Model(models.Model):
     years = models.IntegerField()
 
     def __unicode__(self):
-        return self.name
+        return "{0}, {1}, {2}".format(self.make.name, self.name, self.years)
