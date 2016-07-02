@@ -1,96 +1,34 @@
 [
 {
   "fields": {
-    "tools": "screw driver",
-    "type": "oid change"
-  },
-  "model": "requests.service",
-  "pk": 1
-},
-{
-  "fields": {
-    "tools": "screw driver",
-    "type": "brake change"
-  },
-  "model": "requests.service",
-  "pk": 2
-},
-{
-  "fields": {
-    "tools": "ipad",
-    "type": "glass change"
-  },
-  "model": "requests.service",
-  "pk": 3
-},
-{
-  "fields": {
-    "status": 2,
-    "scheduled_time": "2016-06-19T15:36:46Z",
-    "service": 2,
-    "car": "toyota bx2 2012",
+    "status": 1,
+    "scheduled_time": "2016-07-02T19:04:56Z",
+    "service": 1,
+    "car": 4,
+    "createAt": "2016-07-02T19:04:31Z",
     "location": "manhattan",
     "mechanic": 2,
-    "car_owner": 5,
-    "extra_info": ""
+    "lastModified": "2016-07-02T19:05:19.226Z",
+    "car_owner": 8,
+    "extra_info": "aa"
   },
   "model": "requests.request",
   "pk": 1
 },
 {
   "fields": {
-    "status": 1,
-    "scheduled_time": "2016-06-19T15:37:40Z",
-    "service": 2,
-    "car": "BMW tw22 2013",
-    "location": "brooklyn",
-    "mechanic": 2,
-    "car_owner": 6,
+    "status": 0,
+    "scheduled_time": "2016-07-02T19:06:09Z",
+    "service": 3,
+    "car": 10,
+    "createAt": "2016-07-02T19:05:31Z",
+    "location": "queens",
+    "mechanic": null,
+    "lastModified": "2016-07-02T19:06:11.860Z",
+    "car_owner": 8,
     "extra_info": ""
   },
   "model": "requests.request",
   "pk": 2
-},
-{
-  "fields": {
-    "status": 3,
-    "scheduled_time": "2016-06-19T15:38:12Z",
-    "service": 3,
-    "car": "audi 2012",
-    "location": "bronx",
-    "mechanic": 2,
-    "car_owner": 7,
-    "extra_info": ""
-  },
-  "model": "requests.request",
-  "pk": 3
-},
-{
-  "fields": {
-    "status": 0,
-    "scheduled_time": "2016-06-19T15:39:34Z",
-    "service": 3,
-    "car": "benz",
-    "location": "brooklyn",
-    "mechanic": null,
-    "car_owner": 9,
-    "extra_info": ""
-  },
-  "model": "requests.request",
-  "pk": 4
-},
-{
-  "fields": {
-    "status": 0,
-    "scheduled_time": "2016-06-19T15:39:58Z",
-    "service": 2,
-    "car": "lambo",
-    "location": "city college",
-    "mechanic": null,
-    "car_owner": 5,
-    "extra_info": ""
-  },
-  "model": "requests.request",
-  "pk": 5
 }
 ]
