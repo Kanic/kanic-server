@@ -320,8 +320,8 @@ This api is to list all requests for currently authorized user
 ]
 ```
 ##Cars
-###List all makes in database
-This api is to list all all makes in database
+###List makes in database
+This api is to all desired makes in database
 - Method: GET
 - Url: `http://104.236.60.23/api-beta/makes`
 - Parameters required: None
@@ -341,6 +341,38 @@ This api is to list all all makes in database
         "niceName": "acura"
     }
 ]
+```
+###List models in database
+This api is to list all desired makes in database
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/models`(it's huge data without query string)
+- Parameters required: None
+- Parameters optional: None
+- Query String: 
+  * `make`(string), example: `http://104.236.60.23/api-beta/model?make=toyota`
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/model?make=toyota`
+- Response example:
+```javascript
+[
+    {
+        "id": 294,
+        "make": "Toyota",
+        "make_id": 30,
+        "name": "4Runner",
+        "niceName": "4runner",
+        "years": 2016
+    },
+    {
+        "id": 295,
+        "make": "Toyota",
+        "make_id": 30,
+        "name": "Avalon",
+        "niceName": "avalon",
+        "years": 2016
+    }
+ ]
 ```
 [python]: https://www.python.org/
 [django]: https://www.djangoproject.com/
