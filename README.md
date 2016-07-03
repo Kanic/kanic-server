@@ -19,6 +19,7 @@ REST APIs Guidance
 - **Instruction** is to instruct you to make use of APIs using curl
 - **Command** is the command you need for terminal to test APIs
 - **Response example** is JSON response examples
+
 ##Authentication Token
 ###Fetch authentication token
 This api is to get authentication for a user
