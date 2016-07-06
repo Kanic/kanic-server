@@ -170,24 +170,22 @@ This api is to list all services
 ```javascript
 [
     {
-        "id": 1,
-        "type": "oil change",
-        "tools": "ipad",
-        "car": "toyota"
+        "url": "http://127.0.0.1:8000/api-beta/services/5",
+        "id": 5,
+        "name": "oil change",
+        "part": "oil",
+        "detail": "i dont know",
+        "price": "30000.00"
     },
     {
-        "id": 2,
-        "type": "tire change",
-        "tools": "Mac",
-        "car": "honda"
-    },
-    {
-        "id": 3,
-        "type": "brake change",
-        "tools": "screw driver",
-        "car": "benz"
+        "url": "http://127.0.0.1:8000/api-beta/services/6",
+        "id": 6,
+        "name": "brake change",
+        "part": "brake",
+        "detail": "i dont know",
+        "price": "2000.00"
     }
-  ]
+]
 ```
 
 ##Service Request
@@ -265,7 +263,7 @@ This api is to create a request
 - Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -X POST -d "car_owner=1&location=city college&scheduled_time=2018-11-02T03:01:00Z&car=audi&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
+- Command: `curl -X POST -d "location=city college&scheduled_time=2018-11-02T03:01:00Z&car=1&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
 - Response example:
 ```javascript
 {
