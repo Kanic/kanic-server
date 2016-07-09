@@ -6,13 +6,15 @@ from cars.models import Model
 
 
 class Service(models.Model):
-    type = models.CharField(max_length=40)
-    tools = models.CharField(max_length=100)
+    name = models.CharField(max_length=40)
+    part = models.CharField(max_length=100, null=True, blank=True)
+    detail = models.CharField(max_length=200, null=True, blank=True)
+    price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     createAt = models.DateTimeField(default=timezone.now)
     lastModified = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __unicode__(self):
-        return self.type
+        return self.name
 
 
 class Request(models.Model):
@@ -28,4 +30,7 @@ class Request(models.Model):
     lastModified = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __unicode__(self):
-        return "%s, %s"%(self.car_owner.last_name, self.service.type)
+        try:
+            return "{0}, {1}, status: {2}".format(self.car_owner.last_name, self.service.name, self.status)
+        except AttributeError:
+            return "{0}, {1}".format(self.car_owner.last_name, self.status)

@@ -26,6 +26,8 @@ from users.views import UserCreateAPIView, UserListAPIView, UserRetrieveAPIView
 from requests.views import (RequestRetrieveAPIView, RequestCreateAPIView,
                             RequestListAPIView, ServiceListAPIView,
                             ServiceRetrieveAPIView, RequestListForUserAPIView)
+from cars.views import (MakeListAPIView, ModelListAPIView,
+                        YearListWithMakeAPIView)
 
 # router = routers.DefaultRouter()
 # router.register(r'mechanics', MechanicViewSet)
@@ -68,6 +70,11 @@ urlpatterns = [
     url(r'^api-beta/requests/user/?$', RequestListForUserAPIView.as_view(), name='request_user_api'),
     url(r'^api-beta/requests/(?P<id>[\w-]+)/?$', RequestRetrieveAPIView.as_view(), name='request_retrieve_api'),
 
+    # cars
+    url(r'^api-beta/makes/?$', MakeListAPIView.as_view(), name='make_list_api'),
+    url(r'^api-beta/models/?$', ModelListAPIView.as_view(), name='model_list_api'),
+    url(r'^api-beta/years/?$', YearListWithMakeAPIView.as_view(), name='year_list_api'),
+
     # django-registration-redux URLs
     # url(r'^accounts/', include('registration.backends.default.urls')),
 
@@ -79,8 +86,10 @@ urlpatterns = [
 
     # testing URLs
     url(r'^testform', views.testform),
-    url(r'^addcar', 'cars.views.addcar'),
-    url(r'^addmodel', 'cars.views.addmodel')
+
+    # add car data
+    # url(r'^addcar', 'cars.views.addcar'),
+    # url(r'^addmodel', 'cars.views.addmodel')
 
 
 

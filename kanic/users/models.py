@@ -32,13 +32,15 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    email = models.EmailField(verbose_name='email address', max_length=255,
+                              unique=True)
     first_name = models.CharField(max_length=30, null=True, blank=True)
     last_name = models.CharField(max_length=30, null=True, blank=True)
     is_mechanic = models.BooleanField(verbose_name="Is Mechanic", default=False)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(verbose_name='date joined', default=timezone.now)
+    date_joined = models.DateTimeField(verbose_name='date joined',
+                                       default=timezone.now)
 
     objects = UserManager()
 
@@ -71,6 +73,17 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+    def get_nested_attributes_for_serializer(self):
+        '''This method is for model Request to get nested attribute of mode User'''
+        data = {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name
+        }
+        return data
 
 
 class Mechanic(models.Model):

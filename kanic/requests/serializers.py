@@ -3,29 +3,28 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.reverse import reverse
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from users.models import User, Mechanic
 from .models import Service, Request
+from users.models import User, Mechanic
+from cars.models import Make, Model
+
+# from users.serializers import CarOwnerSerializer
+
 
 
 #################################Service###################################
 
 
 class ServiceListSerializer(serializers.HyperlinkedModelSerializer):
-    request_set = serializers.HyperlinkedRelatedField(
-        view_name='request_retrieve_api',
-        lookup_field='id',
-        many=True,
-        read_only=True
-    )
     url = serializers.HyperlinkedIdentityField(view_name='service_retrieve_api', lookup_field='id')
     class Meta:
         model = Service
         fields = [
             'url',
             'id',
-            'type',
-            'tools',
-            'request_set'
+            'name',
+            'part',
+            'detail',
+            'price'
         ]
 
 
@@ -34,22 +33,24 @@ class ServiceSerializer(serializers.HyperlinkedModelSerializer):
         model = Service
         fields = [
             'id',
-            'type',
-            'tools'
+            'name',
+            'part',
+            'detail',
+            'price'
         ]
 
 
 class ServiceUpdateSerializer(serializers.ModelSerializer):
-    # request_set = RequestListSerializer()
+
     class Meta:
         model = Service
-        fields = [
-            # 'id',
-            'type',
-            # 'tools',
-            # 'request_set'
-        ]
-        depth = 1
+        fields = (
+            'id',
+            'name',
+            'part',
+            'detail',
+            'price'
+        )
 
 
 
@@ -72,28 +73,12 @@ class ServiceUpdateSerializer(serializers.ModelSerializer):
 
 
 
-class RequestListSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='request_retrieve_api', lookup_field='id')
-    # car_owner = serializers.CharField(source='car_owner.username', read_only=True)
-    car_owner = serializers.HyperlinkedRelatedField(
-        view_name='user_retrieve_api',
-        lookup_field='username',
-        many=False,
-        read_only=True
-    )
-    service = serializers.HyperlinkedRelatedField(
-        view_name='service_retrieve_api',
-        lookup_field='id',
-        many=False,
-        read_only=True
-    )
-    # car_owner = UserSerializer()
-    mechanic = serializers.CharField(source='mechanic.user.username', read_only=True)
+class RequestListSerializer(serializers.ModelSerializer):
+    car_owner = serializers.SerializerMethodField()
 
     class Meta:
         model = Request
         fields = [
-            'url',
             'id',
             'car_owner',
             'mechanic',
@@ -106,46 +91,46 @@ class RequestListSerializer(serializers.HyperlinkedModelSerializer):
         ]
         depth = 1
 
+    def get_car_owner(self, obj):
+        data = obj.car_owner.get_nested_attributes_for_serializer()
+        return data
+
 
 class RequestCreateSerializer(serializers.ModelSerializer):
-    # car_owner = serializers.HyperlinkedRelatedField(
-    #     view_name='user_retrieve_api',
-    #     lookup_field='username',
-    #     many=False,
-    #     read_only=False
-    # )
-    # car_owner = serializers.SerializerMethodField()
-    # service = serializers.CharField(source='service.id')
-    car_owner = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
-    # car_owner = serializers.StringRelatedField(many=False)
+    car_owner = serializers.SerializerMethodField()
+    mechanic = serializers.PrimaryKeyRelatedField(many=False,
+                                                  queryset=Mechanic.objects.all(),
+                                                  required=False)
+    car = serializers.PrimaryKeyRelatedField(many=False, queryset=Model.objects.all())
+    service = serializers.PrimaryKeyRelatedField(many=False, queryset=Service.objects.all())
+
     class Meta:
         model = Request
-        fields = [
+        fields = (
             'id',
             'car_owner',
-            'location',
-            'scheduled_time',
+            'mechanic',
             'car',
             'service',
+            'location',
+            'scheduled_time',
             'status',
             'extra_info',
-        ]
+        )
+        depth = 1
 
-    def create(self, validated_data):
-        return Request(**validated_data)
-
-    # def get_car_owner(self, obj):
-    #     queryset = User.objects.filter(id=obj.id)
-    #     serializer = UserSerializer(queryset, context={"request": instance}, many=False)
-    #     return serializer.data
+    def get_car_owner(self, obj):
+        data = obj.car_owner.get_nested_attributes_for_serializer()
+        return data
 
     # def create(self, validated_data):
-    #     car_owner_username = validated_data['car_owner']
-    #     car_owner = User.objects.filter(username=car_owner_username)
-    #     location = validated_data['location']
-    #     scheduled_time = validated_data['scheduled_time']
-    #     service_id = validated_data['service']
-    #     service = Service.objects.filter(id=service_id)
+    #     return Request(**validated_data).save()
+
+    # def create(self, validated_data):
+    #     car_owner= validated_data.get('car_owner')
+    #     location = validated_data.get('location')
+    #     scheduled_time = validated_data.get('scheduled_time')
+    #     service = validated_data['service']
     #     status = validated_data['status']
     #     extra_info = validated_data['extra_info']
     #     request = Request(car_owner=car_owner.id, location=location,

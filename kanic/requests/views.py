@@ -7,14 +7,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from kanic.permissions import IsOwnerOrReadOnly, IsOwnerOrAdminRequest
-from .serializers import (RequestListSerializer, RequestCreateSerializer, RequestUpdateSerializer,
-ServiceListSerializer, ServiceUpdateSerializer)
+from .serializers import (RequestListSerializer, RequestCreateSerializer,
+                          RequestUpdateSerializer, ServiceListSerializer,
+                          ServiceUpdateSerializer)
 from .models import Service, Request
-
-
-@api_view()
-def hello_world(request):
-    return Response({"message": "Hello, world!"})
 
 
 class ServiceListAPIView(generics.ListAPIView):
@@ -25,7 +21,7 @@ class ServiceListAPIView(generics.ListAPIView):
 
 class ServiceRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = ServiceUpdateSerializer
-
+    lookup_field = "id"
     def get_queryset(self):
         return Service.objects.all()
 
@@ -40,9 +36,6 @@ class RequestListAPIView(generics.ListAPIView):
 
 class RequestCreateAPIView(generics.CreateAPIView):
     serializer_class = RequestCreateSerializer
-    # permission_classes = (IsOwnerOrAdminRequest,)
-    # queryset = Request.objects.all()
-    # lookup_field = 'id'
 
     def perform_create(self, serializer):
         serializer.save(car_owner=self.request.user)

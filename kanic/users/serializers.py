@@ -43,7 +43,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     url = UserUrlHyperlinkedIdentityField(view_name='user_retrieve_api')
     # url = serializers.HyperlinkedIdentityField(view_name='user_retrieve_api', lookup_field='username')
     mechanic = MechanicSerializer(many=False, read_only=True)
-    request_set = RequestListSerializer(many=True, read_only=True)
+    # request_set = RequestListSerializer(many=True, read_only=True)
     class Meta:
         model = User
         fields = (
@@ -55,7 +55,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             'last_name',
             'is_mechanic',
             'mechanic',
-            'request_set',
+            # 'request_set',
         )
 
 
@@ -112,3 +112,16 @@ class CarOwnerListSerializer(serializers.ModelSerializer):
             'request_set',
         )
         depth = 1
+
+
+# class CarOwnerSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         field = (
+#             'id',
+#             'username',
+#             'email',
+#             'first_name',
+#             'last_name',
+#         )
+#         depth = 1
