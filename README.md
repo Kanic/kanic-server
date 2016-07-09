@@ -11,14 +11,25 @@ REST APIs Guidance
 ==================
 - http://104.236.60.23 is our server ip address, will be replaced by domain name soon. 
 - Default admin user: `username=admin`, `password=123`, note: will be changed in the future.
+- **Method** is method for http method, for example, GET and POST
+- **Parameters required** is data that have to be send along with request
+- **parameter optional** is optional data that is to be sent along with request
+- **Permission** is the permission you need for you to access the api
+- **Query String** is parameters that pass along with URL, for example: `http://example.com?account=123&is_fake=true`, the string after question mark are query string. Note that multiple query strings can be used at the same time.
+- **Instruction** is to instruct you to make use of APIs using curl
+- **Command** is the command you need for terminal to test APIs
+- **Response example** is JSON response examples
 
 ##Authentication Token
 ###Fetch authentication token
 This api is to get authentication for a user
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/auth/token/`
-- Parameters required: `username`, `password`
+- Parameters required:
+  * `username`(string)
+  * `password`(string)
 - Parameters optional: None
+- Query String: None
 - Permissions: No extra permissions needed
 - Instructions: Copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`
 - Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api-beta/auth/token/`
@@ -39,6 +50,7 @@ This api is to list out all registered users
 - Parameters required: None
 - Parameters optional: None
 - Permissions: Must be a admin user
+- Query String: None
 - Instructions: Copy paste following commnad in your terminal to get all users.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users`
 - Response example:
@@ -94,8 +106,15 @@ This api is to list out all registered users
 This api is to create a user
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/users/create/`
-- Parameters required: `username`, `email`, `password`, `is_mechanic`
-- Parameters optional: `first_name`, `last_name`
+- Parameters required:
+  * `username`(string)
+  * `email`(string)
+  * `password`(string)
+  * `is_mechanic`(string)
+- Parameters optional:
+  * `first_name`(string)
+  * `last_name`(string)
+- Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -X POST -d "username=david&email=david@gmail.com&password=aaaaa&is_mechanic=False" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/create/`
@@ -113,6 +132,7 @@ This api is to show a user's detail
 - Url: `http://104.236.60.23/api-beta/api-beta/users/<username>`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be the owner of the profile
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/<username>`
@@ -142,6 +162,7 @@ This api is to list all services
 - Url: `http://104.236.60.23/api-beta/services/`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/services/`
@@ -149,24 +170,22 @@ This api is to list all services
 ```javascript
 [
     {
-        "id": 1,
-        "type": "oil change",
-        "tools": "ipad",
-        "car": "toyota"
+        "url": "http://127.0.0.1:8000/api-beta/services/5",
+        "id": 5,
+        "name": "oil change",
+        "part": "oil",
+        "detail": "i dont know",
+        "price": "30000.00"
     },
     {
-        "id": 2,
-        "type": "tire change",
-        "tools": "Mac",
-        "car": "honda"
-    },
-    {
-        "id": 3,
-        "type": "brake change",
-        "tools": "screw driver",
-        "car": "benz"
+        "url": "http://127.0.0.1:8000/api-beta/services/6",
+        "id": 6,
+        "name": "brake change",
+        "part": "brake",
+        "detail": "i dont know",
+        "price": "2000.00"
     }
-  ]
+]
 ```
 
 ##Service Request
@@ -177,6 +196,7 @@ This api is to list all requests
 - Url: `http://104.236.60.23/api-beta/requests/`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/`
@@ -233,11 +253,17 @@ This api is to list all requests
 This api is to create a request
 - Method: POST
 - Url: `http://104.236.60.23/api-beta/requests/create/`
-- Parameters required: `car_owner`(need id, make sure it's current user), `location`, `scheduled_time`(example: 2018-11-02T03:01:00Z), `car`(string), `service`(need id), `status`
+- Parameters required:
+  * `location`(string)
+  * `scheduled_time`(string, format is: 2018-11-02T03:01:00Z)
+  * `car`(integer, need car id)
+  * `service`(integer, need service id)
+  * `status`(integer, from 0-3)
 - Parameters optional: `extra_info`
+- Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -X POST -d "car_owner=1&location=city college&scheduled_time=2018-11-02T03:01:00Z&car=audi&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
+- Command: `curl -X POST -d "location=city college&scheduled_time=2018-11-02T03:01:00Z&car=1&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
 - Response example:
 ```javascript
 {
@@ -257,6 +283,7 @@ This api is to list all requests for currently authorized user
 - Url: `http://104.236.60.23/api-beta/requests/user/`
 - Parameters required: None
 - Parameters optional: None
+- Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
 - Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/user/`
@@ -289,6 +316,61 @@ This api is to list all requests for currently authorized user
         "extra_info": "take it easy"
     }
 ]
+```
+##Cars
+###List makes in database
+This api is to all desired makes in database
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/makes`
+- Parameters required: None
+- Parameters optional: None
+- Query String: 
+  * `niceName`(string), example: `http://104.236.60.23/api-beta/makes?niceName=toyota`
+  * `has_model_set`(boolean), example: `http://104.236.60.23/api-beta/makes?has_model_set=true`
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/makes?niceName=toyota`
+- Response example:
+```javascript
+[
+    {
+        "id": 1,
+        "name": "Acura",
+        "niceName": "acura"
+    }
+]
+```
+###List models in database
+This api is to list all desired makes in database
+- Method: GET
+- Url: `http://104.236.60.23/api-beta/models`(it's huge data without query string)
+- Parameters required: None
+- Parameters optional: None
+- Query String: 
+  * `make`(string), example: `http://104.236.60.23/api-beta/model?make=toyota`
+- Permissions: Must be an authorized user(registered user)
+- Instructions: Copy paste following commnad in your terminal to create a user.
+- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/model?make=toyota`
+- Response example:
+```javascript
+[
+    {
+        "id": 294,
+        "make": "Toyota",
+        "make_id": 30,
+        "name": "4Runner",
+        "niceName": "4runner",
+        "years": 2016
+    },
+    {
+        "id": 295,
+        "make": "Toyota",
+        "make_id": 30,
+        "name": "Avalon",
+        "niceName": "avalon",
+        "years": 2016
+    }
+ ]
 ```
 [python]: https://www.python.org/
 [django]: https://www.djangoproject.com/
