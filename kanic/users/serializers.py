@@ -14,11 +14,11 @@ from .models import User, Mechanic
 class MechanicSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Mechanic
-        fields = [
+        fields = (
             'id',
             'year_of_experience',
             'address',
-        ]
+        )
 
 # class MechanicViewSet(viewsets.ModelViewSet):
 #     authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
@@ -38,7 +38,6 @@ class UserUrlHyperlinkedIdentityField(serializers.HyperlinkedIdentityField):
         return reverse(view_name, kwargs=kwargs, request=request, format=format)
 
 
-# User serializers
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     url = UserUrlHyperlinkedIdentityField(view_name='user_retrieve_api')
     # url = serializers.HyperlinkedIdentityField(view_name='user_retrieve_api', lookup_field='username')
@@ -60,11 +59,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
-    # url = serializers.HyperlinkedIdentityField(view_name='user_retrieve_api', lookup_field='username')
     class Meta:
         model = User
         fields = (
-            # 'url',
             'email',
             'username',
             'password',
@@ -75,7 +72,6 @@ class UserCreateSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True}
         }
-
 
     def create(self, validated_data):
         user = User(
@@ -93,17 +89,24 @@ class UserCreateSerializer(serializers.ModelSerializer):
         return user
 
 
-# class UserViewSet(viewsets.ModelViewSet):
-#     authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
-#     permission_classes = [permissions.IsAuthenticated, ]
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
+class UserRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'is_mechanic',
+            'mechanic'
+        )
 
 
 class CarOwnerListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        field = (
+        fields = (
             'id',
             'username',
             'email',
@@ -112,16 +115,3 @@ class CarOwnerListSerializer(serializers.ModelSerializer):
             'request_set',
         )
         depth = 1
-
-
-# class CarOwnerSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         field = (
-#             'id',
-#             'username',
-#             'email',
-#             'first_name',
-#             'last_name',
-#         )
-#         depth = 1

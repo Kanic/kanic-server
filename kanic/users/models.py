@@ -29,6 +29,15 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def exclude_admin(self):
+        return super(UserManager, self).filter(is_admin=False)
+
+    def all_mechanic(self):
+        return self.exclude_admin().filter(is_mechanic=True)
+
+    def all_car_owner(self):
+        return self.exclude_admin().filter(is_mechanic=False)
+
 
 class User(AbstractBaseUser):
     username = models.CharField(max_length=255, unique=True)

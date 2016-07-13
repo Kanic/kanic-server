@@ -22,7 +22,8 @@ from rest_framework import routers
 
 # from users.serializers import UserViewSet, MechanicViewSet
 # from requests.serializers import RequestViewSet, ServiceViewSet
-from users.views import UserCreateAPIView, UserListAPIView, UserRetrieveAPIView
+from users.views import (UserCreateAPIView, UserListAPIView, UserRetrieveAPIView,
+                         CarOwnerListAPIView)
 from requests.views import (RequestRetrieveAPIView, RequestCreateAPIView,
                             RequestListAPIView, ServiceListAPIView,
                             ServiceRetrieveAPIView, RequestListForUserAPIView)
@@ -50,10 +51,11 @@ urlpatterns = [
     # users
     url(r'^api-beta/users/?$', UserListAPIView.as_view(), name='user_list_api'),
     url(r'^api-beta/users/create/?$', UserCreateAPIView.as_view(), name='user_create_api'),
-    url(r'^api-beta/users/(?P<username>[\w-]+)/?$', UserRetrieveAPIView.as_view(), name='user_retrieve_api'),
+    # url(r'^api-beta/users/(?P<username>[\w-]+)/?$', UserRetrieveAPIView.as_view(), name='user_retrieve_api'),
+    url(r'^api-beta/users/profile/?$', UserRetrieveAPIView.as_view(), name='user_retrieve_api'),
 
     # car owners
-    # url(r'^api-beta/car-owners/?$', CarOwnerListAPIView.as_view(), name='car_onwer_list_api'),
+    url(r'^api-beta/car-owners/?$', CarOwnerListAPIView.as_view(), name='car_owner_list_api'),
     # url(r'^api-beta/car-owners/(?P<username>[\w-]+)/?$', CarOwnerRetrieveAPIView.as_view(), name='car_owner_retrieve_api'),
 
     # mechanics
@@ -67,13 +69,13 @@ urlpatterns = [
     # requests
     url(r'^api-beta/requests/?$', RequestListAPIView.as_view(), name='request_list_api'),
     url(r'^api-beta/requests/create/?$', RequestCreateAPIView.as_view(), name='request_create_api'),
-    url(r'^api-beta/requests/user/?$', RequestListForUserAPIView.as_view(), name='request_user_api'),
+    url(r'^api-beta/requests/current-user/?$', RequestListForUserAPIView.as_view(), name='request_user_api'),
     url(r'^api-beta/requests/(?P<id>[\w-]+)/?$', RequestRetrieveAPIView.as_view(), name='request_retrieve_api'),
 
     # cars
-    url(r'^api-beta/makes/?$', MakeListAPIView.as_view(), name='make_list_api'),
-    url(r'^api-beta/models/?$', ModelListAPIView.as_view(), name='model_list_api'),
-    url(r'^api-beta/years/?$', YearListWithMakeAPIView.as_view(), name='year_list_api'),
+    url(r'^api-beta/vehicle/makes/?$', MakeListAPIView.as_view(), name='make_list_api'),
+    url(r'^api-beta/vehicle/models/?$', ModelListAPIView.as_view(), name='model_list_api'),
+    url(r'^api-beta/vehicle/years/?$', YearListWithMakeAPIView.as_view(), name='year_list_api'),
 
     # django-registration-redux URLs
     # url(r'^accounts/', include('registration.backends.default.urls')),

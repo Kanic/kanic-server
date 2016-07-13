@@ -99,7 +99,7 @@ class RequestListSerializer(serializers.ModelSerializer):
 class RequestCreateSerializer(serializers.ModelSerializer):
     car_owner = serializers.SerializerMethodField()
     mechanic = serializers.PrimaryKeyRelatedField(many=False,
-                                                  queryset=Mechanic.objects.all(),
+                                                  read_only=True,
                                                   required=False)
     car = serializers.PrimaryKeyRelatedField(many=False, queryset=Model.objects.all())
     service = serializers.PrimaryKeyRelatedField(many=False, queryset=Service.objects.all())
@@ -142,21 +142,9 @@ class RequestCreateSerializer(serializers.ModelSerializer):
 
 
 class RequestUpdateSerializer(serializers.ModelSerializer):
-    # url = serializers.HyperlinkedIdentityField(view_name='request_retrieve_api', lookup_field='id')
-    # url = RequestUrlHyperlinkedIdentityField(view_name='request_retrieve_api')
-    # car_owner = serializers.CharField(source='car_owner.username', read_only=True)
-    # mechanic = serializers.CharField(source='mechanic.user.username', read_only=True)
-    # service = serializers.CharField(source='service.type', read_only=True)
-    # car_owner = serializers.HyperlinkedRelatedField(
-    #     view_name='user_retrieve_api',
-    #     lookup_field='username',
-    #     many=False,
-    #     read_only=True
-    # )
     class Meta:
         model = Request
         fields = [
-            # 'url',
             'id',
             'car_owner',
             'mechanic',
@@ -167,7 +155,7 @@ class RequestUpdateSerializer(serializers.ModelSerializer):
             'status',
             'extra_info',
         ]
-        depth = 1
+        depth = 2
 
 
 # class RequestViewSet(viewsets.ModelViewSet):

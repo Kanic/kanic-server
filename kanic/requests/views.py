@@ -38,7 +38,7 @@ class RequestCreateAPIView(generics.CreateAPIView):
     serializer_class = RequestCreateSerializer
 
     def perform_create(self, serializer):
-        serializer.save(car_owner=self.request.user)
+        serializer.save(car_owner=self.request.user, mechanic=None)
 
 
 class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):
@@ -57,10 +57,10 @@ class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):
 
 
 class RequestListForUserAPIView(generics.ListAPIView):
-    serializer_class = RequestCreateSerializer
+    serializer_class = RequestUpdateSerializer
     queryset = Request.objects.all()
 
     def list(self, request):
         queryset = Request.objects.filter(car_owner = request.user)
-        serializer = RequestCreateSerializer(queryset, many=True)
+        serializer = RequestUpdateSerializer(queryset, many=True)
         return Response(serializer.data)

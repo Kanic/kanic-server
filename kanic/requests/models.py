@@ -4,7 +4,7 @@ from django.utils import timezone
 from users.models import User, Mechanic
 from cars.models import Model
 
-
+##################### Service#################################
 class Service(models.Model):
     name = models.CharField(max_length=40)
     part = models.CharField(max_length=100, null=True, blank=True)
@@ -15,6 +15,38 @@ class Service(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+########################Request############################
+class RequestQuerySet(models.QuerySet):
+    def statusZero(self):
+        return self.filter(status=0)
+
+    def statusOne(self):
+        return self.filter(status=1)
+
+    def statusTwo(self):
+        return self.filter(status=2)
+
+    def statusThree(self):
+        return self.filter(status=3)
+
+
+class RequestManager(models.Manager):
+    def get_queryset(self):
+        return RequestQuerySet(self.model, using=self._db)
+
+    def statusZero(self):
+        return self.get_queryset().statusZero()
+
+    def statusOne(self):
+        return self.get_queryset().statusOne()
+
+    def statusTwo(self):
+        return self.get_queryset().statusTwo()
+
+    def statusThree(self):
+        return self.get_queryset().statusThree()
 
 
 class Request(models.Model):
@@ -28,6 +60,8 @@ class Request(models.Model):
     extra_info = models.CharField(max_length=200, null=True, blank=True)
     createAt = models.DateTimeField(default=timezone.now)
     lastModified = models.DateTimeField(auto_now=True, auto_now_add=False)
+
+    objects = RequestManager()
 
     def __unicode__(self):
         try:
