@@ -58,9 +58,11 @@ class RequestRetrieveAPIView(mixins.UpdateModelMixin, generics.RetrieveAPIView):
 
 class RequestListForUserAPIView(generics.ListAPIView):
     serializer_class = RequestUpdateSerializer
-    queryset = Request.objects.all()
+
+    def get_queryset(self):
+        return Request.objects.get_current_user_request(self.request.user)
 
     def list(self, request):
-        queryset = Request.objects.filter(car_owner = request.user)
+        queryset = self.get_queryset()
         serializer = RequestUpdateSerializer(queryset, many=True)
         return Response(serializer.data)

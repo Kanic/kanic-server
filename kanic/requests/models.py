@@ -19,6 +19,9 @@ class Service(models.Model):
 
 ########################Request############################
 class RequestQuerySet(models.QuerySet):
+    def get_current_user_request(self, user):
+        return self.filter(car_owner=user).order_by("-createAt")
+
     def statusZero(self):
         return self.filter(status=0)
 
@@ -35,6 +38,9 @@ class RequestQuerySet(models.QuerySet):
 class RequestManager(models.Manager):
     def get_queryset(self):
         return RequestQuerySet(self.model, using=self._db)
+
+    def get_current_user_request(self, user):
+        return self.get_queryset().get_current_user_request(user)
 
     def statusZero(self):
         return self.get_queryset().statusZero()

@@ -142,6 +142,8 @@ class RequestCreateSerializer(serializers.ModelSerializer):
 
 
 class RequestUpdateSerializer(serializers.ModelSerializer):
+    car_owner = serializers.SerializerMethodField()
+    mechanic = serializers.SerializerMethodField()
     class Meta:
         model = Request
         fields = [
@@ -154,8 +156,21 @@ class RequestUpdateSerializer(serializers.ModelSerializer):
             'service',
             'status',
             'extra_info',
+            'createAt'
         ]
         depth = 2
+
+    def get_car_owner(self, obj):
+        data = obj.car_owner.get_nested_attributes_for_serializer()
+        return data
+
+    def get_mechanic(self, obj):
+        try:
+            mechanic = obj.mechanic
+            data = mechanic.get_nested_attributes_for_serializer()
+            return data
+        except AttributeError:
+            return None
 
 
 # class RequestViewSet(viewsets.ModelViewSet):

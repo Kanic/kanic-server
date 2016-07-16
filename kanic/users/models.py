@@ -103,6 +103,19 @@ class Mechanic(models.Model):
     def __unicode__(self):
         return self.user.username
 
+    def get_nested_attributes_for_serializer(self):
+        data = {
+            'mechanic_id': self.id,
+            'user_id': self.user.id,
+            'username': self.user.username,
+            'email': self.user.email,
+            'first_name': self.user.first_name,
+            'last_name': self.user.last_name,
+            'year_of_experience': self.year_of_experience,
+            'address': self.address
+        }
+        return data
+
 def new_user_receiver(sender, instance, created, *args, **kwargs):
     if created and instance.is_mechanic:
         mechanic, is_created = Mechanic.objects.get_or_create(user=instance)
