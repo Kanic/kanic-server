@@ -34,10 +34,10 @@ body {
 }
 
 #topContainer {
-    background-image:url("/static/images/landing_bg4.jpg");
-    height:400px;
-    width:100%;
-    background-size:cover;
+    background: url("/static/images/landing_bg4.jpg") center center / auto 100%;
+    height: 400px;
+    width: 100%;
+    background-size: cover;
 }
 
 
@@ -101,10 +101,11 @@ body {
     color:#E5CF74;
 }
 
-button.signup {
+button.signup, button.signup:focus {
     background-color: Transparent;
     border-color: white;
     color: white;
     border-radius: 20px;
     box-shadow: 0px;
+    outline: none;
 }
