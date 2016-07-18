@@ -6,7 +6,7 @@ from django.forms.extras.widgets import SelectDateWidget
 
 from crispy_forms.helper import FormHelper
 
-from .models import Tester
+from .models import Tester, BetaMechanic
 
 class SignUpForm(forms.ModelForm):
     name = CharField(
@@ -28,10 +28,14 @@ class SignUpForm(forms.ModelForm):
         widget=forms.RadioSelect,
         choices=((True, 'Yes'),(False, 'No'))
     )
+    hidden = CharField(
+        widget=forms.HiddenInput(),
+        initial='carowner'
+    )
 
     class Meta:
         model = Tester
-        fields = ['name', 'email', 'phone', 'zipCode', 'car']
+        fields = ['name', 'email', 'phone', 'zipCode', 'car', 'hidden']
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -71,3 +75,38 @@ class SignUpForm(forms.ModelForm):
             return True
         else:
             return False
+
+class MechanicForm(forms.ModelForm):
+    phone = CharField(
+        label="Phone(Optional)",
+        required=False
+    )
+    is_certified = ChoiceField(
+        label="Are you certified?",
+        widget=forms.RadioSelect,
+        choices=((True, 'Yes'),(False, 'No'))
+    )
+    certification = CharField(
+        label="If yes which certification do you have?",
+        required=False
+    )
+    work_type = ChoiceField(
+        label="Are you available to work part time or full time?",
+        widget=forms.RadioSelect,
+        choices=(('FT', 'Full Time'),('PT', 'Part Time'))
+    )
+    hidden = CharField(
+        widget=forms.HiddenInput(),
+        initial='mechanic'
+    )
+
+    class Meta:
+        model = BetaMechanic
+        fields = ['first_name', 'last_name', 'email', 'phone', 'is_certified', 'certification', 'work_type', 'hidden' ]
+
+    def __init__(self, *args, **kwargs):
+        super(MechanicForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "mechanic-form"
+        self.helper.form_method = 'post'
+        self.helper.form_action = '/'

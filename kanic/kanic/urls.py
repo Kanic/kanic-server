@@ -37,7 +37,7 @@ from cars.views import (MakeListAPIView, ModelListAPIView,
 # router.register(r'requests', RequestViewSet)
 
 from kanic import views
-from beta import views as beta_views
+# from beta import views as beta_views
 
 urlpatterns = [
 
@@ -82,12 +82,8 @@ urlpatterns = [
 
     # web-based URLs
     url(r'^(?i)admin/', include(admin.site.urls)),
-    url(r'^$', beta_views.index, name='index'),
-    url(r'^listtesters/?$', beta_views.listTester, name='list_testers'),
-    # url(r'^home', views.home, name='home'),
-
-    # testing URLs
-    url(r'^testform', views.testform),
+    url(r'^$', 'beta.views.index', name='index'),
+    url(r'^listtesters/?$', 'beta.views.listTester', name='list_testers'),
 
     # add car data
     # url(r'^addcar', 'cars.views.addcar'),

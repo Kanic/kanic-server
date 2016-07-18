@@ -1,10 +1,17 @@
 $(document).ready(function() {
+    // set min-height
+    $(".contentContainer").css("min-height",$(window).height());
+
     $('#myModal').on('shown.bs.modal', function () {
         $('#id_name').focus()
     });
 
-    if($('strong').length) {
-        $('#myModal').modal('toggle');
+    if($('#carOwner_invalid').length) {
+        $('#CarOwnerModal').modal('toggle');
+    }
+
+    if($('#mechanic_invalid').length) {
+        $('#MechanicModal').modal('toggle');
     }
 
     if($('ul.messages').length) {

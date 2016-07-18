@@ -3,7 +3,37 @@
 
 {% block content %}
 <h1>Show table</h1>
-<h2>Total: {{ total }}</h2>
+
+<h2>Mechanic Total: {{ mechanic_total }}</h2>
+
+
+<table class="table table-striped">
+<thead>
+<tr>
+  <td>Name</td>
+  <td>email</td>
+  <td>phone</td>
+  <td>is certified?</td>
+  <td>Time</td>
+</tr>
+</thead>
+{% for mechanic in mechanics %}
+<tr>
+  <td>{{ mechanic.first_name }} {{ mechanic.last_name }}</td>
+  <td>{{ mechanic.email }}</td>
+  <td>{{ mechanic.phone }}</td>
+  <td>{{ mechanic.is_certified }}</td>
+  <td>{{ mechanic.createAt }}</td>
+</tr>
+{% endfor %}
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<h2>Car Owner Total: {{ carOwner_total }}</h2>
 
 
 <table class="table table-striped">
@@ -17,14 +47,14 @@
   <td>Time</td>
 </tr>
 </thead>
-{% for tester in testers %}
+{% for carOwner in carOwners %}
 <tr>
-  <td>{{ tester.name }}</td>
-  <td>{{ tester.email }}</td>
-  <td>{{ tester.phone }}</td>
-  <td>{{ tester.zipCode }}</td>
-  <td>{{ tester.car }}</td>
-  <td>{{ tester.createAt }}</td>
+  <td>{{ carOwner.name }}</td>
+  <td>{{ carOwner.email }}</td>
+  <td>{{ carOwner.phone }}</td>
+  <td>{{ carOwner.zipCode }}</td>
+  <td>{{ carOwner.car }}</td>
+  <td>{{ carOwner.createAt }}</td>
 </tr>
 {% endfor %}
 
@@ -33,4 +63,5 @@
 </tbody>
 
 </table>
+
 {% endblock %}

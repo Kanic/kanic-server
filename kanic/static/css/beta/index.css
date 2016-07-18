@@ -1,74 +1,5 @@
-
-
-@media (max-width: 700px)
-{
-    body {
-        background: url("/static/images/landing_bg1.jpg") no-repeat center center fixed;
-        background-size: cover;
-    }
-
-    h1.main-title {
-        font-family: Impact, Charcoal, sans-serif;
-        color: #1CB796;
-        font-size: 500%;
-        position: relative;
-        top: 7vw;
-    }
-
-    p.line {
-        background-color: rgba(0, 0, 0, 0.3);
-        color: white;
-        font-size: 1.5em;
-        position: relative;
-        top: 8vw;
-        text-align: center;
-    }
-
-    button.signup {
-        width: 55%;
-        position: relative;
-        left: 23%;
-        top: 20vw;
-        font-size: 1em;
-    }
-
-}
-@media (min-width: 701px) {
-    body {
-        background: url("/static/images/landing_bg1.jpg") no-repeat center center fixed;
-        background-size: cover;
-    }
-
-    h1.main-title {
-        font-family: Impact, Charcoal, sans-serif;
-        color: #1CB796;
-        font-size: 700%;
-        position: relative;
-        top: 7vw;
-    }
-
-    p.line {
-        background-color: rgba(0, 0, 0, 0.3);
-        color: white;
-        font-size: 2em;
-        position: relative;
-        top: 8vw;
-        text-align: center;
-    }
-
-    button.signup {
-        width: 30%;
-        position: relative;
-        left: 34%;
-        top: 20vw;
-        font-size: 1.5em;
-    }
-}
-
-div.form-div {
-    position: relative;
-    top: 50vw;
-}
+@import url(https://fonts.googleapis.com/css?family=Questrial);
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:700);
 
 ul.messages {
     list-style-type: none;
@@ -77,4 +8,103 @@ ul.messages {
     position: fixed;
     top: 0px;
     width: 100%;
+}
+
+/*Ahmed's css*/
+.navbar-brand {
+    font-size:1.8em;
+}
+
+.navbar-custom {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    height:90px;
+
+}
+
+body {
+    font-family: 'Avenir','Helvetica Neue',Arial,sans-serif;
+}
+
+#topContainer h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size:700% !important;
+    color: #1CB796;
+}
+
+#topContainer {
+    background-image:url("/static/images/landing_bg4.jpg");
+    height:400px;
+    width:100%;
+    background-size:cover;
+}
+
+
+#topContainer p {
+    font-family: 'Questrial','Helvetica Neue',Arial,sans-serif;
+    font-size:150%;
+}
+
+#about h1 {
+
+    color:#1CB796;
+
+}
+
+#details {
+
+    margin-top:-170px;
+}
+
+#details h1 {
+
+    color:#1CB796;
+}
+
+#details h2 {
+
+    text-decoration: none;
+
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: black;
+    font-family: 'Avenir','Helvetica Neue',Arial,sans-serif;
+    font-size: 120%;
+    margin-top:20px;
+}
+
+#topRow {
+    margin-top:150px;
+    text-align:center;
+}
+
+#topRow h1 {
+    font-size:300%;
+}
+
+.center {
+    text-align:center;
+}
+
+.title {
+    margin-top:100px;
+    font-size:300%;
+}
+
+.fa-3x {
+    color:#1CB796;
+}
+
+.fa {
+    color:#E5CF74;
+}
+
+button.signup {
+    background-color: Transparent;
+    border-color: white;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px;
 }
