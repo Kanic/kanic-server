@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // set min-height
-    $(".contentContainer").css("min-height",$(window).height());
+    // $(".contentContainer").css("min-height",$(window).height());
 
     $('#myModal').on('shown.bs.modal', function () {
         $('#id_name').focus()
