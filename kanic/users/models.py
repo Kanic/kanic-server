@@ -40,9 +40,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    username = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, unique=True, null=True, blank=True)
     email = models.EmailField(verbose_name='email address', max_length=255,
                               unique=True)
+    phone = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=30, null=True, blank=True)
     last_name = models.CharField(max_length=30, null=True, blank=True)
     is_mechanic = models.BooleanField(verbose_name="Is Mechanic", default=False)
@@ -53,8 +54,8 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['phone']
 
     def get_full_name(self):
         # The user is identified by their email address
