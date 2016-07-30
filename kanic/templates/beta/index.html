@@ -2,9 +2,8 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block css_js %}
+{% block top_css %}
 <link href="{% static "css/beta/index.css" %}" rel="stylesheet" type="text/css">
-<script type="text/javascript "src="{% static "javascript/beta/index.js" %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -176,4 +175,8 @@
     </div>
  </div>
 
+{% endblock %}
+
+{% block bottom_js %}
+<script type="text/javascript "src="{% static "javascript/beta/index.js" %}"></script>
 {% endblock %}

@@ -82,7 +82,7 @@ urlpatterns = [
 
     # web-based URLs
     url(r'^(?i)admin/', include(admin.site.urls)),
-    url(r'^$', 'beta.views.index', name='index'),
+    url(r'^$', 'index.views.index', name='index'),
     url(r'^listtesters/?$', 'beta.views.listTester', name='list_testers'),
 
     # add car data

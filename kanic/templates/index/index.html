@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block top_css %}
+<link href="{% static "css/index/index.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<!-- navigation row -->
+<div class="container-fluid">
+    <div class="row navigation">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <a href="./" class="navbar-brand">Kanic</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navbar-main">
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-item">About</a></li>
+                    <li><a class="nav-item">Service</a></li>
+                    <li><a class="nav-item">People</a></li>
+                    <li><a class="nav-item">Social</a></li>
+                  </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- landing title section -->
+<div class="container-fluid landing-title top-background-image">
+    <div class="row text-center landing-section">
+        <div class="col-md-offset-4 col-md-4">
+            <h1 class="main-title">Coming soon!</h1>
+            <p class="main-line lead">
+                We send a mechanic to your driveway to fix your car. Now you
+                can sit back and relax!Sign up to be part of our Beta and
+                you will receive 25% off your first service!
+            </p>
+           <button class="signup btn" data-toggle="modal" data-target="#CarOwnerModal">Sign to our beta</button>
+           <button class="signup btn" data-toggle="modal" data-target="#MechanicModal">Become a mechanic</button>
+       </div>
+    </div>
+
+    <!-- form for car owner -->
+     <div class="modal fade" id="CarOwnerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">Beta Test</h4>
+           </div>
+           <div class="modal-body">
+             {{ form }}
+             {% if carOwner_invalid %}
+                 <p id="carOwner_invalid"></p>
+             {% endif %}
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             <button id="submit" type="submit" class="btn btn-primary" form="sign-up-form">Submit</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+    <!-- form for mechanic -->
+     <div class="modal fade" id="MechanicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">Beta Test</h4>
+           </div>
+           <div class="modal-body">
+             {{ mechanic_form }}
+             {% if mechanic_invalid %}
+                 <p id="mechanic_invalid"></p>
+             {% endif %}
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             <button id="submit" type="submit" class="btn btn-primary" form="mechanic-form">Submit</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+</div>
+
+<!-- About section -->
+<div class="container third-section">
+    <div class="text-center">
+        <h1>The way it works</h1>
+        <p class="lead center">
+            In three easy steps, schedule a mechanic. Saves you time, money, and energy!
+        </p>
+
+        <div class="col-md-4">
+        <h2><i class="fa fa-check"></i> Choose a service</h2>
+        <p>Because we value your time, we will make the trip to your location
+        and fix your car. At the mean time you can enjoy some quality time with your family
+        or watch your favorite Football team play.</p>
+
+
+        </div>
+
+        <div class="col-md-4">
+        <h2><i class="fa fa-pencil"></i> Get a Quote</h2>
+        <p>Because we value your time, we will make the trip to your location
+        and fix your car. At the mean time you can enjoy some quality time with your family
+        or watch your favorite Football team play.</p>
+
+
+        </div>
+
+        <div class="col-md-4">
+        <h2><i class="fa fa-calendar"></i></span> Schedule a visit</h2>
+        <p>Because we value your time, we will make the trip to your location
+        and fix your car. At the mean time you can enjoy some quality time with your family
+        or watch your favorite Football team play.</p>
+        </div>
+    </div>
+</div>
+
+<!-- section of how it works -->
+<div class="container fourth-section">
+    <div class="row text-center">
+        <h1>The way it works</h1>
+        <p class="lead center ">
+            In three easy steps, schedule a mechanic. Saves you time, money,
+            and energy!
+        </p>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-4 center">
+            <h2><i class="fa fa-check"></i> Choose a service</h2>
+            <p>
+                Because we value your time, we will make the trip to your
+                location and fix your car. At the mean time you can enjoy some
+                quality time with your family or watch your favorite Football
+                team play.
+            </p>
+        </div>
+
+        <div class="col-md-4 center">
+            <h2><i class="fa fa-pencil"></i> Get a Quote</h2>
+            <p>
+                Because we value your time, we will make the trip to your
+                location and fix your car. At the mean time you can enjoy some
+                quality time with your family or watch your favorite Football
+                team play.
+            </p>
+        </div>
+
+        <div class="col-md-4 center">
+            <h2><i class="fa fa-calendar"></i></span> Schedule a visit</h2>
+            <p>Because we value your time, we will make the trip to your
+                location and fix your car. At the mean time you can enjoy some
+                quality time with your family or watch your favorite Football
+                team play.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block bottom_js %}
+<script type="text/javascript "src="{% static "javascript/index/index.js" %}"></script>
+{% endblock %}
