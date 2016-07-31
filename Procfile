@@ -1,1 +1,1 @@
-web: gunicorn kanic.wsgi --log-file -
+web: gunicorn --pythonpath kanic kanic.wsgi --log-file -
