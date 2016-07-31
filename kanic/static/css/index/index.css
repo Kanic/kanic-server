@@ -10,7 +10,7 @@ html, body {
 }
 
 .fa {
-    color: #E5CF74
+    color: #1cb796
 }
 
 
@@ -174,9 +174,12 @@ div.seventh-section {
     background-color: #1CB796;
 }
 
+
+/****************eighth-section*****************/
 div.eighth-section {
-    margin-top: 4%;
+    padding-top: 4%;
     padding-bottom: 30px;
+    background-color: #36454F;
 }
 
 div.credits {
@@ -187,6 +190,10 @@ div.credits {
 .eighth-section > div > div > ul {
     padding: 0;
     list-style-type: none;
+}
+
+.eighth-section > div > div > ul > li > a {
+    color: white;
 }
 
 div.menu {
@@ -230,14 +237,18 @@ input.newsletter {
     position: absolute;
     top: 5px;
     right: 5px;
+    border-radius: 10px;
+    border-color: white;
+    color: #36454F;
+    font-size: 1em;
 }
-
-/*i.social {
-    font-size: 20px;
-}*/
 
 div.newsletter {
     position: relative;
+}
+
+div.newsletter > div > p {
+    color: white;
 }
 
 div.social {
@@ -246,11 +257,3 @@ div.social {
     top: 30px;
     right: 50px;
 }
-/*div.third-section > div > button {
-    position: relative;
-    top: 20px;
-    font-size: 20px;
-    background-color: #1CB796;
-    border-color: white;
-    border-radius: 20px;
-}*/
