@@ -28,25 +28,12 @@ class MechanicSerializer(serializers.HyperlinkedModelSerializer):
 
 
 ################################User###########################
-
-
-class UserUrlHyperlinkedIdentityField(serializers.HyperlinkedIdentityField):
-    def get_url(self, obj, view_name, request, format):
-        kwargs = {
-            'email': obj.email
-        }
-        return reverse(view_name, kwargs=kwargs, request=request, format=format)
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    url = UserUrlHyperlinkedIdentityField(view_name='user_retrieve_api')
-    # url = serializers.HyperlinkedIdentityField(view_name='user_retrieve_api', lookup_field='username')
+class UserSerializer(serializers.ModelSerializer):
     mechanic = MechanicSerializer(many=False, read_only=True)
-    # request_set = RequestListSerializer(many=True, read_only=True)
+    
     class Meta:
         model = User
         fields = (
-            'url',
             'id',
             'email',
             'phone',
