@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load crispy_forms_tags %}
 
 {% block top_css %}
 <link href="{% static "css/index/index.css" %}" rel="stylesheet" type="text/css">
@@ -31,7 +30,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="nav-item">Become a mechanic</a></li>
+                        <li><a class="nav-item mechanic">Become a mechanic</a></li>
                         <li><a class="nav-item">Sign up</a></li>
                     </ul>
 
@@ -106,7 +105,7 @@
     <div class="row">
         <div class="col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-9">
             <div class="col-md-offset-2 col-md-5 col-sm-offset-1 col-sm-5 col-xs-12 vcenter text-center">
-                Be your own boss.
+                Be your own boss
             </div>
             <button class="btn col-md-4 col-sm-5 col-xs-12 vcenter">Sign up to become a mechanic</button>
         </div>
@@ -183,6 +182,8 @@
                 <p class="fadeInBlock">
                     Kanic is convenience. We believe you should not waste your
                     time at a repair shop.
+                    <br>
+                    <br>
                 </p>
             </div>
             <div class="left-lower">
@@ -230,7 +231,7 @@
 </div>
 
 <!-- section of service -->
-<div class="container sixth-section">
+<!-- <div class="container sixth-section">
     <div class="row text-center">
         <h1>Service</h1>
         <br>
@@ -239,7 +240,7 @@
         <img src="http://placehold.it/250x150">
         <img src="http://placehold.it/250x150">
     </div>
-</div>
+</div> -->
 
 <!-- section of request now -->
 <div class="container-fluid seventh-section">

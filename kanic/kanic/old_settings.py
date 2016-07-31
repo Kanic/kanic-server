@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django_extensions',
     # 'registration',
     'rest_framework',
-    'crispy_forms',
     'users',
     'requests',
     'beta',
