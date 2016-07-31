@@ -277,7 +277,7 @@ This api is to create a request
     "extra_info": ""
 }
 ```
-###List requests for currently authorized user
+###List all requests belong to currently authorized user
 This api is to list all requests for currently authorized user
 - Method: GET
 - Url: `http://104.236.60.23/api-beta/requests/user/`
