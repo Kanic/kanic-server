@@ -9,8 +9,8 @@
 
 REST APIs Guidance
 ==================
-- http://104.236.60.23 is our server ip address, will be replaced by domain name soon. 
-- Default admin user: `username=admin`, `password=123`, note: will be changed in the future.
+- https://kanic-server.herokuapp.com is our development server domain name. Since it's development sever, you can do whatever you want without worrying about it will mess up with production.
+- Default admin user: `email=admin@gmail.com`, `password=123`, note: Might be changed in the future.
 - **Method** is method for http method, for example, GET and POST
 - **Parameters required** is data that have to be send along with request
 - **parameter optional** is optional data that is to be sent along with request
@@ -25,15 +25,15 @@ REST APIs Guidance
 ###Fetch authentication token
 This api is to get authentication for a user
 - Method: POST
-- Url: `http://104.236.60.23/api-beta/auth/token/`
+- Url: `https://kanic-server.herokuapp.com/api-beta/auth/token/`
 - Parameters required:
-  * `username`(string)
+  * `email`(string)
   * `password`(string)
 - Parameters optional: None
 - Query String: None
 - Permissions: No extra permissions needed
-- Instructions: Copy paste following commnad in your terminal to get your token for `username:admin` and `password:123`
-- Command: `curl -X POST -d "username=admin&password=123" http://104.236.60.23/api-beta/auth/token/`
+- Instructions: Copy paste following commnad in your terminal to get your token for `email:admin@gmail.com` and `password:123`
+- Command: `curl -X POST -d "email=admin@gmail.com&password=123" https://kanic-server.herokuapp.com/api-beta/auth/token/`
 - Response example:
 ```javascript
 {
@@ -48,13 +48,13 @@ This api is to get authentication for a user
 ###List users
 This api is to list out all registered users
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/users`
+- Url: `https://kanic-server.herokuapp.com/api-beta/users`
 - Parameters required: None
 - Parameters optional: None
 - Permissions: Must be a admin user
 - Query String: None
 - Instructions: Copy paste following commnad in your terminal to get all users.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/users/`
 - Response example:
 ```javascript
 [
@@ -131,13 +131,13 @@ This api is to create a user
 ###Show a user's detail
 This api is to show a user's detail
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/api-beta/users/<username>`
+- Url: `https://kanic-server.herokuapp.com/api-beta/api-beta/users/profile/`
 - Parameters required: None
 - Parameters optional: None
 - Query String: None
 - Permissions: Must be the owner of the profile
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/users/<username>`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/users/<username>`
 - Response example:
 ```javascript
 {
@@ -163,13 +163,13 @@ We have a specific range of services
 ###List all Service
 This api is to list all services
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/services/`
+- Url: `https://kanic-server.herokuapp.com/api-beta/services/`
 - Parameters required: None
 - Parameters optional: None
 - Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/services/`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/services/`
 - Response example:
 ```javascript
 [
@@ -197,13 +197,13 @@ A request has 4 status, 0(request was created by a car owner), 1(request was ass
 ###List all requests
 This api is to list all requests
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/requests/`
+- Url: `https://kanic-server.herokuapp.com/api-beta/requests/`
 - Parameters required: None
 - Parameters optional: None
 - Query String: None
 - Permissions: Must be a admin user
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/requests/`
 - Response example:
 ```javascript
 [
@@ -256,7 +256,7 @@ This api is to list all requests
 ###Create a request
 This api is to create a request
 - Method: POST
-- Url: `http://104.236.60.23/api-beta/requests/create/`
+- Url: `https://kanic-server.herokuapp.com/api-beta/requests/create/`
 - Parameters required:
   * `location`(string)
   * `scheduled_time`(string, format is: 2018-11-02T03:01:00Z)
@@ -267,7 +267,7 @@ This api is to create a request
 - Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -X POST -d "location=city college&scheduled_time=2018-11-02T03:01:00Z&car=1&service=1&status=0" -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/create/`
+- Command: `curl -X POST -d "location=city college&scheduled_time=2018-11-02T03:01:00Z&car=1&service=1&status=0" -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/requests/create/`
 - Response example:
 ```javascript
 {
@@ -284,13 +284,13 @@ This api is to create a request
 ###List all requests belong to currently authorized user
 This api is to list all requests for currently authorized user
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/requests/user/`
+- Url: `https://kanic-server.herokuapp.com/api-beta/requests/user/`
 - Parameters required: None
 - Parameters optional: None
 - Query String: None
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/requests/user/`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/requests/user/`
 - Response example:
 ```javascript
 
@@ -325,15 +325,15 @@ This api is to list all requests for currently authorized user
 ###List makes in database
 This api is to all desired makes in database
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/makes`
+- Url: `https://kanic-server.herokuapp.com/api-beta/makes/`
 - Parameters required: None
 - Parameters optional: None
 - Query String: 
-  * `niceName`(string), example: `http://104.236.60.23/api-beta/makes?niceName=toyota`
-  * `has_model_set`(boolean), example: `http://104.236.60.23/api-beta/makes?has_model_set=true`
+  * `niceName`(string), example: `https://kanic-server.herokuapp.com/api-beta/makes?niceName=toyota`
+  * `has_model_set`(boolean), example: `https://kanic-server.herokuapp.com/api-beta/makes?has_model_set=true`
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/makes?niceName=toyota`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/makes/?niceName=toyota`
 - Response example:
 ```javascript
 [
@@ -347,14 +347,14 @@ This api is to all desired makes in database
 ###List models in database
 This api is to list all desired makes in database
 - Method: GET
-- Url: `http://104.236.60.23/api-beta/models`(it's huge data without query string)
+- Url: `https://kanic-server.herokuapp.com/api-beta/models`(it's huge data without query string)
 - Parameters required: None
 - Parameters optional: None
 - Query String: 
-  * `make`(string), example: `http://104.236.60.23/api-beta/model?make=toyota`
+  * `make`(string), example: `https://kanic-server.herokuapp.com/api-beta/model/?make=toyota`
 - Permissions: Must be an authorized user(registered user)
 - Instructions: Copy paste following commnad in your terminal to create a user.
-- Command: `curl -H "Authorization: JWT <admin_token>" http://104.236.60.23/api-beta/model?make=toyota`
+- Command: `curl -H "Authorization: JWT <admin_token>" https://kanic-server.herokuapp.com/api-beta/model?make=toyota`
 - Response example:
 ```javascript
 [
