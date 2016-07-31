@@ -1,10 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic);
+
 html, body {
     height: 100%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 .fa {
     color: #E5CF74
 }
+
 
 .top-background-image {
     background: url("/static/images/landing_bg4.jpg") center center / auto 100%;
@@ -117,12 +125,76 @@ div.seventh-section {
 }
 
 div.eighth-section {
-    margin-top: 3%;
+    margin-top: 4%;
     padding-bottom: 30px;
 }
 
 div.credits {
+    padding-top: 60px;
     color: #A1AAB6;
+}
+
+.eighth-section > div > div > ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+div.menu {
+    line-height: 2.42857143;
+}
+.menu > h3 {
+    margin-top: 0;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.menu > ul > li > a {
+    color: #89A1C0;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+div.clearfix > form {
+    float: left;
+    width: 90%;
+    position: relative;
+}
+
+input.email {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px inset;
+    height: 39px;
+    font-size: 13px;
+}
+
+input.newsletter {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/*i.social {
+    font-size: 20px;
+}*/
+
+div.newsletter {
+    position: relative;
+}
+
+div.social {
+    float: right;
+    position: relative;
+    top: 30px;
+    right: 50px;
 }
 /*div.third-section > div > button {
     position: relative;
