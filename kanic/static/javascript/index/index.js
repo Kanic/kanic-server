@@ -29,6 +29,11 @@ $(document).ready(function() {
             $('div.middle').css('-webkit-transform', 'translateY(0px)');
             $('div.right').css('-webkit-transform', 'translateX(0px)');
         }
+
+        if(top > 740) {
+            $('div.left-upper, div.left-lower, div.right-upper, div.right-lower')
+            .css('-webkit-transform', 'translate(0px, 0px)');
+        }
     });
 
     // trigger css in main section to animate(eg. transition)
