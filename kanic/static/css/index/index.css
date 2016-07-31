@@ -27,7 +27,7 @@ div.navbar {
 }
 
 div.navbar-default {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 div.navbar-transparent {
@@ -104,21 +104,45 @@ button.vcenter {
     }
 }
 
-p.fourth-section {
-    font-size: 18.5px;
-}
+
 
 /***************fourth-section*****************/
 div.fourth-section {
     margin-top: 50px;
 }
 
+div.left {
+   	-webkit-transform: translateX(-150px); /* Safari */
+    transform: translateX(-150px);
+    -webkit-transition: transform 2s ease-out;
+    transition: transform 2s ease-out;
+}
+
+div.middle {
+   	-webkit-transform: translateY(-40px); /* Safari */
+    transform: translateY(-40px);
+    -webkit-transition: transform 2s ease-out;
+    transition: transform 2s ease-out;
+}
+
+div.right {
+   	-webkit-transform: translateX(150px); /* Safari */
+    transform: translateX(150px);
+    -webkit-transition: transform 2s ease-out;
+    transition: transform 2s ease-out;
+}
+
+p.fourth-section {
+    font-size: 18.5px;
+}
 
 /****************sixth-section*****************/
 div.sixth-section {
     margin-top: 50px;
 }
 
+
+/****************seventh-section*****************/
 div.seventh-section {
     margin-top: 2%;
     background-color: #1CB796;
