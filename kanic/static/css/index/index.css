@@ -22,12 +22,14 @@ div.navbar-transparent {
     background-color: transparent;
 }
 
-.nav-item {
+.navbar-nav > li > a {
     font-size: 20px;
+    padding-top: 28px;
 }
 
 .navbar-brand {
     font-size: 30px;
+    height: 80px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -48,7 +50,8 @@ div.navbar-transparent {
 }
 
 button.signup {
-    width: 200px;
+    width: 170px;
+    text-align: center;
     color: rgba(255, 255, 255, 0);
     background-color: rgba(255, 255, 255, 0);
     -webkit-transition: color 2s ease-out;
@@ -57,3 +60,54 @@ button.signup {
     transition: background-color 2s ease-out;
     border-radius: 20px;
 }
+
+div.third-section {
+    background-color: #1CB796;
+
+}
+
+/*h1 {
+    margin-bottom: 21px;
+}*/
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.third-section > div > div {
+    font-size: 2.5em;
+}
+
+button.vcenter {
+    border-radius: 15px;
+}
+
+@media (max-width: 969px) {
+    div.vcenter {
+        font-size: 30px;
+    }
+}
+
+p.fourth-section {
+    font-size: 18.5px;
+}
+
+div.fourth-section {
+    margin-top: 50px;
+}
+
+div.sixth-section {
+    margin-top: 50px;
+}
+/*div.third-section > div > button {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+    background-color: #1CB796;
+    border-color: white;
+    border-radius: 20px;
+}*/
