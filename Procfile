@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath kanic kanic.wsgi --log-file -
+web: gunicorn --pythonpath kanic kanic.wsgi --env DJANGO_SETTINGS_MODULE=kanic.settings --log-file -

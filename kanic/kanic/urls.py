@@ -36,8 +36,6 @@ from cars.views import (MakeListAPIView, ModelListAPIView,
 # router.register(r'services', ServiceViewSet)
 # router.register(r'requests', RequestViewSet)
 
-from kanic import views
-# from beta import views as beta_views
 
 urlpatterns = [
 
