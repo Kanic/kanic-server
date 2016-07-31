@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+.fa {
+    color: #E5CF74
+}
+
 .top-background-image {
     background: url("/static/images/landing_bg4.jpg") center center / auto 100%;
     width: 100%;
@@ -96,12 +100,29 @@ p.fourth-section {
     font-size: 18.5px;
 }
 
+/***************fourth-section*****************/
 div.fourth-section {
     margin-top: 50px;
 }
 
+
+/****************sixth-section*****************/
 div.sixth-section {
     margin-top: 50px;
+}
+
+div.seventh-section {
+    margin-top: 2%;
+    background-color: #1CB796;
+}
+
+div.eighth-section {
+    margin-top: 3%;
+    padding-bottom: 30px;
+}
+
+div.credits {
+    color: #A1AAB6;
 }
 /*div.third-section > div > button {
     position: relative;
