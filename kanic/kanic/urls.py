@@ -47,9 +47,8 @@ urlpatterns = [
     # url(r'^api/', include(router.urls)),
 
     # users
-    url(r'^api-beta/users/?$', UserListAPIView.as_view(), name='user_list_api'),
+    url(r'^api-beta/users/$', UserListAPIView.as_view(), name='user_list_api'),
     url(r'^api-beta/users/create/?$', UserCreateAPIView.as_view(), name='user_create_api'),
-    # url(r'^api-beta/users/(?P<username>[\w-]+)/?$', UserRetrieveAPIView.as_view(), name='user_retrieve_api'),
     url(r'^api-beta/users/profile/?$', UserRetrieveAPIView.as_view(), name='user_retrieve_api'),
 
     # car owners

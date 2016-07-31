@@ -5,26 +5,27 @@ from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, password=None, is_mechanic=False):
+    def create_user(self, email, phone, password=None, is_mechanic=False):
         """
-        Creates and saves a User with the given email, username and password.
+        Creates and saves a User with the given email, phone and password.
         """
-        if not username:
-            raise ValueError('Users must have an username')
+
         if not email:
             raise ValueError('Users must have an email address')
+        if not phone:
+            raise ValueError('Users must have an phone number')
 
-        user = self.model(username=username, email=self.normalize_email(email))
+        user = self.model(email=self.normalize_email(email), phone=phone)
         user.set_password(password)
         user.is_mechanic = is_mechanic
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password):
+    def create_superuser(self, email, phone, password):
         """
-        Creates and saves a superuser with the given email, username and password.
+        Creates and saves a superuser with the given email, phone and password.
         """
-        user = self.create_user(username=username, email=email, password=password)
+        user = self.create_user(email=email, phone=phone, password=password)
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -66,7 +67,7 @@ class User(AbstractBaseUser):
         return self.first_name
 
     def __unicode__(self):
-        return self.username
+        return self.email
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
@@ -88,8 +89,8 @@ class User(AbstractBaseUser):
         '''This method is for model Request to get nested attribute of mode User'''
         data = {
             'id': self.id,
-            'username': self.username,
             'email': self.email,
+            'phone': self.phone,
             'first_name': self.first_name,
             'last_name': self.last_name
         }
@@ -102,14 +103,14 @@ class Mechanic(models.Model):
     address = models.CharField(max_length=100, null=True, blank=True)
 
     def __unicode__(self):
-        return self.user.username
+        return self.user.email
 
     def get_nested_attributes_for_serializer(self):
         data = {
             'mechanic_id': self.id,
             'user_id': self.user.id,
-            'username': self.user.username,
             'email': self.user.email,
+            'phone': self.user.phone,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
             'year_of_experience': self.year_of_experience,

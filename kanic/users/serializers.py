@@ -33,7 +33,7 @@ class MechanicSerializer(serializers.HyperlinkedModelSerializer):
 class UserUrlHyperlinkedIdentityField(serializers.HyperlinkedIdentityField):
     def get_url(self, obj, view_name, request, format):
         kwargs = {
-            'username': obj.username
+            'email': obj.email
         }
         return reverse(view_name, kwargs=kwargs, request=request, format=format)
 
@@ -48,13 +48,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'url',
             'id',
-            'username',
             'email',
+            'phone',
             'first_name',
             'last_name',
             'is_mechanic',
             'mechanic',
-            # 'request_set',
         )
 
 
@@ -63,7 +62,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'email',
-            'username',
+            'phone',
             'password',
             'is_mechanic',
             'first_name',
@@ -76,7 +75,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User(
         email=validated_data['email'],
-        username=validated_data['username']
+        phone=validated_data['phone']
         )
         user.set_password(validated_data['password'])
         user.is_mechanic = validated_data['is_mechanic']
@@ -94,8 +93,8 @@ class UserRetrieveSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id',
-            'username',
             'email',
+            'phone',
             'first_name',
             'last_name',
             'is_mechanic',
@@ -108,8 +107,8 @@ class CarOwnerListSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id',
-            'username',
             'email',
+            'phone',
             'first_name',
             'last_name',
             'request_set',
