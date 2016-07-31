@@ -20,7 +20,7 @@ REST APIs Guidance
 - **Command** is the command you need for terminal to test APIs
 - **Response example** is JSON response examples
 
-##Authentication Token
+##Authentication Token-------------------------------------
 ###Fetch authentication token
 This api is to get authentication for a user
 - Method: POST
@@ -42,7 +42,7 @@ This api is to get authentication for a user
 }
 ```
 
-##User
+##User-------------------------------------
 ###List users
 This api is to list out all registered users
 - Method: GET
@@ -150,11 +150,11 @@ This api is to show a user's detail
   "request_set":[]
 }
 ```
-##Mechanic
+##Mechanic-------------------------------------
 Note that a mechanic is a User as well but with extra attributes.
 
 
-##Service
+##Service-------------------------------------
 We have a specific range of services
 ###List all Service
 This api is to list all services
