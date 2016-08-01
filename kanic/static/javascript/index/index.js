@@ -42,5 +42,30 @@ $(document).ready(function() {
     $('button.signup').css('color', 'rgba(255, 255, 255, 1)');
     $('button.signup').css('background-color', 'rgba(255, 255, 255, 0)');
 
+    // Focus on modol's field
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#id_name').focus()
+    });
+
+    // If form submmited is not valid, form will appear again with errors
+    if($('#carOwner_invalid').length) {
+        $('#CarOwnerModal').modal('toggle');
+    }
+
+    // If form submmited is not valid, form will appear again with errors
+    if($('#mechanic_invalid').length) {
+        $('#MechanicModal').modal('toggle');
+    }
+
+    // Disable submit button after clicked
+    $('#mechanic_submit').on('submit', function() {
+        $('#mechanic_submit').prop('disabled', true);
+    });
+
+    // Disable submit button after clicked
+    $('#submit').on('submit', function() {
+        $('#submit').prop('disabled', true);
+    });
+
 
 });

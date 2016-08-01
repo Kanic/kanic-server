@@ -7,23 +7,43 @@ from django.forms.extras.widgets import SelectDateWidget
 from .models import Tester, BetaMechanic
 
 class SignUpForm(forms.ModelForm):
-    name = CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'David Ma'})
-    )
+    first_name = CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'First name'
+            })
+        )
+    last_name = CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Last name'
+            })
+        )
     email = EmailField(
-        widget=forms.TextInput(attrs={'placeholder': 'David@gmail.com'})
-    )
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email'
+            })
+        )
     phone = CharField(
         label="Phone\n(Optional)",
         required=False,
-        widget=forms.TextInput(attrs={'placeholder': '2203333399'})
-    )
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Phone number(Optional)'
+            })
+        )
     zipCode = CharField(
-        widget=forms.TextInput(attrs={'placeholder': '11373'})
-    )
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Zip code'
+            })
+        )
     car = ChoiceField(
-        label="Own a car?",
-        widget=forms.RadioSelect,
+        label="Do you own a car?",
+        widget=forms.RadioSelect(attrs={
+            'class': 'car-choose',
+        }),
         choices=((True, 'Yes'),(False, 'No'))
     )
     hidden = CharField(
@@ -33,7 +53,14 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = Tester
-        fields = ['name', 'email', 'phone', 'zipCode', 'car', 'hidden']
+        fields = ['first_name',
+                  'last_name',
+                  'email',
+                  'phone',
+                  'zipCode',
+                  'car',
+                  'hidden'
+                  ]
 
     def clean_name(self):
         name = (self.cleaned_data.get('name')).lower()
@@ -65,36 +92,64 @@ class SignUpForm(forms.ModelForm):
             return False
 
 class MechanicForm(forms.ModelForm):
+    first_name = CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'First name'
+            })
+        )
+    last_name = CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Last name'
+            })
+        )
+    email = EmailField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email'
+            })
+        )
     phone = CharField(
-        label="Phone(Optional)",
-        required=False
-    )
+        label="Phone\n(Optional)",
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Phone number(Optional)'
+            })
+        )
     is_certified = ChoiceField(
         label="Are you certified?",
         widget=forms.RadioSelect,
         choices=((True, 'Yes'),(False, 'No'))
-    )
+        )
     certification = CharField(
         label="If yes which certification do you have?",
-        required=False
-    )
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Certification'
+            })
+        )
     work_type = ChoiceField(
         label="Are you available to work part time or full time?",
         widget=forms.RadioSelect,
         choices=(('FT', 'Full Time'),('PT', 'Part Time'))
-    )
+        )
     hidden = CharField(
         widget=forms.HiddenInput(),
         initial='mechanic'
-    )
+        )
 
     class Meta:
         model = BetaMechanic
-        fields = ['first_name', 'last_name', 'email', 'phone', 'is_certified', 'certification', 'work_type', 'hidden' ]
-
-    def __init__(self, *args, **kwargs):
-        super(MechanicForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_id = "mechanic-form"
-        self.helper.form_method = 'post'
-        self.helper.form_action = '/'
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'phone',
+            'is_certified',
+            'certification',
+            'work_type',
+            'hidden'
+            ]

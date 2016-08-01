@@ -25,13 +25,13 @@
                 <div class="navbar-collapse collapse" id="navbar-main">
 
                     <ul class="nav navbar-nav">
-                      <li><a href="/" class="nav-item">About</a></li>
+                      <li><a href="#about" class="nav-item">About</a></li>
                       <li><a class="nav-item">We are hiring!</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="nav-item mechanic">Become a mechanic</a></li>
-                        <li><a class="nav-item">Sign up</a></li>
+                        <li><a href="" class="nav-item mechanic" data-toggle="modal" data-target="#MechanicModal">Become a mechanic</a></li>
+                        <li><a href="" class="nav-item" data-toggle="modal" data-target="#CarOwnerModal">Sign up</a></li>
                     </ul>
 
                 </div>
@@ -50,7 +50,7 @@
                 can sit back and relax!Sign up to be part of our Beta and
                 you will receive 25% off your first service!
             </p> -->
-           <button class="signup btn" data-toggle="modal" data-target="#CarOwnerModal">Sign up now</button>
+           <a class="signup btn" data-toggle="modal" data-target="#CarOwnerModal">Sign up now</a>
            <!-- <button class="signup btn" data-toggle="modal" data-target="#MechanicModal">Become a mechanic</button> -->
        </div>
     </div>
@@ -64,14 +64,51 @@
              <h4 class="modal-title" id="myModalLabel">Beta Test</h4>
            </div>
            <div class="modal-body">
-             {{ form }}
-             {% if carOwner_invalid %}
-                 <p id="carOwner_invalid"></p>
-             {% endif %}
+               <form id="sign-up-form" action="{% url "beta-car-owner-signup" %}" method="post">
+                   {% csrf_token %}
+                  <div class="form-group">
+                      {{ signup_form.first_name.errors }}
+                      {{ signup_form.first_name }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ signup_form.last_name.errors }}
+                      {{ signup_form.last_name }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ signup_form.email.errors }}
+                      {{ signup_form.email }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ signup_form.phone.errors }}
+                      {{ signup_form.phone }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ signup_form.zipCode.errors }}
+                      {{ signup_form.zipCode }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ signup_form.car.label_tag }}
+                      {{ signup_form.car.errors }}
+                      {% for radio in signup_form.car %}
+                      <div class="radio">
+                      {{ radio }}
+                      </div>
+                      {% endfor %}
+                  </div>
+                  {{ signup_form.hidden }}
+                  {% if carOwner_invalid %}
+                  <p id="carOwner_invalid"></p>
+                  {% endif %}
+               </form>
            </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             <button id="submit" type="submit" class="btn btn-primary" form="sign-up-form">Submit</button>
+             <button type="button" class="btn cancel" data-dismiss="modal">Close</button>
+             <button id="submit" type="submit" class="btn btn-default" form="sign-up-form">Submit</button>
            </div>
          </div>
        </div>
@@ -83,17 +120,66 @@
          <div class="modal-content">
            <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             <h4 class="modal-title" id="myModalLabel">Beta Test</h4>
+             <h4 class="modal-title" id="myModalLabel">Become a mechanic</h4>
            </div>
            <div class="modal-body">
-             {{ mechanic_form }}
-             {% if mechanic_invalid %}
-                 <p id="mechanic_invalid"></p>
-             {% endif %}
+               <form id="mechanic-form" action="{% url "beta-mechanic-signup" %}" method="post">
+                   {% csrf_token %}
+                  <div class="form-group">
+                      {{ mechanic_form.first_name.errors }}
+                      {{ mechanic_form.first_name }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ mechanic_form.last_name.errors }}
+                      {{ mechanic_form.last_name }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ mechanic_form.email.errors }}
+                      {{ mechanic_form.email }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ mechanic_form.phone.errors }}
+                      {{ mechanic_form.phone }}
+                  </div>
+
+                  <div class="form-group">
+                      {{ mechanic_form.work_type.label_tag }}
+                      {{ mechanic_form.work_type.errors }}
+                      {% for radio in mechanic_form.work_type %}
+                      <div class="radio">
+                      {{ radio }}
+                      </div>
+                      {% endfor %}
+                  </div>
+
+                  <div class="form-group">
+                      {{ mechanic_form.is_certified.label_tag }}
+                      {{ mechanic_form.is_certified.errors }}
+                      {% for radio in mechanic_form.is_certified %}
+                      <div class="radio">
+                      {{ radio }}
+                      </div>
+                      {% endfor %}
+                  </div>
+
+                  <div class="form-group">
+                      {{ mechanic_form.certification.label_tag }}
+                      {{ mechanic_form.certification.errors }}
+                      {{ mechanic_form.certification }}
+                  </div>
+
+                  {{ mechanic_form.hidden }}
+                  {% if mechanic_invalid %}
+                  <p id="mechanic_invalid"></p>
+                  {% endif %}
+               </form>
            </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             <button id="submit" type="submit" class="btn btn-primary" form="mechanic-form">Submit</button>
+             <button type="button" class="btn cancel" data-dismiss="modal">Close</button>
+             <button id="mechanic_submit" type="submit" class="btn btn-default" form="mechanic-form">Submit</button>
            </div>
          </div>
        </div>
@@ -103,11 +189,11 @@
 
 <div class="container-fluid third-section">
     <div class="row">
-        <div class="col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-9">
+        <div class="col-md-12 col-sm-12">
             <div class="col-md-offset-2 col-md-5 col-sm-offset-1 col-sm-5 col-xs-12 vcenter text-center">
                 Be your own boss
             </div>
-            <button class="btn col-md-4 col-sm-5 col-xs-12 vcenter">Sign up to become a mechanic</button>
+            <a class="btn col-md-4 col-sm-5 col-xs-12 vcenter" data-toggle="modal" data-target="#MechanicModal">Sign up to become a mechanic</a>
         </div>
     </div>
 </div>
@@ -129,7 +215,7 @@
 <!-- section of how it works -->
 <div class="container fourth-section">
     <div class="text-center">
-        <h1>The way it works</h1>
+        <h1 id="about">The way it works</h1>
         <!-- <p class="lead center">
             In three easy steps, schedule a mechanic. Saves you time, money, and energy!
         </p> -->
@@ -200,7 +286,7 @@
         </div>
 
         <div class="col-md-4">
-            <img src="http://placehold.it/350x350">
+            <img src="http://placehold.it/300x350">
         </div>
 
         <div class="col-md-4">
@@ -243,13 +329,58 @@
 </div> -->
 
 <!-- section of request now -->
-<div class="container-fluid seventh-section">
+<!-- <div class="container-fluid seventh-section">
     <div class="row text-center">
         <h1>Request a mechanic now</h1>
     </div>
-</div>
+</div> -->
 
 <!-- section of footer -->
+
+<!-- <footer class="landingpage-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: left; height: 60px; margin-top: 19px">
+                <img src="/static/images/gleam-124.71a07acfff2f.png" style="height: 42px; padding-bottom: 5px;">
+                <p class="text-muted">© Gleam 2016</p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: right">
+                <br>
+                <a href="https://www.facebook.com/GleamNYC/">
+                <span class="fa-stack fa-lg" style="font-size: 20px">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+                <a href="https://twitter.com/gleamnyc">
+                <span class="fa-stack fa-lg" style="font-size: 20px">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+                <a href="https://instagram.com/gleam_nyc">
+                <span class="fa-stack fa-lg" style="font-size: 20px">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+                <a href="mailto:gleam@zahncenternyc.com">
+                <span class="fa-stack fa-lg" style="font-size: 20px">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope-square fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6" style="text-align: left;">
+                <p>160 Convent Ave, New York, NY 10031</p>
+            </div>
+        </div>
+    </div>
+</footer> -->
 
 <div class="container-fluid eighth-section">
     <div class="row">
@@ -323,7 +454,7 @@
                 </p>
                 <form>
                     <input type="text" name="email" class="form-control email" placeholder="Your email address">
-                    <input class="newsletter" type="submit" value="Sign up">
+                    <input class="newsletter" type="submit">Sign up</button>
                 </form>
             </div>
             <div class="social">

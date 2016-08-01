@@ -39,7 +39,7 @@ from cars.views import (MakeListAPIView, ModelListAPIView,
 
 urlpatterns = [
 
-    # api URLs
+    ########################## RESTful API URLs ##############################
     url(r'^api-beta/auth/token/?$', 'rest_framework_jwt.views.obtain_jwt_token'),
 
     # include api/auth/login and api/auth/logout
@@ -77,10 +77,16 @@ urlpatterns = [
     # django-registration-redux URLs
     # url(r'^accounts/', include('registration.backends.default.urls')),
 
-    # web-based URLs
+
+    ############################## Web App URLs ###############################
     url(r'^(?i)admin/', include(admin.site.urls)),
-    url(r'^$', 'index.views.index', name='index'),
+    url(r'^$', 'index.views.index', name='index-index'),
     url(r'^listtesters/?$', 'beta.views.listTester', name='list_testers'),
+
+    # Beta car owner sign up
+    url(r'^car-owners-signup/$', 'beta.views.car_owner_signup', name='beta-car-owner-signup'),
+    # Beta mechanic sign up
+    url(r'^mechanic-signup/$', 'beta.views.mechanic_signup', name='beta-mechanic-signup'),
 
     # add car data
     # url(r'^addcar', 'cars.views.addcar'),

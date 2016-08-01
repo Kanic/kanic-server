@@ -9,39 +9,52 @@ from .forms import SignUpForm, MechanicForm
 from .models import Tester, BetaMechanic
 
 
-def index(request):
+def car_owner_signup(request):
+    """
+    Method: POST
+    Description: Create beta user for car owners
+    """
     form = SignUpForm()
-    mechanic_form = MechanicForm()
     context = {
-        'form': form,
-        'mechanic_form': mechanic_form
-    }
+        'signup_form': form,
+        }
     if request.method == 'POST':
-        if request.POST.get('hidden') == 'carowner':
-            form = SignUpForm(request.POST)
-            context['form'] = form
+        form = SignUpForm(request.POST)
+        context['signup_form'] = form
+        if form.is_valid():
+            instance = form.save()
+            return render(request, 'beta/success.html')
+        else:
+            print "form is not valid"
+            context["carOwner_invalid"] = "carOwner_invalid"
+            return render(request, 'index/index.html', context)
 
-            if form.is_valid():
-                instance = form.save()
-                messages.success(request, 'Submitted successfully.')
-                return HttpResponseRedirect(reverse('index'))
-            else:
-                context["carOwner_invalid"] = "carOwner_invalid"
-                return render(request, 'beta/index.html', context)
-        elif request.POST.get('hidden') == 'mechanic':
-            print("inside mechanic")
-            mechanic_form = MechanicForm(request.POST)
-            context['mechanic_form'] = mechanic_form
+    return HttpResponseRedirect(reverse('index-index'))
 
-            if mechanic_form.is_valid():
-                instance = mechanic_form.save()
-                messages.success(request, 'Submitted successfully.')
-                return HttpResponseRedirect(reverse('index'))
-            else:
-                context["mechanic_invalid"] = "mechanic_invalid"
-                return render(request, 'beta/index.html', context)
 
-    return render(request, 'beta/index.html', context)
+
+def mechanic_signup(request):
+    """
+    Method: POST
+    Description: Create beta user for mechanics
+    """
+    form = MechanicForm()
+    context = {
+        'mechanic_form': form,
+        }
+    if request.method == 'POST':
+        form = MechanicForm(request.POST)
+        context['mechanic_form'] = form
+        if form.is_valid():
+            instance = form.save()
+            return render(request, 'beta/success.html')
+        else:
+            print "form is not valid"
+            context["mechanic_invalid"] = "mechanic_invalid"
+            return render(request, 'index/index.html', context)
+
+    return HttpResponseRedirect(reverse('index-index'))
+
 
 def listTester(request):
     uname = "ahmed"
