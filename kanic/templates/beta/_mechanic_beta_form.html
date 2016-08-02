@@ -1,0 +1,71 @@
+
+<!-- form for mechanic -->
+ <div class="modal fade" id="MechanicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="myModalLabel">Become a mechanic</h4>
+       </div>
+       <div class="modal-body">
+           <form id="mechanic-form" action="{% url "beta-mechanic-signup" %}" method="post">
+               {% csrf_token %}
+              <div class="form-group">
+                  {{ mechanic_form.first_name.errors }}
+                  {{ mechanic_form.first_name }}
+              </div>
+
+              <div class="form-group">
+                  {{ mechanic_form.last_name.errors }}
+                  {{ mechanic_form.last_name }}
+              </div>
+
+              <div class="form-group">
+                  {{ mechanic_form.email.errors }}
+                  {{ mechanic_form.email }}
+              </div>
+
+              <div class="form-group">
+                  {{ mechanic_form.phone.errors }}
+                  {{ mechanic_form.phone }}
+              </div>
+
+              <div class="form-group">
+                  {{ mechanic_form.work_type.label_tag }}
+                  {{ mechanic_form.work_type.errors }}
+                  {% for radio in mechanic_form.work_type %}
+                  <div class="radio">
+                  {{ radio }}
+                  </div>
+                  {% endfor %}
+              </div>
+
+              <div class="form-group">
+                  {{ mechanic_form.is_certified.label_tag }}
+                  {{ mechanic_form.is_certified.errors }}
+                  {% for radio in mechanic_form.is_certified %}
+                  <div class="radio">
+                  {{ radio }}
+                  </div>
+                  {% endfor %}
+              </div>
+
+              <div class="form-group">
+                  {{ mechanic_form.certification.label_tag }}
+                  {{ mechanic_form.certification.errors }}
+                  {{ mechanic_form.certification }}
+              </div>
+
+              {{ mechanic_form.hidden }}
+              {% if mechanic_invalid %}
+              <p id="mechanic_invalid"></p>
+              {% endif %}
+           </form>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn cancel" data-dismiss="modal">Close</button>
+         <button id="mechanic_submit" type="submit" class="btn btn-default" form="mechanic-form">Submit</button>
+       </div>
+     </div>
+   </div>
+ </div>
