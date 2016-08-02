@@ -25,8 +25,9 @@ def car_owner_signup(request):
             instance = form.save()
             return render(request, 'beta/success.html')
         else:
-            print "form is not valid"
-            context["carOwner_invalid"] = "carOwner_invalid"
+            print 'form is not valid'
+            context['mechanic_form'] = MechanicForm()
+            context['carOwner_invalid'] = 'carOwner_invalid'
             return render(request, 'index/index.html', context)
 
     return HttpResponseRedirect(reverse('index-index'))
@@ -50,7 +51,8 @@ def mechanic_signup(request):
             return render(request, 'beta/success.html')
         else:
             print "form is not valid"
-            context["mechanic_invalid"] = "mechanic_invalid"
+            context['signup_form'] = SignUpForm()
+            context['mechanic_invalid'] = 'mechanic_invalid'
             return render(request, 'index/index.html', context)
 
     return HttpResponseRedirect(reverse('index-index'))

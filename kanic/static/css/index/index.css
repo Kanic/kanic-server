@@ -82,7 +82,9 @@ button.cancel, button.cancel:hover, button.cancel:focus, button.cancel:active {
     outline: none;
 }
 
-
+ul.errorlist > li {
+    color: red;
+}
 
 /***************third-section**************/
 div.third-section {

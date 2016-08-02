@@ -72,7 +72,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -153,5 +153,9 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
 
-# crispy form
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+# Email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'kanicapp@gmail.com'
+EMAIL_HOST_PASSWORD = 'kanic123'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
