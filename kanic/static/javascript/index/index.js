@@ -5,6 +5,9 @@ $(document).ready(function() {
         window.scrollTo(0, document.body.scrollHeight);
     }
 
+    // Disable career page's title input
+    $('#id_title').prop('disabled', true);
+    
     // change navigation bar when page is loaded
     var top = $(document).scrollTop();
     if(top > 200) {

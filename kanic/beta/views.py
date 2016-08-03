@@ -115,13 +115,17 @@ def hiring_signup(request):
         'hiring_form': form
     }
     if request.method == 'POST':
-        form = HiringForm(request.POST, request.FILES)
-        context['hiring_form'] = form
-        if form.is_valid():
-            form.save()
-            return render(request, 'beta/success.html')
+        print request.POST.get('title')
+        if request.POST.get('title') in ['ios', 'android', 'web', 'marketing']:
+            form = HiringForm(request.POST, request.FILES)
+            context['hiring_form'] = form
+            if form.is_valid():
+                form.save()
+                return render(request, 'beta/success.html')
+            else:
+                print "form is not valid"
+                return render(request, 'index/hiring_form.html', context)
         else:
-            print "form is not valid"
-            return render(request, 'index/hiring_form.html', context)
+            return HttpResponseRedirect(reverse('index-index'))
 
     return HttpResponseRedirect(reverse('index-index'))
