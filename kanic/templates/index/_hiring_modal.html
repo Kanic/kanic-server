@@ -1,0 +1,54 @@
+<!-- hiring modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="hiringModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Kanic Career</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>iOS Developer</h3>
+                  <p><a href="{% url "beta-hiring-form" title="ios" %}" class="btn btn-default" role="button">Apply</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>Android Developer</h3>
+                  <p><a href="{% url "beta-hiring-form" title="android" %}" class="btn btn-default" role="button">Apply</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>Web Developer</h3>
+                  <p><a href="{% url "beta-hiring-form" title="web" %}" class="btn btn-default" role="button">Apply</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>Marketing</h3>
+                  <p><a href="{% url "beta-hiring-form" title="marketing" %}" class="btn btn-default" role="button">Apply</a></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+      <!-- no modal footer -->
+    </div>
+  </div>
+</div>

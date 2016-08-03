@@ -38,10 +38,17 @@ class BetaMechanic(models.Model):
     def __unicode__(self):
         return '{0} {1}'.format(self.first_name, self.last_name)
 
+
 class Newsletter(models.Model):
-    email = email = models.EmailField(verbose_name='email address',
+    email = models.EmailField(verbose_name='email address',
                                       max_length=255,
                                       unique=True)
 
     def __unicode__(self):
         return self.email
+
+
+class HiringJob(models.Model):
+    title = models.CharField(verbose_name='job title', max_length=255)
+    resume = models.FileField(upload_to='upload/')
+    createAt = models.DateTimeField(default=timezone.now)

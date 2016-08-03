@@ -1,10 +1,11 @@
 import datetime
 
 from django import forms
-from django.forms import BooleanField, CharField, EmailField, ChoiceField
+from django.forms import (BooleanField, CharField, EmailField, ChoiceField,
+                          FileField)
 from django.forms.extras.widgets import SelectDateWidget
 
-from .models import Tester, BetaMechanic
+from .models import Tester, BetaMechanic, Newsletter, HiringJob
 
 class SignUpForm(forms.ModelForm):
     first_name = CharField(
@@ -12,19 +13,19 @@ class SignUpForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'First name'
             })
-        )
+    )
     last_name = CharField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Last name'
             })
-        )
+    )
     email = EmailField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Email'
             })
-        )
+    )
     phone = CharField(
         label="Phone\n(Optional)",
         required=False,
@@ -32,13 +33,13 @@ class SignUpForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'Phone number(Optional)'
             })
-        )
+    )
     zipCode = CharField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Zip code'
             })
-        )
+    )
     car = ChoiceField(
         label="Do you own a car?",
         widget=forms.RadioSelect(attrs={
@@ -97,19 +98,19 @@ class MechanicForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'First name'
             })
-        )
+    )
     last_name = CharField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Last name'
             })
-        )
+    )
     email = EmailField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Email'
             })
-        )
+    )
     phone = CharField(
         label="Phone\n(Optional)",
         required=False,
@@ -117,12 +118,12 @@ class MechanicForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'Phone number(Optional)'
             })
-        )
+    )
     is_certified = ChoiceField(
         label="Are you certified?",
         widget=forms.RadioSelect,
         choices=((True, 'Yes'),(False, 'No'))
-        )
+    )
     certification = CharField(
         label="If yes which certification do you have?",
         required=False,
@@ -130,16 +131,16 @@ class MechanicForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'Certification'
             })
-        )
+    )
     work_type = ChoiceField(
         label="Are you available to work part time or full time?",
         widget=forms.RadioSelect,
         choices=(('FT', 'Full Time'),('PT', 'Part Time'))
-        )
+    )
     hidden = CharField(
         widget=forms.HiddenInput(),
         initial='mechanic'
-        )
+    )
 
     class Meta:
         model = BetaMechanic
@@ -153,3 +154,30 @@ class MechanicForm(forms.ModelForm):
             'work_type',
             'hidden'
             ]
+
+
+class NewsletterForm(forms.ModelForm):
+    email = EmailField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control email',
+            'placeholder': 'Your email address'
+            })
+    )
+
+    class Meta:
+        model = Newsletter
+        fields = ['email']
+
+
+class HiringForm(forms.ModelForm):
+    title = CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Job title'
+            })
+    )
+    resume = FileField()
+
+    class Meta:
+        model = HiringJob
+        fields = ['title', 'resume']

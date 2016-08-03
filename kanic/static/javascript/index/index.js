@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    // Scroll to bottom if newsletter email is invalid
+    if($('#newsletterform > ul').length > 0) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    // change navigation bar when page is loaded
     var top = $(document).scrollTop();
     if(top > 200) {
         $('.navbar').removeClass('navbar-transparent');

@@ -47,6 +47,13 @@ div.navbar-transparent {
     color: white;
 }
 
+#hiring-jumbo {
+    background-color: white;
+}
+
+#hiring-jumbo > form > div > input {
+    display: inline-flex;
+}
 /**************landing title section*************/
 .landing-section {
     position: relative;

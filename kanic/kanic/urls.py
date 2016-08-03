@@ -30,11 +30,6 @@ from requests.views import (RequestRetrieveAPIView, RequestCreateAPIView,
 from cars.views import (MakeListAPIView, ModelListAPIView,
                         YearListWithMakeAPIView)
 
-# router = routers.DefaultRouter()
-# router.register(r'mechanics', MechanicViewSet)
-# router.register(r'users', UserViewSet)
-# router.register(r'services', ServiceViewSet)
-# router.register(r'requests', RequestViewSet)
 
 
 urlpatterns = [
@@ -44,7 +39,6 @@ urlpatterns = [
 
     # include api/auth/login and api/auth/logout
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # url(r'^api/', include(router.urls)),
 
     # users
     url(r'^api-beta/users/$', UserListAPIView.as_view(), name='user_list_api'),
@@ -87,6 +81,13 @@ urlpatterns = [
     url(r'^car-owners-signup/$', 'beta.views.car_owner_signup', name='beta-car-owner-signup'),
     # Beta mechanic sign up
     url(r'^mechanic-signup/$', 'beta.views.mechanic_signup', name='beta-mechanic-signup'),
+    # Newsletter sign up
+    url(r'^newsletter-signup/$', 'beta.views.newsletter_signup', name='newsletter-signup'),
+
+    # Kanic career page
+    url(r'^career/(?P<title>[a-z]+)$', 'index.views.hiring_form', name='beta-hiring-form'),
+    url(r'^career/signup/$', 'beta.views.hiring_signup', name='beta-hiring-signup'),
+
 
     # add car data
     # url(r'^addcar', 'cars.views.addcar'),

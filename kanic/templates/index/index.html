@@ -7,39 +7,8 @@
 
 {% block content %}
 
-<!-- navigation row -->
-<div class="container-fluid">
-    <div class="row navigation">
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-
-                <div class="navbar-header">
-                    <a href="./" class="navbar-brand">Kanic</a>
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-
-                <div class="navbar-collapse collapse" id="navbar-main">
-
-                    <ul class="nav navbar-nav">
-                      <li><a href="#about" class="nav-item">About</a></li>
-                      <li><a class="nav-item">We are hiring!</a></li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="" class="nav-item mechanic" data-toggle="modal" data-target="#MechanicModal">Become a mechanic</a></li>
-                        <li><a href="" class="nav-item" data-toggle="modal" data-target="#CarOwnerModal">Sign up</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+{% include "index/_navigation_bar.html" %}
+{% include "index/_hiring_modal.html" %}
 <!-- landing title section -->
 <div class="container-fluid landing-title top-background-image">
     <div class="row text-center landing-section">
@@ -253,95 +222,7 @@
     </div>
 </footer> -->
 
-<div class="container-fluid eighth-section">
-    <div class="row">
-        <div class="col-sm-3 col-md-offset-2 col-md-2 menu">
-            <h3>Overview</h3>
-            <ul>
-                <li>
-                    <a href="features.html">Features</a>
-                </li>
-                <li>
-                    <a href="services.html">Services</a>
-                </li>
-                <li>
-                    <a href="pricing.html">Pricing</a>
-                </li>
-                <li>
-                    <a href="support.html">Support</a>
-                </li>
-                <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-                <li>
-                    <a href="blog.html">Coming soon</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-sm-3 col-md-2 menu">
-            <h3>Menu</h3>
-            <ul>
-                <li>
-                    <a href="features.html">About us</a>
-                </li>
-                <li>
-                    <a href="services.html">Contact us</a>
-                </li>
-                <li>
-                    <a href="aboutus.html">Jobs</a>
-                    <a href="aboutus.html" class="hiring">
-                        We're hiring!
-                    </a>
-                </li>
-                <li>
-                    <a href="support.html">Portfolio</a>
-                </li>
-                <li>
-                    <a href="blog.html">Status</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-sm-2 col-md-2 menu">
-            <h3>Social</h3>
-            <ul>
-                <li>
-                    <a href="features.html">Youtube</a>
-                </li>
-                <li>
-                    <a href="services.html">Facebook</a>
-                </li>
-                <li>
-                    <a href="pricing.html">Twitter</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-sm-3 newsletter">
-            <div class="signup clearfix">
-                <p>
-                    Sign up for the newsletter and we'll inform you of updates, offers and more.
-                </p>
-                <form>
-                    <input type="text" name="email" class="form-control email" placeholder="Your email address">
-                    <input class="newsletter" type="submit">Sign up</button>
-                </form>
-            </div>
-            <div class="social">
-                <a class="social" href="#"><i class="social fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
-                <a class="social" href="#"><i class="social fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
-                <a class="social" href="#"><i class="social fa fa-instagram fa-3x" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="row text-center credits">
-        <div class="col-md-12">
-            Copyright © 2016. Kanic
-        </div>
-    </div>
-</div>
-
+{% include "_footer.html" %}
 
 {% endblock %}
 
