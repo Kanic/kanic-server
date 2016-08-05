@@ -88,7 +88,8 @@ urlpatterns = [
     url(r'^career/(?P<title>[a-z]+)$', 'index.views.hiring_form', name='beta-hiring-form'),
     url(r'^career/signup/$', 'beta.views.hiring_signup', name='beta-hiring-signup'),
 
-    # Bill App
+    # Billing App
+    url(r'^payment/client_token/$', 'billing.views.get_client_token', name='generate-token'),
     # url(r'^payment/test/$', 'bill.views.test'),
 
 

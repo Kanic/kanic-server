@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'users',
     'requests',
     'cars',
-    'beta'
+    'beta',
+    'billing'
 )
 
 MIDDLEWARE_CLASSES = (
