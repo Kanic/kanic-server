@@ -54,14 +54,15 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = Tester
-        fields = ['first_name',
-                  'last_name',
-                  'email',
-                  'phone',
-                  'zipCode',
-                  'car',
-                  'hidden'
-                  ]
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'phone',
+            'zipCode',
+            'car',
+            'hidden'
+        ]
 
     def clean_name(self):
         name = (self.cleaned_data.get('name')).lower()
@@ -153,7 +154,7 @@ class MechanicForm(forms.ModelForm):
             'certification',
             'work_type',
             'hidden'
-            ]
+        ]
 
 
 class NewsletterForm(forms.ModelForm):

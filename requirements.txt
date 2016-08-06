@@ -1,3 +1,4 @@
+braintree==3.29.2
 Django==1.8.6
 django-crispy-forms==1.6.0
 django-dual-authentication==1.0.0

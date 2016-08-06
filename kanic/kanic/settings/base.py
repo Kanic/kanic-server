@@ -43,10 +43,10 @@ INSTALLED_APPS = (
     # 'registration',
     'rest_framework',
     'users',
-    'requests',
+    'services',
     'cars',
     'beta',
-    'billing'
+    'billing',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,7 +73,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

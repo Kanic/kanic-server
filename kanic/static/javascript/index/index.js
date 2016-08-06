@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     // Disable career page's title input
     $('#id_title').prop('disabled', true);
-    
+
     // change navigation bar when page is loaded
     var top = $(document).scrollTop();
     if(top > 200) {
@@ -23,7 +23,7 @@ $(document).ready(function() {
     $(window).scroll(function () {
         var top = $(document).scrollTop();
 
-        if(top > 200) {
+        if(top > 50) {
             $('.navbar').removeClass('navbar-transparent');
             $('.navbar-default .navbar-nav > li > a').css('color', 'black');
             $('.navbar-default .navbar-brand').css('color', 'black');
@@ -33,13 +33,15 @@ $(document).ready(function() {
             $('.navbar-default .navbar-brand').css('color', 'white');
         }
 
-        if(top > 395) {
+        var scroll_distance = $('#about').offset().top;
+        if(top >= scroll_distance) {
             $('div.left').css('-webkit-transform', 'translateX(0px)');
             $('div.middle').css('-webkit-transform', 'translateY(0px)');
             $('div.right').css('-webkit-transform', 'translateX(0px)');
         }
 
-        if(top > 740) {
+        var scroll_distance = $('#why').offset().top;
+        if(top > scroll_distance) {
             $('div.left-upper, div.left-lower, div.right-upper, div.right-lower')
             .css('-webkit-transform', 'translate(0px, 0px)');
         }

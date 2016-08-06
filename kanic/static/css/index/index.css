@@ -136,26 +136,27 @@ div.third-section > div > div {
 div.fourth-section {
     margin-top: 50px;
 }
+@media (min-width: 950px) {
+    div.left {
+        -webkit-transform: translateY(-100px); /* Safari */
+        transform: translateY(-100px);
+        -webkit-transition: transform 2s ease-out;
+        transition: transform 2s ease-out;
+    }
 
-div.left {
-   	-webkit-transform: translateX(-150px); /* Safari */
-    transform: translateX(-150px);
-    -webkit-transition: transform 2s ease-out;
-    transition: transform 2s ease-out;
-}
+    div.middle {
+        -webkit-transform: translateY(-40px); /* Safari */
+        transform: translateY(-40px);
+        -webkit-transition: transform 2s ease-out;
+        transition: transform 2s ease-out;
+    }
 
-div.middle {
-   	-webkit-transform: translateY(-40px); /* Safari */
-    transform: translateY(-40px);
-    -webkit-transition: transform 2s ease-out;
-    transition: transform 2s ease-out;
-}
-
-div.right {
-   	-webkit-transform: translateX(150px); /* Safari */
-    transform: translateX(150px);
-    -webkit-transition: transform 2s ease-out;
-    transition: transform 2s ease-out;
+    div.right {
+        -webkit-transform: translateY(-100px); /* Safari */
+        transform: translateY(-100px);
+        -webkit-transition: transform 2s ease-out;
+        transition: transform 2s ease-out;
+    }
 }
 
 p.fourth-section {
@@ -171,19 +172,21 @@ div.left-upper, div.left-lower, div.right-upper, div.right-lower {
     margin-bottom: 50px;
 }
 
-div.left-upper, div.left-lower {
-    -webkit-transform: translateX(-150px); /* Safari */
-    transform: translateX(-150px);
-    -webkit-transition: transform 2s ease-out;
-    transition: transform 2s ease-out;
-}
 
-div.right-upper, div.right-lower {
-    -webkit-transform: translateX(150px); /* Safari */
-    transform: translateX(150px);
-    -webkit-transition: transform 2s ease-out;
-    transition: transform 2s ease-out;
-}
+    div.left-upper, div.left-lower {
+        -webkit-transform: translateX(-25%); /* Safari */
+        transform: translateX(-25%);
+        -webkit-transition: transform 2s ease-out;
+        transition: transform 2s ease-out;
+    }
+
+    div.right-upper, div.right-lower {
+        -webkit-transform: translateX(25%); /* Safari */
+        transform: translateX(25%);
+        -webkit-transition: transform 2s ease-out;
+        transition: transform 2s ease-out;
+    }
+
 
 
 /****************seventh-section*****************/
@@ -247,20 +250,17 @@ div.clearfix > form {
 
 input.email {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px inset;
-    height: 39px;
     font-size: 13px;
 }
 
 input.newsletter {
-    position: absolute;
-    top: 6px;
-    right: -75px;
-    color: white;
+
+    /*color: white;
     border-radius: 20px;
     border-color: white;
     background-color: transparent;
     font-size: 1em;
-    border-style: solid;
+    border-style: solid;*/
 }
 
 div.newsletter {

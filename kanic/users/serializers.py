@@ -3,7 +3,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.reverse import reverse
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from requests.serializers import RequestListSerializer
+from services.serializers import RequestListSerializer
 from .models import User, Mechanic
 
 
@@ -30,7 +30,7 @@ class MechanicSerializer(serializers.HyperlinkedModelSerializer):
 ################################User###########################
 class UserSerializer(serializers.ModelSerializer):
     mechanic = MechanicSerializer(many=False, read_only=True)
-    
+
     class Meta:
         model = User
         fields = (

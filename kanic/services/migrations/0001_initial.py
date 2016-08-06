@@ -34,8 +34,10 @@ class Migration(migrations.Migration):
             name='Service',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('type', models.CharField(max_length=40)),
-                ('tools', models.CharField(max_length=100)),
+                ('name', models.CharField(max_length=40)),
+                ('part', models.CharField(max_length=100, null=True, blank=True)),
+                ('detail', models.CharField(max_length=200, null=True, blank=True)),
+                ('price', models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)),
                 ('createAt', models.DateTimeField(default=django.utils.timezone.now)),
                 ('lastModified', models.DateTimeField(auto_now=True)),
             ],
@@ -43,6 +45,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='request',
             name='service',
-            field=models.ForeignKey(blank=True, to='requests.Service', null=True),
+            field=models.ForeignKey(blank=True, to='services.Service', null=True),
         ),
     ]

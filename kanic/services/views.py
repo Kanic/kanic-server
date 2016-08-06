@@ -15,7 +15,7 @@ from .models import Service, Request
 
 class ServiceListAPIView(generics.ListAPIView):
     serializer_class = ServiceListSerializer
-    # queryset = Service.objects.all()
+    
     def get_queryset(self):
         return Service.objects.all()
 

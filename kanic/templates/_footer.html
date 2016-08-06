@@ -2,7 +2,7 @@
 
 <div class="container-fluid eighth-section">
     <div class="row">
-        <div class="col-sm-3 col-md-offset-2 col-md-2 menu">
+        <div class="col-sm-2 col-sm-offset-1 col-md-offset-1 col-md-2 menu">
             <h3>Overview</h3>
             <ul>
                 <li>
@@ -14,7 +14,7 @@
             </ul>
         </div>
 
-        <div class="col-sm-3 col-md-2 menu">
+        <div class="col-sm-2 col-md-2 menu">
             <h3>Menu</h3>
             <ul>
                 <li>
@@ -40,16 +40,20 @@
             </ul>
         </div>
 
-        <div class="col-sm-3 newsletter">
+        <div class="col-sm-5 col-md-4 newsletter">
             <div class="signup clearfix">
                 <p>
                     Sign up for the newsletter and we'll inform you of updates, offers and more.
                 </p>
                 <form id="newsletterform" action="{% url "newsletter-signup" %}" method="post">
                     {% csrf_token %}
-                    {{ newsletter_form.email.errors }}
-                    {{ newsletter_form.email }}
-                    <input class="newsletter" type="submit">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default newsletter" type="submit">Sign up</button>
+                        </span>
+                        {{ newsletter_form.email.errors }}
+                        {{ newsletter_form.email }}
+                    </div>
                 </form>
             </div>
             <div class="social">
