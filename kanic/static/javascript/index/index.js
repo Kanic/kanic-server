@@ -33,14 +33,14 @@ $(document).ready(function() {
             $('.navbar-default .navbar-brand').css('color', 'white');
         }
 
-        var scroll_distance = $('#about').offset().top;
+        var scroll_distance = $('#about').offset().top - $(window).height();
         if(top >= scroll_distance) {
             $('div.left').css('-webkit-transform', 'translateX(0px)');
             $('div.middle').css('-webkit-transform', 'translateY(0px)');
             $('div.right').css('-webkit-transform', 'translateX(0px)');
         }
 
-        var scroll_distance = $('#why').offset().top;
+        var scroll_distance = $('#why').offset().top - $(window).height();
         if(top > scroll_distance) {
             $('div.left-upper, div.left-lower, div.right-upper, div.right-lower')
             .css('-webkit-transform', 'translate(0px, 0px)');

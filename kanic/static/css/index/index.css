@@ -172,7 +172,7 @@ div.left-upper, div.left-lower, div.right-upper, div.right-lower {
     margin-bottom: 50px;
 }
 
-
+@media (min-width: 950px) {
     div.left-upper, div.left-lower {
         -webkit-transform: translateX(-25%); /* Safari */
         transform: translateX(-25%);
@@ -186,7 +186,7 @@ div.left-upper, div.left-lower, div.right-upper, div.right-lower {
         -webkit-transition: transform 2s ease-out;
         transition: transform 2s ease-out;
     }
-
+}
 
 
 /****************seventh-section*****************/
