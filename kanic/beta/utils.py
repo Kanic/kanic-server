@@ -54,7 +54,7 @@ def email_success(job_title, resume=None):
     subject = job_title
     message = 'Someone is interested in {0}'.format(job_title)
     fromAddress = 'kanicHR@kanic.com'
-    toAddress = ['dongliang3571@gmail.com']
+    toAddress = ['dongliang3571@gmail.com', 'ahmedbnms@gmail.com']
     email = EmailMessage(subject, message, fromAddress, toAddress)
     if resume is not None:
         attach_name = resume.name
