@@ -50,15 +50,16 @@ def handle_uploaded_file(file):
             destination.write(chunk)
 
 
-def email_job_applied(job_title, resume):
-    subject = 'Apply for {0}'.format(job_title)
-    message = 'Some one applied for {0}'.format(job_title)
+def email_success(job_title, resume=None):
+    subject = job_title
+    message = 'Someone is interested in {0}'.format(job_title)
     fromAddress = 'kanicHR@kanic.com'
-    toAddress = ['dongliang3571@gmail.com', 'ahmedbnms@gmail.com']
+    toAddress = ['dongliang3571@gmail.com']
     email = EmailMessage(subject, message, fromAddress, toAddress)
-    attach_name = resume.name
-    data = ''
-    for chunk in resume.chunks():
-        data = data + chunk
-    email.attach(attach_name, data)
+    if resume is not None:
+        attach_name = resume.name
+        data = ''
+        for chunk in resume.chunks():
+            data = data + chunk
+        email.attach(attach_name, data)
     email.send()

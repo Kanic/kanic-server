@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm, MechanicForm, NewsletterForm, HiringForm
 from .models import Tester, BetaMechanic, Job, HiringJob
 from .utils import (job_deserializer_single, handle_uploaded_file,
-                    email_job_applied)
+                    email_success)
 
 
 def car_owner_signup(request):
@@ -27,6 +27,7 @@ def car_owner_signup(request):
         context['signup_form'] = form
         if form.is_valid():
             form.save()
+            email_success('car owner')
             return redirect(reverse('index-thankyou'))
         else:
             print 'form is not valid'
@@ -52,6 +53,7 @@ def mechanic_signup(request):
         context['mechanic_form'] = form
         if form.is_valid():
             form.save()
+            email_success('mechanic')
             return redirect(reverse('index-thankyou'))
         else:
             print "form is not valid"
@@ -76,6 +78,7 @@ def newsletter_signup(request):
         context['newsletter_form'] = form
         if form.is_valid():
             form.save()
+            email_success('newsletter')
             return redirect(reverse('index-thankyou'))
         else:
             print "form is not valid"
@@ -126,7 +129,7 @@ def hiring_signup(request):
         if form.is_valid():
             instance = HiringJob(job=job_object, resume=request.FILES['resume'])
             instance.save()
-            email_job_applied(job_object.title, request.FILES['resume'])
+            email_success(job_object.title, resume=request.FILES['resume'])
             return redirect(reverse('index-thankyou'))
         else:
             print "form is not valid"
