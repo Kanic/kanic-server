@@ -54,7 +54,7 @@ def email_job_applied(job_title, resume):
     subject = 'Apply for {0}'.format(job_title)
     message = 'Some one applied for {0}'.format(job_title)
     fromAddress = 'kanicHR@kanic.com'
-    toAddress = ['dongliang3571@gmail.com']
+    toAddress = ['dongliang3571@gmail.com', 'ahmedbnms@gmail.com']
     email = EmailMessage(subject, message, fromAddress, toAddress)
     attach_name = resume.name
     data = ''
