@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+    background-color: #1cb796;
+}
+
+.hiring {
+    position: relative;
+    top: 20%;
+}
+
+.job {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.jumbotron > p, .jumbotron > ul > li {
+    text-align: left;
+}
+
+.jumbotron > .bold {
+    font-weight: bolder;
+}
+
+span.bold {
+    font-weight: bold;
+}
+
+label.bold {
+    font-size: 1.6em;
+}
+
+.non-bold {
+    font-weight: normal;
+    font-style: italic;
+}
+
+ul.errorlist > li {
+    color: red;
+    list-style-type: none;
+}

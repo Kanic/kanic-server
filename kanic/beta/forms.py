@@ -170,15 +170,13 @@ class NewsletterForm(forms.ModelForm):
         fields = ['email']
 
 
-class HiringForm(forms.ModelForm):
-    title = CharField(
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Job title'
-            })
+class HiringForm(forms.Form):
+    code = CharField(
+        required=True,
+        widget=forms.HiddenInput()
     )
-    resume = FileField()
-
-    class Meta:
-        model = HiringJob
-        fields = ['title', 'resume']
+    resume = FileField(
+        widget=forms.FileInput(attrs={
+            'class': 'filestyle'
+        })
+    )

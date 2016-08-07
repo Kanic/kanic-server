@@ -95,7 +95,7 @@ urlpatterns = [
     url(r'^newsletter-signup/$', 'beta.views.newsletter_signup', name='newsletter-signup'),
 
     # Kanic career page
-    url(r'^career/(?P<title>[a-z]+)$', 'index.views.hiring_form', name='beta-hiring-form'),
+    url(r'^career/hiring/$', 'index.views.hiring_form', name='beta-hiring-form'),
     url(r'^career/signup/$', 'beta.views.hiring_signup', name='beta-hiring-signup'),
 
 

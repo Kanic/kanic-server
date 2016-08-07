@@ -24,13 +24,12 @@ $(document).ready(function() {
         var top = $(document).scrollTop();
 
         if(top > 50) {
-            $('.navbar').removeClass('navbar-transparent');
-            $('.navbar-default .navbar-nav > li > a').css('color', 'black');
-            $('.navbar-default .navbar-brand').css('color', 'black');
+            // Turn navigation bar elements black
+            turnNavBlack();
+
         } else {
-            $('.navbar').addClass('navbar-transparent');
-            $('.navbar-default .navbar-nav > li > a').css('color', 'white');
-            $('.navbar-default .navbar-brand').css('color', 'white');
+            // Turn navigation bar elements white
+            turnNavWhite();
         }
 
         var scroll_distance = $('#about').offset().top - $(window).height();
@@ -78,5 +77,35 @@ $(document).ready(function() {
         $('#submit').prop('disabled', true);
     });
 
+    // disable navbar dropdown menu focus
+    $('button.navbar-toggle').on('focus', function() {
+        this.blur();
+    });
+
+    $('button.navbar-toggle').on('click', function() {
+        if($('.navbar-collapse').attr('class') == 'navbar-collapse collapse in'
+           && $(document).scrollTop() < 50 ) {
+            console.log('clicked');
+            turnNavWhite();
+        } else {
+            turnNavBlack();
+        }
+    });
+
+    function turnNavBlack() {
+        $('.navbar').removeClass('navbar-transparent');
+        $('.navbar-default .navbar-nav > li > a').css('color', 'black');
+        $('.navbar-default .navbar-brand').css('color', 'black');
+        $('.navbar-default .navbar-toggle .icon-bar').css('background-color', 'black');
+        $('.navbar-default .navbar-toggle').css('border-color', 'black');
+    }
+
+    function turnNavWhite() {
+        $('.navbar').addClass('navbar-transparent');
+        $('.navbar-default .navbar-nav > li > a').css('color', 'white');
+        $('.navbar-default .navbar-brand').css('color', 'white');
+        $('.navbar-default .navbar-toggle .icon-bar').css('background-color', 'white');
+        $('.navbar-default .navbar-toggle').css('border-color', 'white');
+    }
 
 });

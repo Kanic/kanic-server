@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django_extensions',
     # 'registration',
     'rest_framework',
+    'index',
     'users',
     'services',
     'cars',

@@ -3,10 +3,11 @@ import base64
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, MechanicForm, NewsletterForm, HiringForm
-from .models import Tester, BetaMechanic
+from .models import Tester, BetaMechanic, Job, HiringJob
+from .utils import job_deserializer_single, handle_uploaded_file
 
 
 def car_owner_signup(request):
@@ -30,7 +31,7 @@ def car_owner_signup(request):
             context['carOwner_invalid'] = 'carOwner_invalid'
             return render(request, 'index/index.html', context)
 
-    return HttpResponseRedirect(reverse('index-index'))
+    return redirect(reverse('index-index'))
 
 
 
@@ -55,7 +56,7 @@ def mechanic_signup(request):
             context['mechanic_invalid'] = 'mechanic_invalid'
             return render(request, 'index/index.html', context)
 
-    return HttpResponseRedirect(reverse('index-index'))
+    return redirect(reverse('index-index'))
 
 
 def newsletter_signup(request):
@@ -79,7 +80,7 @@ def newsletter_signup(request):
             context['mechanic_form'] = MechanicForm()
             return render(request, 'index/index.html', context)
 
-    return HttpResponseRedirect(reverse('index-index'))
+    return redirect(reverse('index-index'))
 
 
 def listTester(request):
@@ -110,22 +111,24 @@ def listTester(request):
 
 
 def hiring_signup(request):
-    form = HiringForm()
-    context = {
-        'hiring_form': form
-    }
     if request.method == 'POST':
-        print request.POST.get('title')
-        if request.POST.get('title') in ['ios', 'android', 'web', 'marketing']:
-            form = HiringForm(request.POST, request.FILES)
-            context['hiring_form'] = form
-            if form.is_valid():
-                form.save()
-                return render(request, 'beta/success.html')
-            else:
-                print "form is not valid"
-                return render(request, 'index/hiring_form.html', context)
+        context = {}
+        form = HiringForm(request.POST, request.FILES)
+        code = form['code'].data
+        try:
+            job_object = Job.objects.get(code=code)
+        except Job.DoesNotExist:
+            print 'Job object with code {0} does not exist'.format(code)
+            return redirect(reverse('index-index'))
+        if form.is_valid():
+            instance = HiringJob(job=job_object, resume=request.FILES['resume'])
+            instance.save()
+            return render(request, 'beta/success.html')
         else:
-            return HttpResponseRedirect(reverse('index-index'))
+            print "form is not valid"
+            context['form'] = form
+            job = job_deserializer_single(job_object)
+            context['job'] = job
+            return render(request, 'index/hiring_form.html', context)
 
-    return HttpResponseRedirect(reverse('index-index'))
+    return redirect(reverse('index-index'))

@@ -30,6 +30,25 @@ div.navbar-transparent {
     background-color: transparent;
 }
 
+.navbar-default .navbar-toggle {
+    border-color: white;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: #1cb796;
+}
+
+.navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+    outline: none;
+}
+
+.navbar-default .navbar-toggle:active {
+    background-color: transparent;
+    outline: none;
+}
+
 .navbar-nav > li > a, .navbar-nav > li > a:focus {
     font-size: 20px;
     padding-top: 28px;
@@ -45,6 +64,10 @@ div.navbar-transparent {
 
 .navbar-default .navbar-nav > li > a {
     color: white;
+}
+
+#hiringModal > div.modal-dialog {
+    
 }
 
 #hiring-jumbo {
@@ -251,16 +274,6 @@ div.clearfix > form {
 input.email {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px inset;
     font-size: 13px;
-}
-
-input.newsletter {
-
-    /*color: white;
-    border-radius: 20px;
-    border-color: white;
-    background-color: transparent;
-    font-size: 1em;
-    border-style: solid;*/
 }
 
 div.newsletter {

@@ -10,42 +10,16 @@
       </div>
       <div class="modal-body">
           <div class="row">
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                  <h3>iOS Developer</h3>
-                  <p><a href="{% url "beta-hiring-form" title="ios" %}" class="btn btn-default" role="button">Apply</a></p>
-                </div>
+              {% for job in jobs %}
+              <div class="col-sm-6 col-md-4">
+                  <div class="thumbnail">
+                      <div class="caption">
+                          <h3>{{ job.title }}</h3>
+                          <p><a href="{% url "beta-hiring-form" %}?code={{ job.code }}" class="btn btn-default" role="button">Apply</a></p>
+                      </div>
+                  </div>
               </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                  <h3>Android Developer</h3>
-                  <p><a href="{% url "beta-hiring-form" title="android" %}" class="btn btn-default" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                  <h3>Web Developer</h3>
-                  <p><a href="{% url "beta-hiring-form" title="web" %}" class="btn btn-default" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                  <h3>Marketing</h3>
-                  <p><a href="{% url "beta-hiring-form" title="marketing" %}" class="btn btn-default" role="button">Apply</a></p>
-                </div>
-              </div>
-            </div>
-
+              {% endfor %}
           </div>
       </div>
       <!-- no modal footer -->

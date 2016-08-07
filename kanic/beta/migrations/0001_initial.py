@@ -29,9 +29,21 @@ class Migration(migrations.Migration):
             name='HiringJob',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('title', models.CharField(max_length=255, verbose_name=b'job title')),
                 ('resume', models.FileField(upload_to=b'upload/')),
                 ('createAt', models.DateTimeField(default=django.utils.timezone.now)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Job',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255, verbose_name=b'job title')),
+                ('code', models.CharField(unique=True, max_length=255, verbose_name=b'job code')),
+                ('requirement', models.CharField(max_length=3000, verbose_name=b'job requirements')),
+                ('responsibility', models.CharField(max_length=3000, verbose_name=b'job responsibility')),
+                ('description', models.CharField(max_length=3000, verbose_name=b'job description')),
+                ('type', models.CharField(max_length=3000, verbose_name=b'job type')),
+                ('salary', models.CharField(max_length=30, verbose_name=b'job salary')),
             ],
         ),
         migrations.CreateModel(
@@ -54,5 +66,10 @@ class Migration(migrations.Migration):
                 ('car', models.BooleanField(default=False)),
                 ('createAt', models.DateTimeField(default=django.utils.timezone.now)),
             ],
+        ),
+        migrations.AddField(
+            model_name='hiringjob',
+            name='job',
+            field=models.ForeignKey(to='beta.Job'),
         ),
     ]
