@@ -3,7 +3,7 @@
 {% load customtags %}
 
 {% block top_css %}
-<link href="{% static "css/index/hiring.css" %}" rel="stylesheet" type="text/css">
+<link href="{% static "css/index/hiring_form.css" %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block content %}
@@ -31,7 +31,7 @@
             <p><span class="bold">Type:</span><span class="non-bold"> {{ job.type|full }}</span></p>
             <p><span class="bold">Salary:</span><span class="non-bold"> {{ job.salary }}</span></p>
 
-            <form action="{% url "beta-hiring-signup" %}" method="post" enctype="multipart/form-data">
+            <form id="job-form" action="{% url "beta-hiring-signup" %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 {{ form.code }}
@@ -43,7 +43,7 @@
                 </div>
                 <br>
                 <br>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default apply">Submit</button>
            </form>
 
        </div>
@@ -54,7 +54,5 @@
 
 {% block bottom_js %}
 <script type="text/javascript "src="{% static "javascript/bootstrap-filestyle.min.js" %}"></script>
-<script>
-$(":file").filestyle({buttonName: "btn-primary"});
-</script>
+<script type="text/javascript "src="{% static "javascript/index/hiring_form.js" %}"></script>
 {% endblock %}

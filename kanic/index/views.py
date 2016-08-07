@@ -41,3 +41,7 @@ def hiring_form(request):
             return redirect(reverse('index-index'))
     else:
         return redirect(reverse('index-index'))
+
+
+def thankyou(request):
+    return render(request, 'success.html')

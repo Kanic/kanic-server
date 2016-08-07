@@ -87,6 +87,9 @@ urlpatterns = [
     url(r'^$', 'index.views.index', name='index-index'),
     url(r'^listtesters/?$', 'beta.views.listTester', name='list_testers'),
 
+    # Thank you page
+    url(r'^thankyou/?$', 'index.views.thankyou', name='index-thankyou'),
+
     # Beta car owner sign up
     url(r'^car-owners-signup/$', 'beta.views.car_owner_signup', name='beta-car-owner-signup'),
     # Beta mechanic sign up

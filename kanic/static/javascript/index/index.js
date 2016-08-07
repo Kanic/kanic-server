@@ -68,18 +68,18 @@ $(document).ready(function() {
     }
 
     // Disable submit button after clicked
-    $('#mechanic_submit').on('submit', function() {
+    $('#mechanic-form').on('submit', function() {
         $('#mechanic_submit').prop('disabled', true);
     });
 
     // Disable submit button after clicked
-    $('#submit').on('submit', function() {
+    $('#sign-up-form').on('submit', function() {
         $('#submit').prop('disabled', true);
     });
 
     // disable navbar dropdown menu focus
     $('button.navbar-toggle').on('focus', function() {
-        this.blur();
+        $(this).blur();
     });
 
     $('button.navbar-toggle').on('click', function() {

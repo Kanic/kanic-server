@@ -1,5 +1,7 @@
 import base64
 
+
+from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseNotFound
@@ -7,7 +9,8 @@ from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, MechanicForm, NewsletterForm, HiringForm
 from .models import Tester, BetaMechanic, Job, HiringJob
-from .utils import job_deserializer_single, handle_uploaded_file
+from .utils import (job_deserializer_single, handle_uploaded_file,
+                    email_job_applied)
 
 
 def car_owner_signup(request):
@@ -24,7 +27,7 @@ def car_owner_signup(request):
         context['signup_form'] = form
         if form.is_valid():
             form.save()
-            return render(request, 'beta/success.html')
+            return redirect(reverse('index-thankyou'))
         else:
             print 'form is not valid'
             context['mechanic_form'] = MechanicForm()
@@ -49,7 +52,7 @@ def mechanic_signup(request):
         context['mechanic_form'] = form
         if form.is_valid():
             form.save()
-            return render(request, 'beta/success.html')
+            return redirect(reverse('index-thankyou'))
         else:
             print "form is not valid"
             context['signup_form'] = SignUpForm()
@@ -73,7 +76,7 @@ def newsletter_signup(request):
         context['newsletter_form'] = form
         if form.is_valid():
             form.save()
-            return render(request, 'beta/success.html')
+            return redirect(reverse('index-thankyou'))
         else:
             print "form is not valid"
             context['signup_form'] = SignUpForm()
@@ -123,7 +126,8 @@ def hiring_signup(request):
         if form.is_valid():
             instance = HiringJob(job=job_object, resume=request.FILES['resume'])
             instance.save()
-            return render(request, 'beta/success.html')
+            email_job_applied(job_object.title, request.FILES['resume'])
+            return redirect(reverse('index-thankyou'))
         else:
             print "form is not valid"
             context['form'] = form

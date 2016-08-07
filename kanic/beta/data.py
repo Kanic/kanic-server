@@ -27,7 +27,7 @@ data = [
         ]),
         'description': 'We are an early stage tech startup located in uptown \
                         Manhattan looking for a highly motivated individual to \
-                        join our software development. The candidate will have \
+                        join our development team. The candidate will have \
                         access to our accelerator mentor network from a top \
                         tier accelerator in the New York area.',
         'type': 'in',
@@ -56,7 +56,7 @@ data = [
         ]),
         'description': 'We are an early stage tech startup located in uptown \
                         Manhattan looking for a highly motivated individual to \
-                        join our software development. The candidate will have \
+                        join our development team. The candidate will have \
                         access to our accelerator mentor network from a top \
                         tier accelerator in the New York area.',
         'type': 'in',
@@ -89,7 +89,7 @@ data = [
         ]),
         'description': 'We are an early stage tech startup located in uptown \
                         Manhattan looking for a highly motivated individual to \
-                        join our software development. The candidate will have \
+                        join our marketing team. The candidate will have \
                         access to our accelerator mentor network from a top \
                         tier accelerator in the New York area.',
         'type': 'in',
@@ -118,7 +118,7 @@ data = [
         ]),
         'description': 'We are an early stage tech startup located in uptown \
                         Manhattan looking for a highly motivated individual to \
-                        join our software development. The candidate will have \
+                        join our marketing team. The candidate will have \
                         access to our accelerator mentor network from a top \
                         tier accelerator in the New York area.',
         'type': 'in',
