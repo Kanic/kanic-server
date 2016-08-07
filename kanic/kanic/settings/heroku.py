@@ -1,4 +1,4 @@
-from base.py import *
+from .base import *
 
 DATABASES = {
     'default': {
